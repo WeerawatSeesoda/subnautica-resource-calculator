@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <conio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
@@ -355,14 +355,14 @@ int nameCheck(char inputName[256])
 		char buffer2[stringLenght];
 
 		strcpy_s(buffer1, stringLenght, inputName);
-		for (int i = 0; i < strlen(buffer1); i++)
+		for (unsigned int i = 0; i < strlen(buffer1); i++)
 		{
 			buffer1[i] = tolower(buffer1[i]);
 		}
 		for (int itemID = 2; itemID < 500; itemID++)
 		{
 			strcpy_s(buffer2, stringLenght, subnItem[itemID].itemName);
-			for (int i = 0; i < strlen(buffer2); i++)
+			for (unsigned int i = 0; i < strlen(buffer2); i++)
 			{
 				buffer2[i] = tolower(buffer2[i]);
 			}
@@ -694,7 +694,7 @@ int main()
 	} while (strcmp(inputItem.itemName, "done") != 0);
 	show();
 
-	printf("\nPress any key to close\n");
-	_getch();
+	printf("\nThank you and goodbye\n");
+	system("pause");
 	return 0;
 }
