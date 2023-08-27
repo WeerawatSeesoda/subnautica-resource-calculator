@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
+#include <ctype.h>
+
+const int stringLenght = 256;
 
 struct item
 {
-	char itemName[256];
+	char itemName[stringLenght];
 	int itemNumber;
 };
 
@@ -32,18 +35,29 @@ int glass = 0;
 int lubricant = 0;
 int siliconeRubber = 0;
 int titaniumIngot = 0;
+int wallLocker = 0;
 int wiringKit = 0;
 
 //Tertiary
+int batterryCharger = 0;
 int computerChip = 0;
 int enameledGlass = 0;
+int moonpool = 0;
 int plasteelIngot = 0;
 int powerCell = 0;
+int waterFiltrationMachine = 0;
 
 //Quaternary
 int advancedWiringKit = 0;
+int prawnSuit = 0;
+int neptuneLaunchPlatform = 0;
+int seamoth = 0;
+int vehicleUpgradeConsole = 0;
 
 //Quinary
+int cyclops = 0;
+int powerCellCharger = 0;
+
 item subnItem[500];
 
 void nameSetting() {
@@ -74,8 +88,6 @@ void nameSetting() {
 	strcpy_s(subnItem[107].itemName, sizeof subnItem->itemName, "Wiring kit");
 	strcpy_s(subnItem[108].itemName, sizeof subnItem->itemName, "Wall locker");
 
-	strcpy_s(subnItem[199].itemName, sizeof subnItem->itemName, "wall locker");
-
 	//ter
 	strcpy_s(subnItem[200].itemName, sizeof subnItem->itemName, "Computer chip");
 	strcpy_s(subnItem[201].itemName, sizeof subnItem->itemName, "Enameled glass");
@@ -85,27 +97,15 @@ void nameSetting() {
 	strcpy_s(subnItem[205].itemName, sizeof subnItem->itemName, "Moonpool");
 	strcpy_s(subnItem[206].itemName, sizeof subnItem->itemName, "Power cell");
 
-	strcpy_s(subnItem[297].itemName, sizeof subnItem->itemName, "moonpool");
-	strcpy_s(subnItem[298].itemName, sizeof subnItem->itemName, "battery charger");
-	strcpy_s(subnItem[299].itemName, sizeof subnItem->itemName, "water filtration machine");
-
 	//qua
 	strcpy_s(subnItem[300].itemName, sizeof subnItem->itemName, "Advanced wiring kit");
 	strcpy_s(subnItem[301].itemName, sizeof subnItem->itemName, "PRAWN suit");
 	strcpy_s(subnItem[302].itemName, sizeof subnItem->itemName, "Seamoth");
 	strcpy_s(subnItem[303].itemName, sizeof subnItem->itemName, "Vehicle upgrade console");
 
-	strcpy_s(subnItem[396].itemName, sizeof subnItem->itemName, "vehicle upgrade console");
-	strcpy_s(subnItem[397].itemName, sizeof subnItem->itemName, "seamoth");
-	strcpy_s(subnItem[398].itemName, sizeof subnItem->itemName, "Prawn suit");
-	strcpy_s(subnItem[399].itemName, sizeof subnItem->itemName, "prawn suit");
-
 	//qui
 	strcpy_s(subnItem[400].itemName, sizeof subnItem->itemName, "Cyclops");
 	strcpy_s(subnItem[401].itemName, sizeof subnItem->itemName, "Power cell charger");
-
-	strcpy_s(subnItem[498].itemName, sizeof subnItem->itemName, "power cell charger");
-	strcpy_s(subnItem[499].itemName, sizeof subnItem->itemName, "cyclops");
 }
 
 void variableSetting()
@@ -199,12 +199,20 @@ void variableSetting()
 		{
 			titaniumIngot = i;
 		}
+		if (strcmp(subnItem[i].itemName, "Wall locker") == 0)
+		{
+			wallLocker = i;
+		}
 		if (strcmp(subnItem[i].itemName, "Wiring kit") == 0)
 		{
 			wiringKit = i;
 		}
 
 		//tertiary
+		if (strcmp(subnItem[i].itemName, "Batterry charger") == 0)
+		{
+			batterryCharger = i;
+		}
 		if (strcmp(subnItem[i].itemName, "Computer chip") == 0)
 		{
 			computerChip = i;
@@ -212,6 +220,10 @@ void variableSetting()
 		if (strcmp(subnItem[i].itemName, "Enameled glass") == 0)
 		{
 			enameledGlass = i;
+		}
+		if (strcmp(subnItem[i].itemName, "Moonpool") == 0)
+		{
+			moonpool = i;
 		}
 		if (strcmp(subnItem[i].itemName, "Plasteel ingot") == 0)
 		{
@@ -221,27 +233,73 @@ void variableSetting()
 		{
 			powerCell = i;
 		}
+		if (strcmp(subnItem[i].itemName, "Water filtration machine") == 0)
+		{
+			waterFiltrationMachine = i;
+		}
 
 		//quaternary
 		if (strcmp(subnItem[i].itemName, "Advanced wiring kit") == 0)
 		{
 			advancedWiringKit = i;
 		}
+		if (strcmp(subnItem[i].itemName, "PRAWN suit") == 0)
+		{
+			prawnSuit = i;
+		}
+		if (strcmp(subnItem[i].itemName, "Neptune Launch Platform") == 0)
+		{
+			neptuneLaunchPlatform = i;
+		}
+		if (strcmp(subnItem[i].itemName, "Seamoth") == 0)
+		{
+			seamoth = i;
+		}
+		if (strcmp(subnItem[i].itemName, "Vehicle upgrade console") == 0)
+		{
+			vehicleUpgradeConsole = i;
+		}
+
+		//quinary
+		if (strcmp(subnItem[i].itemName, "Cyclops") == 0)
+		{
+			cyclops = i;
+		}
+		if (strcmp(subnItem[i].itemName, "Power cell charger") == 0)
+		{
+			powerCellCharger = i;
+		}
 	}
 }
 
-char nameCheck(char inputName[256])
+int nameCheck(char inputName[256])
 {
 	////spell checking and show the error or return the number of the struct object
 	if (inputName[0] == NULL)
 	{
 		return false;
 	}
-	for (int i = 2; i < 500; i++)
+	else
 	{
-		if (strcmp(subnItem[i].itemName, inputName) == 0)
+		char buffer1[stringLenght];
+		char buffer2[stringLenght];
+
+		strcpy_s(buffer1, stringLenght, inputName);
+		for (int i = 0; i < strlen(buffer1); i++)
 		{
-			return i;
+			buffer1[i] = tolower(buffer1[i]);
+		}
+		for (int itemID = 2; itemID < 500; itemID++)
+		{
+			strcpy_s(buffer2, stringLenght, subnItem[itemID].itemName);
+			for (int i = 0; i < strlen(buffer2); i++)
+			{
+				buffer2[i] = tolower(buffer2[i]);
+			}
+			if (strcmp(buffer1, buffer2) == 0)
+			{
+				return itemID;
+			}
 		}
 	}
 	return false;
@@ -250,15 +308,16 @@ char nameCheck(char inputName[256])
 item input()
 {
 	item input;
-	bool isCorrectName;
+	int itemID;
+	bool isCorrectName = false;
 
 	input.itemNumber = 0;
 	printf("Please enter the item name or type \"done\" to calculate or type \"exit\" to close program\n");
+
 	do {
 		printf("Enter item name: ");
 		fgets(input.itemName, sizeof input.itemName, stdin);
 		input.itemName[strcspn(input.itemName, "\n")] = 0;
-		isCorrectName = nameCheck(input.itemName);
 		if (strcmp(input.itemName, "exit") == 0)
 		{
 			return input;
@@ -267,11 +326,20 @@ item input()
 		{
 			return input;
 		}
-		if (isCorrectName == false)
+		else
 		{
-			printf("Cannot find the item, Try again\n");
+			isCorrectName = itemID = nameCheck(input.itemName);
+			if (isCorrectName == false)
+			{
+				printf("Cannot find the item, Try again\n");
+			}
+			else
+			{
+				break;
+			}
 		}
 	} while (isCorrectName == false);
+
 	do {
 		printf("How many item: ");
 		scanf_s("%d", &input.itemNumber);
@@ -282,20 +350,18 @@ item input()
 		{
 			printf("The number must larger than 0, Try again\n");
 		}
-	} while (input.itemNumber < 1);\
+		else
+		{
+			subnItem[itemID].itemNumber = input.itemNumber;
+			break;
+		}
+	} while (input.itemNumber < 1);
 	return input;
 }
 
-void calculating(char inputName[256])
+void calculating()
 {
 	/*
-	if (strcmp(inputName, "") == 0)
-	{
-		subnItem[].itemNumber += ;
-		subnItem[].itemNumber += ;
-		subnItem[].itemNumber += ;
-	}
-
 	if (subnItem[].itemNumber > 0)
 	{
 	subnItem[].itemNumber +=  * subnItem[].itemNumber;
@@ -305,53 +371,53 @@ void calculating(char inputName[256])
 	*/
 
 	//quinary
-	if (strcmp(inputName, "Cyclops") == 0 || strcmp(inputName, "cyclops") == 0)
+	if (subnItem[cyclops].itemNumber > 0)
 	{
-		subnItem[advancedWiringKit].itemNumber += 1;
-		subnItem[enameledGlass].itemNumber += 3;
-		subnItem[lead].itemNumber += 3;
-		subnItem[lubricant].itemNumber += 1;
-		subnItem[plasteelIngot].itemNumber += 3;
+		subnItem[advancedWiringKit].itemNumber += 1 * subnItem[cyclops].itemNumber;
+		subnItem[enameledGlass].itemNumber += 3 * subnItem[cyclops].itemNumber;
+		subnItem[lead].itemNumber += 3 * subnItem[cyclops].itemNumber;
+		subnItem[lubricant].itemNumber += 1 * subnItem[cyclops].itemNumber;
+		subnItem[plasteelIngot].itemNumber += 3 * subnItem[cyclops].itemNumber;
 	}
 
-	if (strcmp(inputName, "Power cell charger") == 0 || strcmp(inputName, "power cell charger") == 0)
+	if (subnItem[powerCellCharger].itemNumber > 0)
 	{
-		subnItem[advancedWiringKit].itemNumber += 1;
-		subnItem[ruby].itemNumber += 2;
-		subnItem[titanium].itemNumber += 2;
+		subnItem[advancedWiringKit].itemNumber += 1 * subnItem[powerCellCharger].itemNumber;
+		subnItem[ruby].itemNumber += 2 * subnItem[powerCellCharger].itemNumber;
+		subnItem[titanium].itemNumber += 2 * subnItem[powerCellCharger].itemNumber;
 	}
 
 	//quaternary
-	if (strcmp(inputName, "Neptune Launch Platform") == 0)
+	if (subnItem[neptuneLaunchPlatform].itemNumber > 0)
 	{
-		subnItem[computerChip].itemNumber += 1;
-		subnItem[lead].itemNumber += 4;
-		subnItem[titaniumIngot].itemNumber += 2;
+		subnItem[computerChip].itemNumber += 1 * subnItem[neptuneLaunchPlatform].itemNumber;
+		subnItem[lead].itemNumber += 4 * subnItem[neptuneLaunchPlatform].itemNumber;
+		subnItem[titaniumIngot].itemNumber += 2 * subnItem[neptuneLaunchPlatform].itemNumber;
 	}
 
-	if (strcmp(inputName, "PRAWN suit") == 0 || strcmp(inputName, "Prawn suit") == 0 || strcmp(inputName, "prawn suit") == 0)
+	if (subnItem[prawnSuit].itemNumber > 0)
 	{
-		subnItem[aerogel].itemNumber += 2;
-		subnItem[diamond].itemNumber += 2;
-		subnItem[enameledGlass].itemNumber += 1;
-		subnItem[lead].itemNumber += 2;
-		subnItem[plasteelIngot].itemNumber += 2;
+		subnItem[aerogel].itemNumber += 2 * subnItem[prawnSuit].itemNumber;
+		subnItem[diamond].itemNumber += 2 * subnItem[prawnSuit].itemNumber;
+		subnItem[enameledGlass].itemNumber += 1 * subnItem[prawnSuit].itemNumber;
+		subnItem[lead].itemNumber += 2 * subnItem[prawnSuit].itemNumber;
+		subnItem[plasteelIngot].itemNumber += 2 * subnItem[prawnSuit].itemNumber;
 	}
 
-	if (strcmp(inputName, "Seamoth") == 0 || strcmp(inputName, "seamoth") == 0)
+	if (subnItem[seamoth].itemNumber > 0)
 	{
-		subnItem[glass].itemNumber += 2;
-		subnItem[lead].itemNumber += 1;
-		subnItem[lubricant].itemNumber += 1;
-		subnItem[powerCell].itemNumber += 1;
-		subnItem[titaniumIngot].itemNumber += 1;
+		subnItem[glass].itemNumber += 2 * subnItem[seamoth].itemNumber;
+		subnItem[lead].itemNumber += 1 * subnItem[seamoth].itemNumber;
+		subnItem[lubricant].itemNumber += 1 * subnItem[seamoth].itemNumber;
+		subnItem[powerCell].itemNumber += 1 * subnItem[seamoth].itemNumber;
+		subnItem[titaniumIngot].itemNumber += 1 * subnItem[seamoth].itemNumber;
 	}
 
-	if (strcmp(inputName, "Vehicle upgrade console") == 0 || strcmp(inputName, "vehicle upgrade console") == 0)
+	if (subnItem[vehicleUpgradeConsole].itemNumber > 0)
 	{
-		subnItem[computerChip].itemNumber += 1;
-		subnItem[copperWire].itemNumber += 1;
-		subnItem[titanium].itemNumber += 3;
+		subnItem[computerChip].itemNumber += 1 * subnItem[vehicleUpgradeConsole].itemNumber;
+		subnItem[copperWire].itemNumber += 1 * subnItem[vehicleUpgradeConsole].itemNumber;
+		subnItem[titanium].itemNumber += 3 * subnItem[vehicleUpgradeConsole].itemNumber;
 	}
 
 	if (subnItem[advancedWiringKit].itemNumber > 0)
@@ -362,25 +428,25 @@ void calculating(char inputName[256])
 	}
 
 	//tertiary
-	if (strcmp(inputName, "Baterry charger") == 0 || strcmp(inputName, "baterry charger") == 0)
+	if (subnItem[batterryCharger].itemNumber > 0)
 	{
-		subnItem[copperWire].itemNumber += 1;
-		subnItem[titanium].itemNumber += 1;
-		subnItem[wiringKit].itemNumber += 1;
+		subnItem[copperWire].itemNumber += 1 * subnItem[batterryCharger].itemNumber;
+		subnItem[titanium].itemNumber += 1 * subnItem[batterryCharger].itemNumber;
+		subnItem[wiringKit].itemNumber += 1 * subnItem[batterryCharger].itemNumber;
 	}
 
-	if (strcmp(inputName, "Moonpool") == 0 || strcmp(inputName, "moonpool") == 0)
+	if (subnItem[moonpool].itemNumber > 0)
 	{
-		subnItem[lead].itemNumber += 2;
-		subnItem[lubricant].itemNumber += 1;
-		subnItem[titaniumIngot].itemNumber += 2;
+		subnItem[lead].itemNumber += 2 * subnItem[moonpool].itemNumber;
+		subnItem[lubricant].itemNumber += 1 * subnItem[moonpool].itemNumber;
+		subnItem[titaniumIngot].itemNumber += 2 * subnItem[moonpool].itemNumber;
 	}
 
-	if (strcmp(inputName, "Water filtration machine") == 0 || strcmp(inputName, "water filtration machine") == 0)
+	if (subnItem[waterFiltrationMachine].itemNumber > 0)
 	{
-		subnItem[aerogel].itemNumber += 1;
-		subnItem[copperWire].itemNumber += 1;
-		subnItem[titanium].itemNumber += 3;
+		subnItem[aerogel].itemNumber += 1 * subnItem[waterFiltrationMachine].itemNumber;
+		subnItem[copperWire].itemNumber += 1 * subnItem[waterFiltrationMachine].itemNumber;
+		subnItem[titanium].itemNumber += 3 * subnItem[waterFiltrationMachine].itemNumber;
 	}
 
 	if (subnItem[computerChip].itemNumber > 0)
@@ -401,7 +467,6 @@ void calculating(char inputName[256])
 		subnItem[lithium].itemNumber += 2 * subnItem[plasteelIngot].itemNumber;
 		subnItem[titaniumIngot].itemNumber += 1 * subnItem[plasteelIngot].itemNumber;
 	}
-	
 	if (subnItem[powerCell].itemNumber > 0)
 	{
 		subnItem[battery].itemNumber += 2 * subnItem[powerCell].itemNumber;
@@ -409,9 +474,9 @@ void calculating(char inputName[256])
 	}
 
 	//secondary
-	if (strcmp(inputName, "Wall locker") == 0 || strcmp(inputName, "wall locker") == 0)
+	if (subnItem[wallLocker].itemNumber > 0)
 	{
-		subnItem[titanium].itemNumber += 2;
+		subnItem[titanium].itemNumber += 2 * subnItem[wallLocker].itemNumber;
 	}
 
 	if (subnItem[aerogel].itemNumber > 0)
@@ -497,23 +562,26 @@ void show()
 
 int main()
 {
-	item inputName;
+	item inputItem;
 
 	nameSetting();
 	variableSetting();
 	do
 	{
-		inputName = input();
-		if (strcmp(inputName.itemName, "exit") == 0)
+		inputItem = input();
+		if (strcmp(inputItem.itemName, "exit") == 0)
 		{
 			return 0;
 		}
-		else if (strcmp(inputName.itemName, "done") == 0)
+		else if (strcmp(inputItem.itemName, "done") == 0)
 		{
 			break;
 		}
-		calculating(inputName.itemName);
-	} while (strcmp(inputName.itemName, "done") != 0);
+		else
+		{
+			calculating();
+		}
+	} while (strcmp(inputItem.itemName, "done") != 0);
 	show();
 
 	printf("\nPress any key to close\n");
