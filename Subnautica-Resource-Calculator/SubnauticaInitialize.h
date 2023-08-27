@@ -12,12 +12,12 @@ namespace Subnautica
 	};
 
 	/*
-			item* Ptr_name = NULL;
-		*/
+		item* Ptr_name = NULL;
+	*/
 
-		//
-		//	1st PRIMARY
-		//
+	//
+	//	1st PRIMARY
+	//
 	std::vector<item> primary_1st;
 	item* Ptr_acidMushroom = NULL;
 	item* Ptr_bladderfish = NULL;
@@ -208,15 +208,15 @@ namespace Subnautica
 	void pointerSetting()
 	{
 		/*
-				else if (i->itemName == "STRING")
-				{
-					POINTER = &(*i);
-				}
-			*/
+			else if (i->itemName == "STRING")
+			{
+				POINTER = &(*i);
+			}
+		*/
 
-			//
-			//	1st PRIMARY
-			//
+		//
+		//	1st PRIMARY
+		//
 		for (auto i = primary_1st.begin(); i != primary_1st.end(); i++)
 		{
 			if (i->itemName == "Acid mushroom")
