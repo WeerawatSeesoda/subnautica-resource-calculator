@@ -11,10 +11,14 @@ struct item
 	int itemNumber;
 };
 
+// int  = 0;
+
 //Primary
 int acidMushroom = 0;
 int copperOre = 0;
 int creepvineSeedCluster = 0;
+int crystallineSulfur = 0;
+int deepShroom = 0;
 int diamond = 0;
 int gelSack = 0;
 int gold = 0;
@@ -22,6 +26,7 @@ int lead = 0;
 int lithium = 0;
 int quartz = 0;
 int ruby = 0;
+int saltDeposit = 0;
 int silverOre = 0;
 int stalkerTooth = 0;
 int tableCoralSample = 0;
@@ -32,6 +37,7 @@ int aerogel = 0;
 int battery = 0;
 int copperWire = 0;
 int glass = 0;
+int hydrochloricAcid = 0;
 int lubricant = 0;
 int siliconeRubber = 0;
 int titaniumIngot = 0;
@@ -41,9 +47,12 @@ int wiringKit = 0;
 //Tertiary
 int batterryCharger = 0;
 int computerChip = 0;
+int cyclopsDepthModuleMK1 = 0;
+int cyclopsFireSuppressionSystem = 0;
 int enameledGlass = 0;
 int moonpool = 0;
 int plasteelIngot = 0;
+int polyaniline = 0;
 int powerCell = 0;
 int waterFiltrationMachine = 0;
 
@@ -56,11 +65,16 @@ int vehicleUpgradeConsole = 0;
 
 //Quinary
 int cyclops = 0;
+int cyclopsShieldGenerator = 0;
 int powerCellCharger = 0;
 
 item subnItem[500];
 
 void nameSetting() {
+	/*
+	strcpy_s(subnItem[].itemName, sizeof subnItem->itemName, "");
+	*/
+
 	//pri
 	strcpy_s(subnItem[2].itemName, sizeof subnItem->itemName, "Acid muchroom");
 	strcpy_s(subnItem[3].itemName, sizeof subnItem->itemName, "Copper ore");
@@ -76,6 +90,9 @@ void nameSetting() {
 	strcpy_s(subnItem[13].itemName, sizeof subnItem->itemName, "Stalker tooth");
 	strcpy_s(subnItem[14].itemName, sizeof subnItem->itemName, "Table coral sample");
 	strcpy_s(subnItem[15].itemName, sizeof subnItem->itemName, "Titanium");
+	strcpy_s(subnItem[16].itemName, sizeof subnItem->itemName, "Crystalline sulfur");
+	strcpy_s(subnItem[17].itemName, sizeof subnItem->itemName, "Deep shroom");
+	strcpy_s(subnItem[18].itemName, sizeof subnItem->itemName, "Salt deposit");
 
 	//sec
 	strcpy_s(subnItem[100].itemName, sizeof subnItem->itemName, "Aerogel");
@@ -87,6 +104,7 @@ void nameSetting() {
 	strcpy_s(subnItem[106].itemName, sizeof subnItem->itemName, "Titanium ingot");
 	strcpy_s(subnItem[107].itemName, sizeof subnItem->itemName, "Wiring kit");
 	strcpy_s(subnItem[108].itemName, sizeof subnItem->itemName, "Wall locker");
+	strcpy_s(subnItem[109].itemName, sizeof subnItem->itemName, "Hydrochloric acid");
 
 	//ter
 	strcpy_s(subnItem[200].itemName, sizeof subnItem->itemName, "Computer chip");
@@ -96,6 +114,9 @@ void nameSetting() {
 	strcpy_s(subnItem[204].itemName, sizeof subnItem->itemName, "Water filtration machine");
 	strcpy_s(subnItem[205].itemName, sizeof subnItem->itemName, "Moonpool");
 	strcpy_s(subnItem[206].itemName, sizeof subnItem->itemName, "Power cell");
+	strcpy_s(subnItem[207].itemName, sizeof subnItem->itemName, "Cyclops depth module MK1");
+	strcpy_s(subnItem[208].itemName, sizeof subnItem->itemName, "Cyclops fire suppression system");
+	strcpy_s(subnItem[209].itemName, sizeof subnItem->itemName, "Polyaniline");
 
 	//qua
 	strcpy_s(subnItem[300].itemName, sizeof subnItem->itemName, "Advanced wiring kit");
@@ -106,12 +127,20 @@ void nameSetting() {
 	//qui
 	strcpy_s(subnItem[400].itemName, sizeof subnItem->itemName, "Cyclops");
 	strcpy_s(subnItem[401].itemName, sizeof subnItem->itemName, "Power cell charger");
+	strcpy_s(subnItem[402].itemName, sizeof subnItem->itemName, "Cyclops shield generator");
 }
 
 void variableSetting()
 {
 	for (int i = 2; i < 500; i++)
 	{
+		/*
+		if (strcmp(subnItem[i].itemName, "") == 0)
+		{
+		 = i;
+		}
+		*/
+
 		//primary
 		if (strcmp(subnItem[i].itemName, "Acid mushroom") == 0)
 		{
@@ -124,6 +153,14 @@ void variableSetting()
 		if (strcmp(subnItem[i].itemName, "Creepvine seed cluster") == 0)
 		{
 			creepvineSeedCluster = i;
+		}
+		if (strcmp(subnItem[i].itemName, "Crystalline sulfur") == 0)
+		{
+			crystallineSulfur = i;
+		}
+		if (strcmp(subnItem[i].itemName, "Deep shroom") == 0)
+		{
+			deepShroom = i;
 		}
 		if (strcmp(subnItem[i].itemName, "Diamond") == 0)
 		{
@@ -152,6 +189,10 @@ void variableSetting()
 		if (strcmp(subnItem[i].itemName, "Ruby") == 0)
 		{
 			ruby = i;
+		}
+		if (strcmp(subnItem[i].itemName, "Salt deposit") == 0)
+		{
+			saltDeposit = i;
 		}
 		if (strcmp(subnItem[i].itemName, "Silver ore") == 0)
 		{
@@ -187,6 +228,10 @@ void variableSetting()
 		{
 			glass = i;
 		}
+		if (strcmp(subnItem[i].itemName, "Hydrochloric acid") == 0)
+		{
+			hydrochloricAcid= i;
+		}
 		if (strcmp(subnItem[i].itemName, "Lubricant") == 0)
 		{
 			lubricant = i;
@@ -217,6 +262,14 @@ void variableSetting()
 		{
 			computerChip = i;
 		}
+		if (strcmp(subnItem[i].itemName, "Cyclops depth module MK1") == 0)
+		{
+			cyclopsDepthModuleMK1 = i;
+		}
+		if (strcmp(subnItem[i].itemName, "Cyclops fire suppression system") == 0)
+		{
+			cyclopsFireSuppressionSystem = i;
+		}
 		if (strcmp(subnItem[i].itemName, "Enameled glass") == 0)
 		{
 			enameledGlass = i;
@@ -228,6 +281,10 @@ void variableSetting()
 		if (strcmp(subnItem[i].itemName, "Plasteel ingot") == 0)
 		{
 			plasteelIngot = i;
+		}
+		if (strcmp(subnItem[i].itemName, "Polyaniline") == 0)
+		{
+			polyaniline = i;
 		}
 		if (strcmp(subnItem[i].itemName, "Power cell") == 0)
 		{
@@ -264,6 +321,10 @@ void variableSetting()
 		if (strcmp(subnItem[i].itemName, "Cyclops") == 0)
 		{
 			cyclops = i;
+		}
+		if (strcmp(subnItem[i].itemName, "Cyclops shield generator") == 0)
+		{
+			cyclopsShieldGenerator = i;
 		}
 		if (strcmp(subnItem[i].itemName, "Power cell charger") == 0)
 		{
@@ -380,6 +441,13 @@ void calculating()
 		subnItem[plasteelIngot].itemNumber += 3 * subnItem[cyclops].itemNumber;
 	}
 
+	if (subnItem[cyclopsShieldGenerator].itemNumber > 0)
+	{
+		subnItem[advancedWiringKit].itemNumber += 1 * subnItem[cyclopsShieldGenerator].itemNumber;
+		subnItem[polyaniline].itemNumber += 1 * subnItem[cyclopsShieldGenerator].itemNumber;
+		subnItem[powerCell].itemNumber += 1 * subnItem[cyclopsShieldGenerator].itemNumber;
+	}
+
 	if (subnItem[powerCellCharger].itemNumber > 0)
 	{
 		subnItem[advancedWiringKit].itemNumber += 1 * subnItem[powerCellCharger].itemNumber;
@@ -442,6 +510,18 @@ void calculating()
 		subnItem[tableCoralSample].itemNumber += 2 * subnItem[computerChip].itemNumber;
 	}
 
+	if (subnItem[cyclopsDepthModuleMK1].itemNumber > 0)
+	{
+		subnItem[plasteelIngot].itemNumber += 1 * subnItem[cyclopsDepthModuleMK1].itemNumber;
+		subnItem[ruby].itemNumber += 3 * subnItem[cyclopsDepthModuleMK1].itemNumber;
+	}
+
+	if (subnItem[cyclopsFireSuppressionSystem].itemNumber > 0)
+	{
+		subnItem[aerogel].itemNumber += 2 * subnItem[cyclopsFireSuppressionSystem].itemNumber;
+		subnItem[crystallineSulfur].itemNumber += 2 * subnItem[cyclopsFireSuppressionSystem].itemNumber;
+	}
+
 	if (subnItem[enameledGlass].itemNumber > 0)
 	{
 		subnItem[glass].itemNumber += 1 * subnItem[enameledGlass].itemNumber;
@@ -460,6 +540,13 @@ void calculating()
 		subnItem[lithium].itemNumber += 2 * subnItem[plasteelIngot].itemNumber;
 		subnItem[titaniumIngot].itemNumber += 1 * subnItem[plasteelIngot].itemNumber;
 	}
+
+	if (subnItem[polyaniline].itemNumber > 0)
+	{
+		subnItem[gold].itemNumber += 1 * subnItem[polyaniline].itemNumber;
+		subnItem[hydrochloricAcid].itemNumber += 1 * subnItem[polyaniline].itemNumber;
+	}
+
 	if (subnItem[powerCell].itemNumber > 0)
 	{
 		subnItem[battery].itemNumber += 2 * subnItem[powerCell].itemNumber;
@@ -494,6 +581,12 @@ void calculating()
 	if (subnItem[glass].itemNumber > 0)
 	{
 		subnItem[quartz].itemNumber += 2 * subnItem[glass].itemNumber;
+	}
+
+	if (subnItem[hydrochloricAcid].itemNumber > 0)
+	{
+		subnItem[deepShroom].itemNumber += 3 * subnItem[hydrochloricAcid].itemNumber;
+		subnItem[saltDeposit].itemNumber += 1 * subnItem[hydrochloricAcid].itemNumber;
 	}
 
 	if (subnItem[lubricant].itemNumber > 0)
@@ -552,6 +645,14 @@ void show()
 	}
 	printf("\nQuatenary\n");
 	for (int i = 300; i < 400; i++)
+	{
+		if (subnItem[i].itemNumber > 0)
+		{
+			printf("%s = %d\n", subnItem[i].itemName, subnItem[i].itemNumber);
+		}
+	}
+	printf("\nQuinary\n");
+	for (int i = 400; i < 500; i++)
 	{
 		if (subnItem[i].itemNumber > 0)
 		{
