@@ -143,6 +143,7 @@ namespace Subnautica
 				{
 					std::cout << "ERROR : Your input is not an integer." << std::endl;
 					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
 				}
 				else
 				{
