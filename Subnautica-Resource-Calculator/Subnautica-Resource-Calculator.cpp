@@ -79,64 +79,42 @@ void clearBufferNumber()
 	}
 }
 
-void nameSetting() {
-	/*
-	strcpy_s(subnItem[].itemName, sizeof subnItem->itemName, "");
-	*/
+void nameSetting()
+{
+	FILE *fp;
+	errno_t err;
+	err = fopen_s(&fp, "./SubnItemNameLists.txt", "rt");
 
-	//pri
-	strcpy_s(subnItem[2].itemName, sizeof subnItem->itemName, "Acid muchroom");
-	strcpy_s(subnItem[3].itemName, sizeof subnItem->itemName, "Copper ore");
-	strcpy_s(subnItem[4].itemName, sizeof subnItem->itemName, "Creepvine seed cluster");
-	strcpy_s(subnItem[5].itemName, sizeof subnItem->itemName, "Diamond");
-	strcpy_s(subnItem[6].itemName, sizeof subnItem->itemName, "Gel sack");
-	strcpy_s(subnItem[7].itemName, sizeof subnItem->itemName, "Gold");
-	strcpy_s(subnItem[8].itemName, sizeof subnItem->itemName, "Lead");
-	strcpy_s(subnItem[9].itemName, sizeof subnItem->itemName, "Lithium");
-	strcpy_s(subnItem[10].itemName, sizeof subnItem->itemName, "Quartz");
-	strcpy_s(subnItem[11].itemName, sizeof subnItem->itemName, "Ruby");
-	strcpy_s(subnItem[12].itemName, sizeof subnItem->itemName, "Silver ore");
-	strcpy_s(subnItem[13].itemName, sizeof subnItem->itemName, "Stalker tooth");
-	strcpy_s(subnItem[14].itemName, sizeof subnItem->itemName, "Table coral sample");
-	strcpy_s(subnItem[15].itemName, sizeof subnItem->itemName, "Titanium");
-	strcpy_s(subnItem[16].itemName, sizeof subnItem->itemName, "Crystalline sulfur");
-	strcpy_s(subnItem[17].itemName, sizeof subnItem->itemName, "Deep shroom");
-	strcpy_s(subnItem[18].itemName, sizeof subnItem->itemName, "Salt deposit");
+	if (err == 0)
+	{
+		char buffer[256];
+		int num;
 
-	//sec
-	strcpy_s(subnItem[100].itemName, sizeof subnItem->itemName, "Aerogel");
-	strcpy_s(subnItem[101].itemName, sizeof subnItem->itemName, "Battery");
-	strcpy_s(subnItem[102].itemName, sizeof subnItem->itemName, "Copper wire");
-	strcpy_s(subnItem[103].itemName, sizeof subnItem->itemName, "Glass");
-	strcpy_s(subnItem[104].itemName, sizeof subnItem->itemName, "Lubricant");
-	strcpy_s(subnItem[105].itemName, sizeof subnItem->itemName, "Silicone rubber");
-	strcpy_s(subnItem[106].itemName, sizeof subnItem->itemName, "Titanium ingot");
-	strcpy_s(subnItem[107].itemName, sizeof subnItem->itemName, "Wiring kit");
-	strcpy_s(subnItem[108].itemName, sizeof subnItem->itemName, "Wall locker");
-	strcpy_s(subnItem[109].itemName, sizeof subnItem->itemName, "Hydrochloric acid");
-
-	//ter
-	strcpy_s(subnItem[200].itemName, sizeof subnItem->itemName, "Computer chip");
-	strcpy_s(subnItem[201].itemName, sizeof subnItem->itemName, "Enameled glass");
-	strcpy_s(subnItem[202].itemName, sizeof subnItem->itemName, "Plasteel ingot");
-	strcpy_s(subnItem[203].itemName, sizeof subnItem->itemName, "Battery charger");
-	strcpy_s(subnItem[204].itemName, sizeof subnItem->itemName, "Water filtration machine");
-	strcpy_s(subnItem[205].itemName, sizeof subnItem->itemName, "Moonpool");
-	strcpy_s(subnItem[206].itemName, sizeof subnItem->itemName, "Power cell");
-	strcpy_s(subnItem[207].itemName, sizeof subnItem->itemName, "Cyclops depth module MK1");
-	strcpy_s(subnItem[208].itemName, sizeof subnItem->itemName, "Cyclops fire suppression system");
-	strcpy_s(subnItem[209].itemName, sizeof subnItem->itemName, "Polyaniline");
-
-	//qua
-	strcpy_s(subnItem[300].itemName, sizeof subnItem->itemName, "Advanced wiring kit");
-	strcpy_s(subnItem[301].itemName, sizeof subnItem->itemName, "PRAWN suit");
-	strcpy_s(subnItem[302].itemName, sizeof subnItem->itemName, "Seamoth");
-	strcpy_s(subnItem[303].itemName, sizeof subnItem->itemName, "Vehicle upgrade console");
-
-	//qui
-	strcpy_s(subnItem[400].itemName, sizeof subnItem->itemName, "Cyclops");
-	strcpy_s(subnItem[401].itemName, sizeof subnItem->itemName, "Power cell charger");
-	strcpy_s(subnItem[402].itemName, sizeof subnItem->itemName, "Cyclops shield generator");
+		while (!feof(fp))
+		{
+			fgets(buffer, sizeof buffer, fp);
+			while (strcmp(buffer, "\n") != 0)
+			{
+				if (buffer[strcspn(buffer, "//")] != 0)
+				{
+					buffer[strcspn(buffer, "//")] = 0;
+					num = atoi(buffer);
+					break;
+				}
+				else
+				{
+					buffer[strcspn(buffer, "\n")] = 0;
+					strcpy_s(subnItem[num].itemName, sizeof subnItem->itemName, buffer);
+					num++;
+					break;
+				}
+			}
+		}
+	}
+	else
+	{
+		perror("Error");
+	}
 }
 
 void variableSetting()
