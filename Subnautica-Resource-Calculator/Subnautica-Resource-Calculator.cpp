@@ -69,6 +69,15 @@ int cyclopsShieldGenerator = 0;
 int powerCellCharger = 0;
 
 item subnItem[500];
+int bufferNumber[500];
+
+void clearBufferNumber()
+{
+	for (int i = 0; i < 500; i++)
+	{
+		bufferNumber[i] = 0;
+	}
+}
 
 void nameSetting() {
 	/*
@@ -413,7 +422,8 @@ item input()
 		}
 		else
 		{
-			subnItem[itemID].itemNumber = input.itemNumber;
+			clearBufferNumber();
+			subnItem[itemID].itemNumber += bufferNumber[itemID] = input.itemNumber;
 			break;
 		}
 	} while (input.itemNumber < 1);
@@ -423,195 +433,194 @@ item input()
 void calculating()
 {
 	/*
-	if (subnItem[].itemNumber > 0)
+	if (bufferNumber[a].itemNumber > 0)
 	{
-	subnItem[].itemNumber +=  * subnItem[].itemNumber;
-	subnItem[].itemNumber +=  * subnItem[].itemNumber;
-	subnItem[].itemNumber +=  * subnItem[].itemNumber;
+	subnItem[b].itemNumber += bufferNumber[b] += x * bufferNumber[a].itemNumber;
+	subnItem[c].itemNumber += bufferNumber[c] += y * bufferNumber[a].itemNumber;
 	}
 	*/
 
 	//quinary
-	if (subnItem[cyclops].itemNumber > 0)
+	if (bufferNumber[cyclops] > 0)
 	{
-		subnItem[advancedWiringKit].itemNumber += 1 * subnItem[cyclops].itemNumber;
-		subnItem[enameledGlass].itemNumber += 3 * subnItem[cyclops].itemNumber;
-		subnItem[lead].itemNumber += 3 * subnItem[cyclops].itemNumber;
-		subnItem[lubricant].itemNumber += 1 * subnItem[cyclops].itemNumber;
-		subnItem[plasteelIngot].itemNumber += 3 * subnItem[cyclops].itemNumber;
+		subnItem[advancedWiringKit].itemNumber += bufferNumber[advancedWiringKit] += 1 * bufferNumber[cyclops];
+		subnItem[enameledGlass].itemNumber += bufferNumber[enameledGlass] += 3 * bufferNumber[cyclops];
+		subnItem[lead].itemNumber += bufferNumber[lead] += 3 * bufferNumber[cyclops];
+		subnItem[lubricant].itemNumber += bufferNumber[lubricant] += 1 * bufferNumber[cyclops];
+		subnItem[plasteelIngot].itemNumber += bufferNumber[plasteelIngot] += 3 * bufferNumber[cyclops];
 	}
 
-	if (subnItem[cyclopsShieldGenerator].itemNumber > 0)
+	if (bufferNumber[cyclopsShieldGenerator] > 0)
 	{
-		subnItem[advancedWiringKit].itemNumber += 1 * subnItem[cyclopsShieldGenerator].itemNumber;
-		subnItem[polyaniline].itemNumber += 1 * subnItem[cyclopsShieldGenerator].itemNumber;
-		subnItem[powerCell].itemNumber += 1 * subnItem[cyclopsShieldGenerator].itemNumber;
+		subnItem[advancedWiringKit].itemNumber += bufferNumber[advancedWiringKit] += 1 * bufferNumber[cyclopsShieldGenerator];
+		subnItem[polyaniline].itemNumber += bufferNumber[polyaniline] += 1 * bufferNumber[cyclopsShieldGenerator];
+		subnItem[powerCell].itemNumber += bufferNumber[powerCell] += 1 * bufferNumber[cyclopsShieldGenerator];
 	}
 
-	if (subnItem[powerCellCharger].itemNumber > 0)
+	if (bufferNumber[powerCellCharger] > 0)
 	{
-		subnItem[advancedWiringKit].itemNumber += 1 * subnItem[powerCellCharger].itemNumber;
-		subnItem[ruby].itemNumber += 2 * subnItem[powerCellCharger].itemNumber;
-		subnItem[titanium].itemNumber += 2 * subnItem[powerCellCharger].itemNumber;
+		subnItem[advancedWiringKit].itemNumber += bufferNumber[advancedWiringKit] += 1 * bufferNumber[powerCellCharger];
+		subnItem[ruby].itemNumber += bufferNumber[ruby] += 2 * bufferNumber[powerCellCharger];
+		subnItem[titanium].itemNumber += bufferNumber[titanium] += 2 * bufferNumber[powerCellCharger];
 	}
 
 	//quaternary
-	if (subnItem[advancedWiringKit].itemNumber > 0)
+	if (bufferNumber[advancedWiringKit] > 0)
 	{
-		subnItem[computerChip].itemNumber += 1 * subnItem[advancedWiringKit].itemNumber;
-		subnItem[gold].itemNumber += 2 * subnItem[advancedWiringKit].itemNumber;
-		subnItem[wiringKit].itemNumber += 1 * subnItem[advancedWiringKit].itemNumber;
+		subnItem[computerChip].itemNumber += bufferNumber[computerChip] += 1 * bufferNumber[advancedWiringKit];
+		subnItem[gold].itemNumber += bufferNumber[gold] += 2 * bufferNumber[advancedWiringKit];
+		subnItem[wiringKit].itemNumber += bufferNumber[wiringKit] += 1 * bufferNumber[advancedWiringKit];
 	}
 
-	if (subnItem[neptuneLaunchPlatform].itemNumber > 0)
+	if (bufferNumber[neptuneLaunchPlatform] > 0)
 	{
-		subnItem[computerChip].itemNumber += 1 * subnItem[neptuneLaunchPlatform].itemNumber;
-		subnItem[lead].itemNumber += 4 * subnItem[neptuneLaunchPlatform].itemNumber;
-		subnItem[titaniumIngot].itemNumber += 2 * subnItem[neptuneLaunchPlatform].itemNumber;
+		subnItem[computerChip].itemNumber += bufferNumber[computerChip] += 1 * bufferNumber[neptuneLaunchPlatform];
+		subnItem[lead].itemNumber += bufferNumber[lead] += 4 * bufferNumber[neptuneLaunchPlatform];
+		subnItem[titaniumIngot].itemNumber += bufferNumber[titaniumIngot] += 2 * bufferNumber[neptuneLaunchPlatform];
 	}
 
-	if (subnItem[prawnSuit].itemNumber > 0)
+	if (bufferNumber[prawnSuit] > 0)
 	{
-		subnItem[aerogel].itemNumber += 2 * subnItem[prawnSuit].itemNumber;
-		subnItem[diamond].itemNumber += 2 * subnItem[prawnSuit].itemNumber;
-		subnItem[enameledGlass].itemNumber += 1 * subnItem[prawnSuit].itemNumber;
-		subnItem[lead].itemNumber += 2 * subnItem[prawnSuit].itemNumber;
-		subnItem[plasteelIngot].itemNumber += 2 * subnItem[prawnSuit].itemNumber;
+		subnItem[aerogel].itemNumber += bufferNumber[aerogel] += 2 * bufferNumber[prawnSuit];
+		subnItem[diamond].itemNumber += bufferNumber[diamond] += 2 * bufferNumber[prawnSuit];
+		subnItem[enameledGlass].itemNumber += bufferNumber[enameledGlass] += 1 * bufferNumber[prawnSuit];
+		subnItem[lead].itemNumber += bufferNumber[lead] += 2 * bufferNumber[prawnSuit];
+		subnItem[plasteelIngot].itemNumber += bufferNumber[plasteelIngot] += 2 * bufferNumber[prawnSuit];
 	}
 
-	if (subnItem[seamoth].itemNumber > 0)
+	if (bufferNumber[seamoth] > 0)
 	{
-		subnItem[glass].itemNumber += 2 * subnItem[seamoth].itemNumber;
-		subnItem[lead].itemNumber += 1 * subnItem[seamoth].itemNumber;
-		subnItem[lubricant].itemNumber += 1 * subnItem[seamoth].itemNumber;
-		subnItem[powerCell].itemNumber += 1 * subnItem[seamoth].itemNumber;
-		subnItem[titaniumIngot].itemNumber += 1 * subnItem[seamoth].itemNumber;
+		subnItem[glass].itemNumber += bufferNumber[glass] += 2 * bufferNumber[seamoth];
+		subnItem[lead].itemNumber += bufferNumber[lead] += 1 * bufferNumber[seamoth];
+		subnItem[lubricant].itemNumber += bufferNumber[lubricant] += 1 * bufferNumber[seamoth];
+		subnItem[powerCell].itemNumber += bufferNumber[powerCell] += 1 * bufferNumber[seamoth];
+		subnItem[titaniumIngot].itemNumber += bufferNumber[titaniumIngot] += 1 * bufferNumber[seamoth];
 	}
 
-	if (subnItem[vehicleUpgradeConsole].itemNumber > 0)
+	if (bufferNumber[vehicleUpgradeConsole] > 0)
 	{
-		subnItem[computerChip].itemNumber += 1 * subnItem[vehicleUpgradeConsole].itemNumber;
-		subnItem[copperWire].itemNumber += 1 * subnItem[vehicleUpgradeConsole].itemNumber;
-		subnItem[titanium].itemNumber += 3 * subnItem[vehicleUpgradeConsole].itemNumber;
+		subnItem[computerChip].itemNumber += bufferNumber[computerChip] += 1 * bufferNumber[vehicleUpgradeConsole];
+		subnItem[copperWire].itemNumber += bufferNumber[copperWire] += 1 * bufferNumber[vehicleUpgradeConsole];
+		subnItem[titanium].itemNumber += bufferNumber[titanium] += 3 * bufferNumber[vehicleUpgradeConsole];
 	}
 
 	//tertiary
-	if (subnItem[batterryCharger].itemNumber > 0)
+	if (bufferNumber[batterryCharger] > 0)
 	{
-		subnItem[copperWire].itemNumber += 1 * subnItem[batterryCharger].itemNumber;
-		subnItem[titanium].itemNumber += 1 * subnItem[batterryCharger].itemNumber;
-		subnItem[wiringKit].itemNumber += 1 * subnItem[batterryCharger].itemNumber;
+		subnItem[copperWire].itemNumber += bufferNumber[copperWire] += 1 * bufferNumber[batterryCharger];
+		subnItem[titanium].itemNumber += bufferNumber[titanium] += 1 * bufferNumber[batterryCharger];
+		subnItem[wiringKit].itemNumber += bufferNumber[wiringKit] += 1 * bufferNumber[batterryCharger];
 	}
 
-	if (subnItem[computerChip].itemNumber > 0)
+	if (bufferNumber[computerChip] > 0)
 	{
-		subnItem[copperWire].itemNumber += 1 * subnItem[computerChip].itemNumber;
-		subnItem[gold].itemNumber += 2 * subnItem[computerChip].itemNumber;
-		subnItem[tableCoralSample].itemNumber += 2 * subnItem[computerChip].itemNumber;
+		subnItem[copperWire].itemNumber += bufferNumber[copperWire] += 1 * bufferNumber[computerChip];
+		subnItem[gold].itemNumber += bufferNumber[gold] += 2 * bufferNumber[computerChip];
+		subnItem[tableCoralSample].itemNumber += bufferNumber[tableCoralSample] += 2 * bufferNumber[computerChip];
 	}
 
-	if (subnItem[cyclopsDepthModuleMK1].itemNumber > 0)
+	if (bufferNumber[cyclopsDepthModuleMK1] > 0)
 	{
-		subnItem[plasteelIngot].itemNumber += 1 * subnItem[cyclopsDepthModuleMK1].itemNumber;
-		subnItem[ruby].itemNumber += 3 * subnItem[cyclopsDepthModuleMK1].itemNumber;
+		subnItem[plasteelIngot].itemNumber += bufferNumber[plasteelIngot] += 1 * bufferNumber[cyclopsDepthModuleMK1];
+		subnItem[ruby].itemNumber += bufferNumber[ruby] += 3 * bufferNumber[cyclopsDepthModuleMK1];
 	}
 
-	if (subnItem[cyclopsFireSuppressionSystem].itemNumber > 0)
+	if (bufferNumber[cyclopsFireSuppressionSystem] > 0)
 	{
-		subnItem[aerogel].itemNumber += 2 * subnItem[cyclopsFireSuppressionSystem].itemNumber;
-		subnItem[crystallineSulfur].itemNumber += 2 * subnItem[cyclopsFireSuppressionSystem].itemNumber;
+		subnItem[aerogel].itemNumber += bufferNumber[aerogel] += 2 * bufferNumber[cyclopsFireSuppressionSystem];
+		subnItem[crystallineSulfur].itemNumber += bufferNumber[crystallineSulfur] += 2 * bufferNumber[cyclopsFireSuppressionSystem];
 	}
 
-	if (subnItem[enameledGlass].itemNumber > 0)
+	if (bufferNumber[enameledGlass] > 0)
 	{
-		subnItem[glass].itemNumber += 1 * subnItem[enameledGlass].itemNumber;
-		subnItem[stalkerTooth].itemNumber += 1 * subnItem[enameledGlass].itemNumber;
+		subnItem[glass].itemNumber += bufferNumber[glass] += 1 * bufferNumber[enameledGlass];
+		subnItem[stalkerTooth].itemNumber += bufferNumber[stalkerTooth] += 1 * bufferNumber[enameledGlass];
 	}
 
-	if (subnItem[moonpool].itemNumber > 0)
+	if (bufferNumber[moonpool] > 0)
 	{
-		subnItem[lead].itemNumber += 2 * subnItem[moonpool].itemNumber;
-		subnItem[lubricant].itemNumber += 1 * subnItem[moonpool].itemNumber;
-		subnItem[titaniumIngot].itemNumber += 2 * subnItem[moonpool].itemNumber;
+		subnItem[lead].itemNumber += bufferNumber[lead] += 2 * bufferNumber[moonpool];
+		subnItem[lubricant].itemNumber += bufferNumber[lubricant] += 1 * bufferNumber[moonpool];
+		subnItem[titaniumIngot].itemNumber += bufferNumber[titaniumIngot] += 2 * bufferNumber[moonpool];
 	}
 
-	if (subnItem[plasteelIngot].itemNumber > 0)
+	if (bufferNumber[plasteelIngot] > 0)
 	{
-		subnItem[lithium].itemNumber += 2 * subnItem[plasteelIngot].itemNumber;
-		subnItem[titaniumIngot].itemNumber += 1 * subnItem[plasteelIngot].itemNumber;
+		subnItem[lithium].itemNumber += bufferNumber[lithium] += 2 * bufferNumber[plasteelIngot];
+		subnItem[titaniumIngot].itemNumber += bufferNumber[titaniumIngot] += 1 * bufferNumber[plasteelIngot];
 	}
 
-	if (subnItem[polyaniline].itemNumber > 0)
+	if (bufferNumber[polyaniline] > 0)
 	{
-		subnItem[gold].itemNumber += 1 * subnItem[polyaniline].itemNumber;
-		subnItem[hydrochloricAcid].itemNumber += 1 * subnItem[polyaniline].itemNumber;
+		subnItem[gold].itemNumber += bufferNumber[gold] += 1 * bufferNumber[polyaniline];
+		subnItem[hydrochloricAcid].itemNumber += bufferNumber[hydrochloricAcid] += 1 * bufferNumber[polyaniline];
 	}
 
-	if (subnItem[powerCell].itemNumber > 0)
+	if (bufferNumber[powerCell] > 0)
 	{
-		subnItem[battery].itemNumber += 2 * subnItem[powerCell].itemNumber;
-		subnItem[siliconeRubber].itemNumber += 1 * subnItem[powerCell].itemNumber;
+		subnItem[battery].itemNumber += bufferNumber[battery] += 2 * bufferNumber[powerCell];
+		subnItem[siliconeRubber].itemNumber += bufferNumber[siliconeRubber] += 1 * bufferNumber[powerCell];
 	}
 
-	if (subnItem[waterFiltrationMachine].itemNumber > 0)
+	if (bufferNumber[waterFiltrationMachine] > 0)
 	{
-		subnItem[aerogel].itemNumber += 1 * subnItem[waterFiltrationMachine].itemNumber;
-		subnItem[copperWire].itemNumber += 1 * subnItem[waterFiltrationMachine].itemNumber;
-		subnItem[titanium].itemNumber += 3 * subnItem[waterFiltrationMachine].itemNumber;
+		subnItem[aerogel].itemNumber += bufferNumber[aerogel] += 1 * bufferNumber[waterFiltrationMachine];
+		subnItem[copperWire].itemNumber += bufferNumber[copperWire] += 1 * bufferNumber[waterFiltrationMachine];
+		subnItem[titanium].itemNumber += bufferNumber[titanium] += 3 * bufferNumber[waterFiltrationMachine];
 	}
 
 	//secondary
-	if (subnItem[aerogel].itemNumber > 0)
+	if (bufferNumber[aerogel] > 0)
 	{
-		subnItem[gelSack].itemNumber += 1 * subnItem[aerogel].itemNumber;
-		subnItem[ruby].itemNumber += 1 * subnItem[aerogel].itemNumber;
+		subnItem[gelSack].itemNumber += bufferNumber[gelSack] += 1 * bufferNumber[aerogel];
+		subnItem[ruby].itemNumber += bufferNumber[ruby] += 1 * bufferNumber[aerogel];
 	}
 
-	if (subnItem[battery].itemNumber > 0)
+	if (bufferNumber[battery] > 0)
 	{
-		subnItem[acidMushroom].itemNumber += 2 * subnItem[battery].itemNumber;
-		subnItem[copperOre].itemNumber += 1 * subnItem[battery].itemNumber;
+		subnItem[acidMushroom].itemNumber += bufferNumber[acidMushroom] += 2 * bufferNumber[battery];
+		subnItem[copperOre].itemNumber += bufferNumber[copperOre] += 1 * bufferNumber[battery];
 	}
 
-	if (subnItem[copperWire].itemNumber > 0)
+	if (bufferNumber[copperWire] > 0)
 	{
-		subnItem[copperOre].itemNumber += 2 * subnItem[copperWire].itemNumber;
+		subnItem[copperOre].itemNumber += bufferNumber[copperOre] += 2 * bufferNumber[copperWire];
 	}
 
-	if (subnItem[glass].itemNumber > 0)
+	if (bufferNumber[glass] > 0)
 	{
-		subnItem[quartz].itemNumber += 2 * subnItem[glass].itemNumber;
+		subnItem[quartz].itemNumber += bufferNumber[quartz] += 2 * bufferNumber[glass];
 	}
 
-	if (subnItem[hydrochloricAcid].itemNumber > 0)
+	if (bufferNumber[hydrochloricAcid] > 0)
 	{
-		subnItem[deepShroom].itemNumber += 3 * subnItem[hydrochloricAcid].itemNumber;
-		subnItem[saltDeposit].itemNumber += 1 * subnItem[hydrochloricAcid].itemNumber;
+		subnItem[deepShroom].itemNumber += bufferNumber[deepShroom] += 3 * bufferNumber[hydrochloricAcid];
+		subnItem[saltDeposit].itemNumber += bufferNumber[saltDeposit] += 1 * bufferNumber[hydrochloricAcid];
 	}
 
-	if (subnItem[lubricant].itemNumber > 0)
+	if (bufferNumber[lubricant] > 0)
 	{
-		subnItem[creepvineSeedCluster].itemNumber += 1 * subnItem[lubricant].itemNumber;
+		subnItem[creepvineSeedCluster].itemNumber += bufferNumber[creepvineSeedCluster] += 1 * bufferNumber[lubricant];
 	}
 
-	if (subnItem[siliconeRubber].itemNumber > 0)
+	if (bufferNumber[siliconeRubber] > 0)
 	{
-		subnItem[creepvineSeedCluster].itemNumber += 1 * subnItem[siliconeRubber].itemNumber;
+		subnItem[creepvineSeedCluster].itemNumber += bufferNumber[creepvineSeedCluster] += 1 * bufferNumber[siliconeRubber];
 	}
 
-	if (subnItem[titaniumIngot].itemNumber > 0)
+	if (bufferNumber[titaniumIngot] > 0)
 	{
-		subnItem[titanium].itemNumber += 10 * subnItem[titaniumIngot].itemNumber;
+		subnItem[titanium].itemNumber += bufferNumber[titanium] += 10 * bufferNumber[titaniumIngot];
 	}
 
-	if (subnItem[wallLocker].itemNumber > 0)
+	if (bufferNumber[wallLocker] > 0)
 	{
-		subnItem[titanium].itemNumber += 2 * subnItem[wallLocker].itemNumber;
+		subnItem[titanium].itemNumber += bufferNumber[titanium] += 2 * bufferNumber[wallLocker];
 	}
 
-	if (subnItem[wiringKit].itemNumber > 0)
+	if (bufferNumber[wiringKit] > 0)
 	{
-		subnItem[silverOre].itemNumber += 2 * subnItem[wiringKit].itemNumber;
+		subnItem[silverOre].itemNumber += bufferNumber[silverOre] += 2 * bufferNumber[wiringKit];
 	}
 }
 
