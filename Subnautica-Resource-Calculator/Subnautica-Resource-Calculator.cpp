@@ -388,6 +388,13 @@ void calculating()
 	}
 
 	//quaternary
+	if (subnItem[advancedWiringKit].itemNumber > 0)
+	{
+		subnItem[computerChip].itemNumber += 1 * subnItem[advancedWiringKit].itemNumber;
+		subnItem[gold].itemNumber += 2 * subnItem[advancedWiringKit].itemNumber;
+		subnItem[wiringKit].itemNumber += 1 * subnItem[advancedWiringKit].itemNumber;
+	}
+
 	if (subnItem[neptuneLaunchPlatform].itemNumber > 0)
 	{
 		subnItem[computerChip].itemNumber += 1 * subnItem[neptuneLaunchPlatform].itemNumber;
@@ -420,33 +427,12 @@ void calculating()
 		subnItem[titanium].itemNumber += 3 * subnItem[vehicleUpgradeConsole].itemNumber;
 	}
 
-	if (subnItem[advancedWiringKit].itemNumber > 0)
-	{
-		subnItem[computerChip].itemNumber += 1 * subnItem[advancedWiringKit].itemNumber;
-		subnItem[gold].itemNumber += 2 * subnItem[advancedWiringKit].itemNumber;
-		subnItem[wiringKit].itemNumber += 1 * subnItem[advancedWiringKit].itemNumber;
-	}
-
 	//tertiary
 	if (subnItem[batterryCharger].itemNumber > 0)
 	{
 		subnItem[copperWire].itemNumber += 1 * subnItem[batterryCharger].itemNumber;
 		subnItem[titanium].itemNumber += 1 * subnItem[batterryCharger].itemNumber;
 		subnItem[wiringKit].itemNumber += 1 * subnItem[batterryCharger].itemNumber;
-	}
-
-	if (subnItem[moonpool].itemNumber > 0)
-	{
-		subnItem[lead].itemNumber += 2 * subnItem[moonpool].itemNumber;
-		subnItem[lubricant].itemNumber += 1 * subnItem[moonpool].itemNumber;
-		subnItem[titaniumIngot].itemNumber += 2 * subnItem[moonpool].itemNumber;
-	}
-
-	if (subnItem[waterFiltrationMachine].itemNumber > 0)
-	{
-		subnItem[aerogel].itemNumber += 1 * subnItem[waterFiltrationMachine].itemNumber;
-		subnItem[copperWire].itemNumber += 1 * subnItem[waterFiltrationMachine].itemNumber;
-		subnItem[titanium].itemNumber += 3 * subnItem[waterFiltrationMachine].itemNumber;
 	}
 
 	if (subnItem[computerChip].itemNumber > 0)
@@ -462,6 +448,13 @@ void calculating()
 		subnItem[stalkerTooth].itemNumber += 1 * subnItem[enameledGlass].itemNumber;
 	}
 
+	if (subnItem[moonpool].itemNumber > 0)
+	{
+		subnItem[lead].itemNumber += 2 * subnItem[moonpool].itemNumber;
+		subnItem[lubricant].itemNumber += 1 * subnItem[moonpool].itemNumber;
+		subnItem[titaniumIngot].itemNumber += 2 * subnItem[moonpool].itemNumber;
+	}
+
 	if (subnItem[plasteelIngot].itemNumber > 0)
 	{
 		subnItem[lithium].itemNumber += 2 * subnItem[plasteelIngot].itemNumber;
@@ -473,12 +466,14 @@ void calculating()
 		subnItem[siliconeRubber].itemNumber += 1 * subnItem[powerCell].itemNumber;
 	}
 
-	//secondary
-	if (subnItem[wallLocker].itemNumber > 0)
+	if (subnItem[waterFiltrationMachine].itemNumber > 0)
 	{
-		subnItem[titanium].itemNumber += 2 * subnItem[wallLocker].itemNumber;
+		subnItem[aerogel].itemNumber += 1 * subnItem[waterFiltrationMachine].itemNumber;
+		subnItem[copperWire].itemNumber += 1 * subnItem[waterFiltrationMachine].itemNumber;
+		subnItem[titanium].itemNumber += 3 * subnItem[waterFiltrationMachine].itemNumber;
 	}
 
+	//secondary
 	if (subnItem[aerogel].itemNumber > 0)
 	{
 		subnItem[gelSack].itemNumber += 1 * subnItem[aerogel].itemNumber;
@@ -514,6 +509,11 @@ void calculating()
 	if (subnItem[titaniumIngot].itemNumber > 0)
 	{
 		subnItem[titanium].itemNumber += 10 * subnItem[titaniumIngot].itemNumber;
+	}
+
+	if (subnItem[wallLocker].itemNumber > 0)
+	{
+		subnItem[titanium].itemNumber += 2 * subnItem[wallLocker].itemNumber;
 	}
 
 	if (subnItem[wiringKit].itemNumber > 0)
