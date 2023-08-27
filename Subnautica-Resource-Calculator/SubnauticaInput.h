@@ -136,14 +136,14 @@ namespace Subnautica
 			{
 				std::cout << "How many item: ";
 				std::cin >> input.itemNumber;
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
-
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');	//discard 'bad' character(s)
+				
 				//while (getchar() != '\n' && getchar() != EOF); //cleaning stream (stdin)
 				if (std::cin.fail())
 				{
 					std::cout << "ERROR : Your input is not an integer." << std::endl;
 					std::cin.clear();
-					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');	//discard 'bad' character(s)
 				}
 				else
 				{
