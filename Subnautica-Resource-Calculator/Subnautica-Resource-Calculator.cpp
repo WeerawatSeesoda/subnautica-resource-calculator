@@ -83,6 +83,7 @@ void nameSetting() {
 	strcpy_s(subnItem[203].itemName, sizeof subnItem->itemName, "Battery charger");
 	strcpy_s(subnItem[204].itemName, sizeof subnItem->itemName, "Water filtration machine");
 	strcpy_s(subnItem[205].itemName, sizeof subnItem->itemName, "Moonpool");
+	strcpy_s(subnItem[206].itemName, sizeof subnItem->itemName, "Power cell");
 
 	strcpy_s(subnItem[297].itemName, sizeof subnItem->itemName, "moonpool");
 	strcpy_s(subnItem[298].itemName, sizeof subnItem->itemName, "battery charger");
@@ -337,7 +338,7 @@ void calculating(char inputName[256])
 		subnItem[plasteelIngot].itemNumber += 2;
 	}
 
-	if (strcmp(inputName, "Seamoth") == 0)
+	if (strcmp(inputName, "Seamoth") == 0 || strcmp(inputName, "seamoth") == 0)
 	{
 		subnItem[glass].itemNumber += 2;
 		subnItem[lead].itemNumber += 1;
@@ -382,6 +383,13 @@ void calculating(char inputName[256])
 		subnItem[titanium].itemNumber += 3;
 	}
 
+	if (subnItem[computerChip].itemNumber > 0)
+	{
+		subnItem[copperWire].itemNumber += 1 * subnItem[computerChip].itemNumber;
+		subnItem[gold].itemNumber += 2 * subnItem[computerChip].itemNumber;
+		subnItem[tableCoralSample].itemNumber += 2 * subnItem[computerChip].itemNumber;
+	}
+
 	if (subnItem[enameledGlass].itemNumber > 0)
 	{
 		subnItem[glass].itemNumber += 1 * subnItem[enameledGlass].itemNumber;
@@ -393,12 +401,11 @@ void calculating(char inputName[256])
 		subnItem[lithium].itemNumber += 2 * subnItem[plasteelIngot].itemNumber;
 		subnItem[titaniumIngot].itemNumber += 1 * subnItem[plasteelIngot].itemNumber;
 	}
-
-	if (subnItem[computerChip].itemNumber > 0)
+	
+	if (subnItem[powerCell].itemNumber > 0)
 	{
-		subnItem[copperWire].itemNumber += 1 * subnItem[computerChip].itemNumber;
-		subnItem[gold].itemNumber += 2 * subnItem[computerChip].itemNumber;
-		subnItem[tableCoralSample].itemNumber += 2 * subnItem[computerChip].itemNumber;
+		subnItem[battery].itemNumber += 2 * subnItem[powerCell].itemNumber;
+		subnItem[siliconeRubber].itemNumber += 1 * subnItem[powerCell].itemNumber;
 	}
 
 	//secondary
@@ -500,6 +507,10 @@ int main()
 		if (strcmp(inputName.itemName, "exit") == 0)
 		{
 			return 0;
+		}
+		else if (strcmp(inputName.itemName, "done") == 0)
+		{
+			break;
 		}
 		calculating(inputName.itemName);
 	} while (strcmp(inputName.itemName, "done") != 0);
