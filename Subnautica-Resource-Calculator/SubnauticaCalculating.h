@@ -4,17 +4,12 @@
 namespace Subnautica
 {
 	/*
-
 		void NAME(int itemNumber)
 		{
 			Ptr_NAME->itemNumber += 1 * itemNumber;
-
-			Ptr_SUBNAME->itemNumber += NUMBER * itemNumber;
-
-			SUBNAME(NUMBER * itemNumber);
 		}
-
 	*/
+
 	//
 	//	1st PRIMARY
 	//
@@ -118,6 +113,15 @@ namespace Subnautica
 	{
 		Ptr_titanium->itemNumber += 1 * itemNumber;
 	}
+
+	/*
+		void NAME(int itemNumber)
+		{
+			Ptr_NAME->itemNumber += 1 * itemNumber;
+
+			SUBITEMNAME(NUMBER * itemNumber);
+		}
+	*/
 
 	//
 	//	2nd SECONDARY
@@ -960,10 +964,10 @@ namespace Subnautica
 	void calculating(item input)
 	{
 		/*
-		else if (Ptr_NAME->itemName == input.itemName)
-		{
-			NAME(input.itemNumber);
-		}
+			else if (Ptr_NAME->itemName == input.itemName)
+			{
+				NAME(input.itemNumber);
+			}
 		*/
 
 		//
