@@ -20,7 +20,6 @@ int main()
 		Subnautica::fileReading(".\\4Quaternary.txt", Subnautica::quaternary_4th);
 		Subnautica::fileReading(".\\5Quinary.txt", Subnautica::quinary_5th);
 		Subnautica::pointerSetting();
-		Subnautica::resetItemNumber();
 
 		while (input.itemName != "EXIT")
 		{
@@ -28,8 +27,25 @@ int main()
 
 			if (input.itemName == "DONE")
 			{
-				Subnautica::show();
-				Subnautica::resetItemNumber();
+				for (int i = 0; i < 40; i++)
+				{
+					std::cout << "=";
+				}
+				Subnautica::show("1st Primary", Subnautica::primary_1st);
+				Subnautica::show("2nd Secondary", Subnautica::secondary_2nd);
+				Subnautica::show("3rd Tertiary", Subnautica::tertiary_3rd);
+				Subnautica::show("4th Quaternary", Subnautica::quaternary_4th);
+				Subnautica::show("5th Quiary", Subnautica::quinary_5th);
+				for (int i = 0; i < 40; i++)
+				{
+					std::cout << "=";
+				}
+				std::cout << "\n";
+				Subnautica::resetItemNumber(Subnautica::primary_1st);
+				Subnautica::resetItemNumber(Subnautica::secondary_2nd);
+				Subnautica::resetItemNumber(Subnautica::tertiary_3rd);
+				Subnautica::resetItemNumber(Subnautica::quaternary_4th);
+				Subnautica::resetItemNumber(Subnautica::quinary_5th);
 			}
 			else
 			{
@@ -45,7 +61,7 @@ int main()
 	{
 		std::cerr << e << std::endl;
 	}
-	std::cout << "\nThank you and goodbye.\n";
+	std::cout << "\nThank you and goodbye.\n" << std::endl;
 	return 0;
 }
 

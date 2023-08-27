@@ -87,6 +87,7 @@ namespace Subnautica
 		input.itemNumber = 0;
 		isCorrectedName = false;
 		std::cout << "\nPlease enter an item's name and its quantity, or type \"done\" to show all the materials you need, or type \"exit\" to close the program." << std::endl;
+
 		//
 		//	INPUT AN ITEM NAME BY KEYBOARD AND CHECK IF IT EXIST.
 		//
@@ -94,7 +95,6 @@ namespace Subnautica
 		{
 			try
 			{
-				//std::cout << "\nPlease enter an item's name and its quantity, or type \"done\" to show all the materials you need, or type \"exit\" to close the program." << std::endl;
 				std::cout << "Enter item's name : ";
 				std::getline(std::cin, input.itemName);
 
@@ -136,20 +136,20 @@ namespace Subnautica
 			{
 				std::cout << "How many item: ";
 				std::cin >> input.itemNumber;
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');	//discard 'bad' character(s)
 
-				//while (getchar() != '\n' && getchar() != EOF); //cleaning stream (stdin)
 				if (std::cin.fail())
 				{
 					std::cout << "ERROR : Your input is not an integer." << std::endl;
 					std::cin.clear();
-					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');	//discard 'bad' character(s)
 				}
 				else
 				{
 					if (input.itemNumber < 1)
 					{
-						std::cout << "ERROR : The number must larger than 0. Please Try again." << std::endl;					}
+						std::cout << "ERROR : The number must larger than 0. Please Try again." << std::endl;
+					}
 					else
 					{
 						return input;

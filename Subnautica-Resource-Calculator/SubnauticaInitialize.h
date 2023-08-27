@@ -12,12 +12,12 @@ namespace Subnautica
 	};
 
 	/*
-			item* Ptr_name = NULL;
-		*/
+		item* Ptr_name = NULL;
+	*/
 
-		//
-		//	1st PRIMARY
-		//
+	//
+	//	1st PRIMARY
+	//
 	std::vector<item> primary_1st;
 	item* Ptr_acidMushroom = NULL;
 	item* Ptr_bladderfish = NULL;
@@ -177,29 +177,12 @@ namespace Subnautica
 	item* Ptr_seamothDepthModuleMK3 = NULL;
 	item* Ptr_seamothSolarCharger = NULL;
 
-	void resetItemNumber()
+	void resetItemNumber(std::vector<item>& itemLevel)
 	{
-		for (auto i = primary_1st.begin(); i != primary_1st.end(); i++)
+		for (auto i = itemLevel.begin(); i != itemLevel.end(); i++)
 		{
 			i->itemNumber = 0;
 		}
-		for (auto i = secondary_2nd.begin(); i != secondary_2nd.end(); i++)
-		{
-			i->itemNumber = 0;
-		}
-		for (auto i = tertiary_3rd.begin(); i != tertiary_3rd.end(); i++)
-		{
-			i->itemNumber = 0;
-		}
-		for (auto i = quaternary_4th.begin(); i != quaternary_4th.end(); i++)
-		{
-			i->itemNumber = 0;
-		}
-		for (auto i = quinary_5th.begin(); i != quinary_5th.end(); i++)
-		{
-			i->itemNumber = 0;
-		}
-		std::cout << "Done reset items's number." << std::endl;
 	}
 
 	void fileReading(const std::string fileName, std::vector<item>& itemLevel)
@@ -219,22 +202,21 @@ namespace Subnautica
 				itemLevel.push_back({ buffer, 0 });
 			}
 			readfile.close();
-			std::cout << "Done reading " << fileName << std::endl;
 		}
 	}
 
 	void pointerSetting()
 	{
 		/*
-				else if (i->itemName == "STRING")
-				{
-					POINTER = &(*i);
-				}
-			*/
+			else if (i->itemName == "STRING")
+			{
+				POINTER = &(*i);
+			}
+		*/
 
-			//
-			//	1st PRIMARY
-			//
+		//
+		//	1st PRIMARY
+		//
 		for (auto i = primary_1st.begin(); i != primary_1st.end(); i++)
 		{
 			if (i->itemName == "Acid mushroom")
@@ -834,6 +816,5 @@ namespace Subnautica
 				std::cout << "ERROR : Can't set pointer of 5th " << i->itemName << "." << std::endl;
 			}
 		}
-		std::cout << "Done set pointers." << std::endl;
 	}
 } // namespace Subnautica
