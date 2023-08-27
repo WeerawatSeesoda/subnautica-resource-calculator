@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <limits>
 #include <string>
 #include "custom-type.h"
 
