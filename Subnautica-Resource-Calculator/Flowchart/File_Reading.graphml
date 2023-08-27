@@ -201,16 +201,6 @@ string buffer<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </node>
         <node id="n0::n14">
           <data key="d6">
-            <y:GenericNode configuration="com.yworks.flowchart.display">
-              <y:Geometry height="50.0" width="124.572265625" x="608.2194227430556" y="597.14453125"/>
-              <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-              <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="84.572265625" x="20.0" xml:space="preserve" y="15.6494140625">"Done reading"<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
-            </y:GenericNode>
-          </data>
-        </node>
-        <node id="n0::n15">
-          <data key="d6">
             <y:GenericNode configuration="com.yworks.flowchart.predefinedProcess">
               <y:Geometry height="82.8046875" width="134.69140625" x="115.74040798611111" y="0.0"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
@@ -222,7 +212,7 @@ int itemNumber
             </y:GenericNode>
           </data>
         </node>
-        <node id="n0::n16">
+        <node id="n0::n15">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.flowchart.predefinedProcess">
               <y:Geometry height="50.0" width="336.171875" x="15.000173611111109" y="108.7734375"/>
@@ -383,30 +373,21 @@ int itemNumber
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n0::e14" source="n0::n13" target="n0::n14">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="25.0" tx="0.0" ty="-25.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::e15" source="n0::n14" target="n0::n9">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="25.0" tx="0.0" ty="-25.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::e16" source="n0::n15" target="n0::n16">
+    <edge id="n0::e14" source="n0::n14" target="n0::n15">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="41.40234375" tx="0.0" ty="-25.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::e15" source="n0::n13" target="n0::n9">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
