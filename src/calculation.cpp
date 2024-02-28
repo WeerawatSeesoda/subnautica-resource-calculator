@@ -1,11 +1,13 @@
 #include "calculation.h"
+#include "recipes/level-2-recipes.h"
+#include "recipes/level-3-recipes.h"
 #include "recipes/level-last-recipes.h"
 #include "custom-type.h"
 
 vecofitems calculating(inputdata input) {
 	/*
-	*	5TH
-	*/
+	 *	5TH
+	 */
 	if (compare_str(input.name, "Cyclops")) {
 		return cyclops(input.number);
 	}
@@ -27,8 +29,8 @@ vecofitems calculating(inputdata input) {
 	//	end 5th
 
 	/*
-	*	4TH
-	*/
+	 *	4TH
+	 */
 	if (compare_str(input.name, "Advanced wiring kit")) {
 		return advancedWiringKit(input.number);
 	}
@@ -113,8 +115,8 @@ vecofitems calculating(inputdata input) {
 	//	end 4th
 
 	/*
-	*	3rd
-	*/
+	 *	3rd
+	 */
 	if (compare_str(input.name, "Air bladder")) {
 		return airBladder(input.number);
 	}
@@ -159,6 +161,9 @@ vecofitems calculating(inputdata input) {
 	}
 	if (compare_str(input.name, "Flashlight")) {
 		return flashlight(input.number);
+	}
+	if (compare_str(input.name, "Floodlight")) {
+		return floodlight(input.number);
 	}
 	if (compare_str(input.name, "Grav trap")) {
 		return gravTrap(input.number);
@@ -232,8 +237,8 @@ vecofitems calculating(inputdata input) {
 	//	end 3rd
 
 	/*
-	*	2nd
-	*/
+	 *	2nd
+	 */
 	if (compare_str(input.name, "Aerogel")) {
 		return aerogel(input.number);
 	}
@@ -261,6 +266,9 @@ vecofitems calculating(inputdata input) {
 	if (compare_str(input.name, "Copper wire")) {
 		return copperWire(input.number);
 	}
+	if (compare_str(input.name, "Exterior growbed")) {
+		return exteriorGrowbed(input.number);
+	}
 	if (compare_str(input.name, "Fabricator")) {
 		return fabricator(input.number);
 	}
@@ -278,6 +286,9 @@ vecofitems calculating(inputdata input) {
 	}
 	if (compare_str(input.name, "Floating air pump")) {
 		return floatingAirPump(input.number);
+	}
+	if (compare_str(input.name, "Foundation")) {
+		return foundation(input.number);
 	}
 	if (compare_str(input.name, "Gas torpedo")) {
 		return gasTorpedo(input.number);

@@ -153,6 +153,16 @@ vecofitems flashlight(int quantity) {
 
 	return arr;
 }
+vecofitems floodlight(int quantity) {
+	vecofitems arr;
+	item self = { '3', "Floodlight", quantity };
+
+	arr.push_back(self);
+	insertvector(arr, (glass(1 * quantity)));
+	insertvector(arr, (titanium(1*quantity)));
+
+	return arr;
+}
 vecofitems gravTrap(int quantity) {
 	vecofitems arr;
 	item self = { '3', "Grav trap", quantity };
