@@ -37,6 +37,7 @@ int main() {
 					std::cout << caled[0].name << std::endl;
 				} else {
 					insertvector(all_items, calculating(input));
+					std::cout << "Added \"" << caled[0].name << "\" to the list." << std::endl;
 				}
 			}
 		};
