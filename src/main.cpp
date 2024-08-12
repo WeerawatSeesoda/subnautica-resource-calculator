@@ -15,7 +15,9 @@ int main() {
 		while (input.name != "EXIT") {
 			input = keyboardInput();
 
-			if (input.name == "DONE") {
+			if (input.name == "EXIT") {
+				std::cout << "\nThank you and goodbye.\n" << std::endl;
+			} else if (input.name == "DONE") {
 				for (int i = 0; i < 40; i++) {
 					std::cout << "=";
 				}
@@ -46,7 +48,6 @@ int main() {
 	} catch (const std::string e) {
 		std::cerr << e << std::endl;
 	}
-	std::cout << "\nThank you and goodbye.\n" << std::endl;
 	return 0;
 }
 

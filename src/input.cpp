@@ -5,16 +5,37 @@
 #include "input.hpp"
 
 void showMenu();
+std::string getName();
+int getAmount();
 
 inputdata keyboardInput() {
-	showMenu();
-
 	inputdata input = { "", 0 };
+	
+	showMenu();
+	input.name = getName();
+	if (input.name == "EXIT" || input.name == "DONE") {
+		return input;
+	}
+	input.number = getAmount();
 
-	/* Name */
+	return input;
+}
+
+
+void showMenu() {
+	const char* str = R"V0G0N(
+Please enter an item's name and its quantity, or type 
+	"done" - to show all the materials you need, or
+	"exit" - to close the program.
+)V0G0N";
+	std::cout << str << std::endl;
+}
+
+std::string getName() {
 	bool is_look_good = false;
+	std::string item_name;
+
 	while (!is_look_good) {
-		std::string item_name;
 
 		std::cout << "Enter item's name : ";
 		std::getline(std::cin, item_name);
@@ -22,19 +43,20 @@ inputdata keyboardInput() {
 		if (item_name.empty()) {
 			std::cout << "ERROR : Item's name can't be empty. Please try again." << std::endl;
 		} else if (item_name == "exit") {
-			input.name = "EXIT";
-			return input;
+			return "EXIT";
 		} else if (item_name == "done") {
-			input.name = "DONE";
-			return input;
+			return "DONE";
 		} else {
-			input.name = item_name;
 			is_look_good = true;
 		}
 	};
+	
+	return item_name;
+}
 
-	/* Number */
+int getAmount() {
 	int item_number = 0;
+
 	while (item_number < 1) {
 		std::cout << "How many item: ";
 		std::cin >> item_number;
@@ -48,16 +70,6 @@ inputdata keyboardInput() {
 			std::cout << "ERROR : The number must larger than 0. Please Try again." << std::endl;
 		}
 	};
-	input.number = item_number;
 
-	return input;
-}
-
-void showMenu() {
-	const char* str = R"V0G0N(
-Please enter an item's name and its quantity, or type 
-	"done" - to show all the materials you need, or
-	"exit" - to close the program.
-)V0G0N";
-	std::cout << str << std::endl;
+	return item_number;
 }

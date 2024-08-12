@@ -1,11 +1,46 @@
+#include <optional>
 #include "calculation.hpp"
 #include "custom-type.hpp"
 #include "recipes/level-last-recipes.hpp"
 
+std::optional<vecofitems> calculate5th(inputdata input);
+std::optional<vecofitems> calculate4th(inputdata input);
+std::optional<vecofitems> calculate3th(inputdata input);
+std::optional<vecofitems> calculate2th(inputdata input);
+vecofitems itemNotFound();
+
 vecofitems calculating(inputdata input) {
-	/*
-	 *	5TH
-	 */
+	std::optional<vecofitems> search_result;
+
+	if (search_result = calculate5th(input)) {
+		return search_result.value();
+	}
+	if (search_result = calculate4th(input)) {
+		return search_result.value();
+	}
+	if (search_result = calculate3th(input)) {
+		return search_result.value();
+	}
+	if (search_result = calculate2th(input)) {
+		return search_result.value();
+	}
+
+	return itemNotFound();
+}
+
+
+vecofitems itemNotFound() {
+	item it = { '0', "Sorry, We don't khow your item. Please try again.", 0 };
+	vecofitems arr;
+	arr.push_back(it);
+
+	return arr;
+}
+
+/*
+ *	5TH
+ */
+std::optional<vecofitems> calculate5th(inputdata input) {
 	if (compare_str(input.name, "Cyclops")) {
 		return cyclops(input.number);
 	}
@@ -24,11 +59,14 @@ vecofitems calculating(inputdata input) {
 	if (compare_str(input.name, "Seamoth solar charger")) {
 		return seamothSolarCharger(input.number);
 	}
-	//	end 5th
 
-	/*
-	 *	4TH
-	 */
+	return std::nullopt;
+}
+
+/*
+ *	4TH
+ */
+std::optional<vecofitems> calculate4th(inputdata input) {
 	if (compare_str(input.name, "Advanced wiring kit")) {
 		return advancedWiringKit(input.number);
 	}
@@ -110,11 +148,14 @@ vecofitems calculating(inputdata input) {
 	if (compare_str(input.name, "Vehicle upgrade console")) {
 		return vehicleUpgradeConsole(input.number);
 	}
-	//	end 4th
 
-	/*
-	 *	3rd
-	 */
+	return std::nullopt;
+}
+
+/*
+ *	3TH
+ */
+std::optional<vecofitems> calculate3th(inputdata input) {
 	if (compare_str(input.name, "Air bladder")) {
 		return airBladder(input.number);
 	}
@@ -232,11 +273,14 @@ vecofitems calculating(inputdata input) {
 	if (compare_str(input.name, "Water filtration machine")) {
 		return waterFiltrationMachine(input.number);
 	}
-	//	end 3rd
 
-	/*
-	 *	2nd
-	 */
+	return std::nullopt;
+}
+
+/*
+ *	2TH
+ */
+std::optional<vecofitems> calculate2th(inputdata input) {
 	if (compare_str(input.name, "Aerogel")) {
 		return aerogel(input.number);
 	}
@@ -366,10 +410,7 @@ vecofitems calculating(inputdata input) {
 	if (compare_str(input.name, "Wiring kit")) {
 		return wiringKit(input.number);
 	}
-	//	end 2nd
 
-	item it = { '0', "Sorry, We don't khow your item. Please try again.", 0 };
-	vecofitems arr;
-	arr.push_back(it);
-	return arr;
+	return std::nullopt;
 }
+
