@@ -1,8 +1,8 @@
-#include "input.h"
+#include "input.hpp"
 #include <iostream>
 #include <limits>
 #include <string>
-#include "custom-type.h"
+#include "custom-type.hpp"
 
 void showMenu() {
 	const char* str = R"V0G0N(

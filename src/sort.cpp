@@ -1,6 +1,6 @@
-#include "sort.h"
+#include "sort.hpp"
 #include <algorithm> // std::sort
-#include "custom-type.h"
+#include "custom-type.hpp"
 
 vecofitems eliminateDuplication(vecofitems level_x) {
 	vecofitems buffer;

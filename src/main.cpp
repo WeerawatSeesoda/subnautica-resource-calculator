@@ -1,10 +1,10 @@
 #include <iostream>
-#include "custom-type.h"
-#include "input.h"
-#include "calculation.h"
-#include "show.h"
-#include "sort.h"
-#include "libs.h"
+#include "custom-type.hpp"
+#include "input.hpp"
+#include "calculation.hpp"
+#include "show.hpp"
+#include "sort.hpp"
+#include "libs.hpp"
 
 int main() {
 	try {

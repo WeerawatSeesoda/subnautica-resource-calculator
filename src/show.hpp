@@ -1,4 +1,4 @@
 #pragma once
-#include "custom-type.h"
+#include "custom-type.hpp"
 
 void show(levels lvs);

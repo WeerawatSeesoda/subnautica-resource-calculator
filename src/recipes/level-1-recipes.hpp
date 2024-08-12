@@ -1,5 +1,5 @@
 #pragma once
-#include "../custom-type.h"
+#include "../custom-type.hpp"
 
 vecofitems acidMushroom(int number) {
 	vecofitems arr;

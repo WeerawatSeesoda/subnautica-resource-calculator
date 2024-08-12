@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../src/libs.h"
+#include "../src/libs.hpp"
 
 TEST(StringComparison, true) {
 	EXPECT_TRUE(compare_str("LOL", "lol"));

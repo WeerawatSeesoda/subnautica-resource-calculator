@@ -1,6 +1,6 @@
 #pragma once
-#include "level-1-recipes.h"
-#include "../libs.h"
+#include "level-1-recipes.hpp"
+#include "../libs.hpp"
 
 vecofitems aerogel(int number) {
 	vecofitems arr;
