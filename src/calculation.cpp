@@ -1,8 +1,6 @@
 #include "calculation.hpp"
-#include "recipes/level-2-recipes.hpp"
-#include "recipes/level-3-recipes.hpp"
-#include "recipes/level-last-recipes.hpp"
 #include "custom-type.hpp"
+#include "recipes/level-last-recipes.hpp"
 
 vecofitems calculating(inputdata input) {
 	/*

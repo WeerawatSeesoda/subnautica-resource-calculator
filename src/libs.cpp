@@ -1,15 +1,12 @@
-#include "libs.hpp"
 #include <algorithm> // std::transform
 #include "custom-type.hpp"
+#include "libs.hpp"
 
 void insertvector(vecofitems& a, vecofitems b) {
 	a.insert(a.end(), b.begin(), b.end());
 }
 
-std::string toLowerCase(std::string str) {
-	std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c) { return std::tolower(c); });
-	return str;
-}
+std::string toLowerCase(std::string str);
 
 /* Insensitive case string comparison */
 bool compare_str(std::string str1, std::string str2) {
@@ -20,3 +17,9 @@ bool compare_str(std::string str1, std::string str2) {
 	}
 	return false;
 }
+
+std::string toLowerCase(std::string str) {
+	std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c) { return std::tolower(c); });
+	return str;
+}
+

@@ -1,17 +1,10 @@
-#include "input.hpp"
 #include <iostream>
 #include <limits>
 #include <string>
 #include "custom-type.hpp"
+#include "input.hpp"
 
-void showMenu() {
-	const char* str = R"V0G0N(
-Please enter an item's name and its quantity, or type 
-	"done" - to show all the materials you need, or
-	"exit" - to close the program.
-)V0G0N";
-	std::cout << str << std::endl;
-}
+void showMenu();
 
 inputdata keyboardInput() {
 	showMenu();
@@ -58,4 +51,13 @@ inputdata keyboardInput() {
 	input.number = item_number;
 
 	return input;
+}
+
+void showMenu() {
+	const char* str = R"V0G0N(
+Please enter an item's name and its quantity, or type 
+	"done" - to show all the materials you need, or
+	"exit" - to close the program.
+)V0G0N";
+	std::cout << str << std::endl;
 }

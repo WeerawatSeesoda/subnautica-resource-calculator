@@ -70,3 +70,4 @@ vecofitems seamothSolarCharger(int quantity) {
 
 	return arr;
 }
+

@@ -1,6 +1,6 @@
-#include "show.hpp"
 #include <iostream>
 #include "custom-type.hpp"
+#include "show.hpp"
 
 void show(levels lvs) {
 	int level_number = 0;

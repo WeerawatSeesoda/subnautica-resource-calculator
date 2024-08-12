@@ -2,3 +2,4 @@
 #include "custom-type.hpp"
 
 vecofitems calculating(inputdata input);
+

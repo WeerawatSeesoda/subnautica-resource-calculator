@@ -2,8 +2,8 @@
 #include "custom-type.hpp"
 #include "input.hpp"
 #include "calculation.hpp"
-#include "show.hpp"
 #include "sort.hpp"
+#include "show.hpp"
 #include "libs.hpp"
 
 int main() {

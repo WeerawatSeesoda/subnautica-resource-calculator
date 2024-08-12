@@ -1,27 +1,8 @@
-#include "sort.hpp"
 #include <algorithm> // std::sort
 #include "custom-type.hpp"
+#include "sort.hpp"
 
-vecofitems eliminateDuplication(vecofitems level_x) {
-	vecofitems buffer;
-
-	for (auto x = level_x.begin(); x != level_x.end(); x++) {
-		bool isNotDuplicate = false;
-
-		for (auto b = buffer.begin(); b != buffer.end(); b++) {
-			if (x->name == b->name) {
-				b->number += x->number;
-				//level_x.erase(x);
-				isNotDuplicate = true;
-				break;
-			}
-		}
-		if (!isNotDuplicate) {
-			buffer.push_back(*x);
-		}
-	}
-	return buffer;
-}
+vecofitems eliminateDuplication(vecofitems level_x);
 
 // sort by level then sort by name
 levels sorting(vecofitems all_items) {
@@ -99,3 +80,25 @@ levels sorting(vecofitems all_items) {
 
 	return lvs;
 }
+
+vecofitems eliminateDuplication(vecofitems level_x) {
+	vecofitems buffer;
+
+	for (auto x = level_x.begin(); x != level_x.end(); x++) {
+		bool isNotDuplicate = false;
+
+		for (auto b = buffer.begin(); b != buffer.end(); b++) {
+			if (x->name == b->name) {
+				b->number += x->number;
+				//level_x.erase(x);
+				isNotDuplicate = true;
+				break;
+			}
+		}
+		if (!isNotDuplicate) {
+			buffer.push_back(*x);
+		}
+	}
+	return buffer;
+}
+
