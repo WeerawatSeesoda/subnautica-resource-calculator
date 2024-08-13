@@ -14,3 +14,7 @@ void show(levels lvs) {
 		}
 	}
 }
+
+std::string printLevel(int lvl_number) {
+	return "Level 1:";
+}

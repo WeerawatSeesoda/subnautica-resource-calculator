@@ -15,5 +15,7 @@ compile:
 test:
 	g++ -Wall -Wpedantic -std=c++20 -c src/libs.cpp -o obj/libs.o
 	g++ -Wall -Wpedantic -std=c++20 -c tests/libs.test.cpp -o obj/libs.test.o
-	g++ obj/libs.o obj/libs.test.o -lgtest -lgtest_main -lpthread -o bin/utest
+	g++ -Wall -Wpedantic -std=c++20 -c src/show.cpp -o obj/show.o
+	g++ -Wall -Wpedantic -std=c++20 -c tests/show.test.cpp -o obj/show.test.o
+	g++ obj/libs.o obj/libs.test.o obj/show.o obj/show.test.o -lgtest -lgtest_main -lpthread -o bin/utest
 	bin/utest
