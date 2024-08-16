@@ -11,11 +11,11 @@ void show(levels lvs) {
 std::string formattingOutput(levels lvs) {
 	std::string level1, level2, level3, level4, level5;
 	{
-		if (!lvs.at(0).empty()) { level1 = printItemsInTheLevel(1, lvs.at(0));}
-		if (!lvs.at(1).empty()) { level2 = printItemsInTheLevel(2, lvs.at(1));}
-		if (!lvs.at(2).empty()) { level3 = printItemsInTheLevel(3, lvs.at(2));}
-		if (!lvs.at(3).empty()) { level4 = printItemsInTheLevel(4, lvs.at(3));}
-		if (!lvs.at(4).empty()) { level5 = printItemsInTheLevel(5, lvs.at(4));}
+		if (!lvs.at(0).empty()) { level1 = printItemsInTheLevel(1, lvs.at(0)); }
+		if (!lvs.at(1).empty()) { level2 = printItemsInTheLevel(2, lvs.at(1)); }
+		if (!lvs.at(2).empty()) { level3 = printItemsInTheLevel(3, lvs.at(2)); }
+		if (!lvs.at(3).empty()) { level4 = printItemsInTheLevel(4, lvs.at(3)); }
+		if (!lvs.at(4).empty()) { level5 = printItemsInTheLevel(5, lvs.at(4)); }
 	}
 
 	std::string formated = std::string("") +
@@ -32,10 +32,10 @@ std::string formattingOutput(levels lvs) {
 std::string printItemsInTheLevel(int level_number, vecofitems items) {
 	std::string str = printLevelNumber(level_number);
 
-	for(auto an_item = items.begin(); an_item != items.end(); an_item++) {
+	for (auto an_item = items.begin(); an_item != items.end(); an_item++) {
 		str += std::format("		- {} : {}\n", an_item->name, std::to_string(an_item->number));
 	}
-	
+
 	return str;
 }
 

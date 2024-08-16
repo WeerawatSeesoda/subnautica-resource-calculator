@@ -1,10 +1,10 @@
 #pragma once
 #include "custom-type.hpp"
 
-void insertvector(vecofitems& a, vecofitems b);
+void insertvector(vecofitems&, vecofitems);
 
-std::string toLowerCase(std::string str);
+std::string toLowerCase(std::string);
 
 /* Insensitive case string comparison */
-bool compare_str(std::string str1, std::string str2);
+bool compare_str(std::string, std::string);
 

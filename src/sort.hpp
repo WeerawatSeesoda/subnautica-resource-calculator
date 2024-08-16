@@ -1,8 +1,8 @@
 #pragma once
 #include "custom-type.hpp"
 
-vecofitems inLevelRemoveDuplication(vecofitems level_x);
+vecofitems inLevelRemoveDuplication(vecofitems);
 
 // sort by level then sort by name
-levels sorting(vecofitems all_items);
+levels sorting(vecofitems);
 

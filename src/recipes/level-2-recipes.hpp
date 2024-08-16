@@ -90,10 +90,10 @@ vecofitems copperWire(int number) {
 }
 vecofitems exteriorGrowbed(int number) {
 	vecofitems arr;
-	item self = { '2', "Exterior growbed", number};
+	item self = { '2', "Exterior growbed", number };
 
 	arr.push_back(self);
-	insertvector(arr, titanium(2*number));
+	insertvector(arr, titanium(2 * number));
 
 	return arr;
 }
@@ -155,7 +155,7 @@ vecofitems floatingAirPump(int number) {
 }
 vecofitems foundation(int number) {
 	vecofitems arr;
-	item self = { '2', "Foundation", number};
+	item self = { '2', "Foundation", number };
 
 	arr.push_back(self);
 	insertvector(arr, lead(2 * number));

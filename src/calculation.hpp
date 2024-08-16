@@ -1,5 +1,5 @@
 #pragma once
 #include "custom-type.hpp"
 
-vecofitems calculating(inputdata input);
+vecofitems calculating(inputdata);
 

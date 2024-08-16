@@ -22,7 +22,7 @@ Level 2:\n\
 	vecofitems level3;
 	vecofitems level4;
 	vecofitems level5;
-	levels lvs = {level1, level2, level3, level4, level5};
+	levels lvs = { level1, level2, level3, level4, level5 };
 	std::string result = formattingOutput(lvs);
 
 	EXPECT_EQ(expected, result);
@@ -72,7 +72,7 @@ Level 4:\n\
 		{ '4', "Seamoth", 1}
 	};
 	vecofitems level5;
-	levels lvs = {level1, level2, level3, level4, level5};
+	levels lvs = { level1, level2, level3, level4, level5 };
 	std::string result = formattingOutput(lvs);
 
 	EXPECT_EQ(expected, result);

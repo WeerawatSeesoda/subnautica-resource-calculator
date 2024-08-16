@@ -12,7 +12,7 @@ std::string toLowerCase(std::string str);
 bool compare_str(std::string str1, std::string str2) {
 	std::string buff1 = toLowerCase(str1);
 	std::string buff2 = toLowerCase(str2);
-	if (buff1 == buff2){
+	if (buff1 == buff2) {
 		return true;
 	}
 	return false;

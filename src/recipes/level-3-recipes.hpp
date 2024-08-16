@@ -159,7 +159,7 @@ vecofitems floodlight(int quantity) {
 
 	arr.push_back(self);
 	insertvector(arr, (glass(1 * quantity)));
-	insertvector(arr, (titanium(1*quantity)));
+	insertvector(arr, (titanium(1 * quantity)));
 
 	return arr;
 }

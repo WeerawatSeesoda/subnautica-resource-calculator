@@ -3,14 +3,12 @@
 #include <string>
 #include <vector>
 
-struct inputdata
-{
+struct inputdata {
 	std::string name;
 	int number;
 };
 
-struct item
-{
+struct item {
 	char level;
 	std::string name;
 	int number;

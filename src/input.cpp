@@ -10,7 +10,7 @@ int getAmount();
 
 inputdata keyboardInput() {
 	inputdata input = { "", 0 };
-	
+
 	showMenu();
 	input.name = getName();
 	if (input.name == "EXIT" || input.name == "DONE") {
@@ -42,15 +42,18 @@ std::string getName() {
 
 		if (item_name.empty()) {
 			std::cout << "ERROR : Item's name can't be empty. Please try again." << std::endl;
-		} else if (item_name == "exit") {
+		}
+		else if (item_name == "exit") {
 			return "EXIT";
-		} else if (item_name == "done") {
+		}
+		else if (item_name == "done") {
 			return "DONE";
-		} else {
+		}
+		else {
 			is_look_good = true;
 		}
 	};
-	
+
 	return item_name;
 }
 
@@ -66,7 +69,8 @@ int getAmount() {
 			std::cout << "ERROR : Your input is not an integer." << std::endl;
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
-		} else if (item_number < 1) {
+		}
+		else if (item_number < 1) {
 			std::cout << "ERROR : The number must larger than 0. Please Try again." << std::endl;
 		}
 	};

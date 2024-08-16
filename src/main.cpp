@@ -17,25 +17,31 @@ int main() {
 
 			if (input.name == "EXIT") {
 				std::cout << "\nThank you and goodbye.\n" << std::endl;
-			} else if (input.name == "DONE") {
+			}
+			else if (input.name == "DONE") {
 				lvs = sorting(all_items);
 				show(lvs);
 
 				all_items.clear();
 				lvs.clear();
-			} else {
+			}
+			else {
 				vecofitems caled = calculating(input);
+
 				if (caled[0].level == '0') {
 					std::cout << caled[0].name << std::endl;
-				} else {
+				}
+				else {
 					insertvector(all_items, calculating(input));
 					std::cout << "Added \"" << caled[0].name << "\" to the list." << std::endl;
 				}
 			}
 		};
-	} catch (const std::exception& e) {
+	}
+	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
-	} catch (const std::string e) {
+	}
+	catch (const std::string e) {
 		std::cerr << e << std::endl;
 	}
 	return 0;
