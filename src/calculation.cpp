@@ -413,4 +413,3 @@ std::optional<vecofitems> calculate2th(inputdata input) {
 
 	return std::nullopt;
 }
-

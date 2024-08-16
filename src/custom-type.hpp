@@ -17,4 +17,3 @@ struct item {
 typedef std::vector<item> vecofitems;
 
 typedef std::vector<vecofitems> levels;
-

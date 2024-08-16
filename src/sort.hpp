@@ -5,4 +5,3 @@ vecofitems inLevelRemoveDuplication(vecofitems);
 
 // sort by level then sort by name
 levels sorting(vecofitems);
-

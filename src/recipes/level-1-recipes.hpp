@@ -152,4 +152,3 @@ vecofitems titanium(int number) {
 	arr.push_back(self);
 	return arr;
 }
-
