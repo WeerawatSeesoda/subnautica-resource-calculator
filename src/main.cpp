@@ -18,21 +18,11 @@ int main() {
 			if (input.name == "EXIT") {
 				std::cout << "\nThank you and goodbye.\n" << std::endl;
 			} else if (input.name == "DONE") {
-				for (int i = 0; i < 40; i++) {
-					std::cout << "=";
-				}
-				std::cout << "\n";
-
 				lvs = sorting(all_items);
 				show(lvs);
 
 				all_items.clear();
 				lvs.clear();
-
-				for (int i = 0; i < 40; i++) {
-					std::cout << "=";
-				}
-				std::cout << "\n";
 			} else {
 				vecofitems caled = calculating(input);
 				if (caled[0].level == '0') {

@@ -1,5 +1,9 @@
 #pragma once
 #include "custom-type.hpp"
+#include <string>
 
-void show(levels lvs);
-std::string printLevel(int);
+void show(levels);
+std::string formattingOutput(levels);
+std::string printItemsInTheLevel(int, vecofitems);
+std::string printLevelNumber(int);
+
