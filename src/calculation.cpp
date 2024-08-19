@@ -12,16 +12,16 @@ vecofitems itemNotFound();
 vecofitems calculating(inputdata input) {
 	std::optional<vecofitems> search_result;
 
-	if (search_result = calculate5th(input)) {
+	if ((search_result = calculate5th(input))) {
 		return search_result.value();
 	}
-	if (search_result = calculate4th(input)) {
+	if ((search_result = calculate4th(input))) {
 		return search_result.value();
 	}
-	if (search_result = calculate3th(input)) {
+	if ((search_result = calculate3th(input))) {
 		return search_result.value();
 	}
-	if (search_result = calculate2th(input)) {
+	if ((search_result = calculate2th(input))) {
 		return search_result.value();
 	}
 
