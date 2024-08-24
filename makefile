@@ -18,17 +18,22 @@ compile: $(all_releasing_objects)
 # Automated tests.
 gtest_flags = -lgtest -lgtest_main -lpthread
 all_objects_for_test = obj/libs.o obj/show.o
-all_testing_objects = obj/libs.test.o obj/show.test.o
+all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation-detail.test.o
 
 test: $(all_testing_objects) tests/*.test.cpp
 	g++ $(all_objects_for_test) $(all_testing_objects) $(gtest_flags) -o bin/utest
+	bin/utest
 
+# Behavior tests.
 obj/libs.test.o: obj/libs.o
 	g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
 
 obj/show.test.o: obj/show.o
 	g++ $(cpp_flags) -c tests/show.test.cpp -o obj/show.test.o
 
+# Implementation detail tests.
+obj/show.implementation-detail.test.o: obj/show.o
+	g++ $(cpp_flags) -c tests/show.implementation-detail.test.cpp -o obj/show.implementation-detail.test.o
 
 # Cleaning up, Linux only.
 clean:

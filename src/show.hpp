@@ -4,5 +4,8 @@
 
 void show(levels);
 std::string formattingOutput(levels);
+
+// Implementation detail {
 std::string printItemsInTheLevel(int, vecofitems);
 std::string printLevelNumber(int);
+// }
