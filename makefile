@@ -1,13 +1,14 @@
 # Releasing build.
+program_name = src
 cpp_flags = -Wall -Wpedantic -std=c++20
 all_releasing_objects = obj/main.o obj/calculation.o obj/input.o obj/libs.o obj/show.o obj/sort.o
 linker_flags = -static-libgcc -static-libstdc++ -lpthread
 
 linux: release
-	g++ $(linker_flags) $(all_releasing_objects) -o bin/subrescal
+	g++ $(linker_flags) $(all_releasing_objects) -o bin/$(program_name)
 
 windows: release
-	g++ $(linker_flags) $(all_releasing_objects) resources/src.res -o bin/subrescal
+	g++ $(linker_flags) $(all_releasing_objects) resources/src.res -o bin/$(program_name)
 
 release: cpp_flags += -O2 -DNDEBUG -march=native
 release: compile
@@ -16,13 +17,14 @@ compile: $(all_releasing_objects)
 
 
 # Automated tests.
+unit_tests_name = unit-tests
 gtest_flags = -lgtest -lgtest_main -lpthread
 all_objects_for_test = obj/libs.o obj/show.o
 all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation-detail.test.o
 
 test: $(all_testing_objects) tests/*.test.cpp
-	g++ $(all_objects_for_test) $(all_testing_objects) $(gtest_flags) -o bin/utest
-	bin/utest
+	g++ $(all_objects_for_test) $(all_testing_objects) $(gtest_flags) -o bin/$(unit_tests_name)
+	bin/$(unit_tests_name)
 
 # Behavior tests.
 obj/libs.test.o: obj/libs.o
@@ -34,6 +36,7 @@ obj/show.test.o: obj/show.o
 # Implementation detail tests.
 obj/show.implementation-detail.test.o: obj/show.o
 	g++ $(cpp_flags) -c tests/show.implementation-detail.test.cpp -o obj/show.implementation-detail.test.o
+
 
 # Cleaning up, Linux only.
 clean:
