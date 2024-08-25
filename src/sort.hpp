@@ -6,5 +6,5 @@
 levels sorting(vecofitems);
 
 // Implementation detal {
-vecofitems inLevelRemoveDuplication(vecofitems);
+vecofitems removeDuplicationInTheLevel(vecofitems);
 // }

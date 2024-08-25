@@ -12,13 +12,13 @@ struct all_levels {
 
 void sortingByLevel(vecofitems& all_items, struct all_levels& sorting_items);
 void sortingByName(struct all_levels& sorting_items);
-void removeDuplication(struct all_levels& sorting_items);
+void removeAllDuplication(struct all_levels& sorting_items);
 
 levels sorting(vecofitems all_items) {
 	struct all_levels sorting_items;
 
 	sortingByLevel(all_items, sorting_items);
-	removeDuplication(sorting_items);
+	removeAllDuplication(sorting_items);
 	sortingByName(sorting_items);
 
 	levels sorted_items;
@@ -58,22 +58,22 @@ void sortingByLevel(vecofitems& all_items, struct all_levels& sorting_items) {
 	}
 }
 
-vecofitems inLevelRemoveDuplication(vecofitems level_x);
-void removeDuplication(struct all_levels& sorting_items) {
+vecofitems removeDuplicationInTheLevel(vecofitems level_x);
+void removeAllDuplication(struct all_levels& sorting_items) {
 	if (!sorting_items.level1.empty()) {
-		sorting_items.level1 = inLevelRemoveDuplication(sorting_items.level1);
+		sorting_items.level1 = removeDuplicationInTheLevel(sorting_items.level1);
 	}
 	if (!sorting_items.level2.empty()) {
-		sorting_items.level2 = inLevelRemoveDuplication(sorting_items.level2);
+		sorting_items.level2 = removeDuplicationInTheLevel(sorting_items.level2);
 	}
 	if (!sorting_items.level3.empty()) {
-		sorting_items.level3 = inLevelRemoveDuplication(sorting_items.level3);
+		sorting_items.level3 = removeDuplicationInTheLevel(sorting_items.level3);
 	}
 	if (!sorting_items.level4.empty()) {
-		sorting_items.level4 = inLevelRemoveDuplication(sorting_items.level4);
+		sorting_items.level4 = removeDuplicationInTheLevel(sorting_items.level4);
 	}
 	if (!sorting_items.level5.empty()) {
-		sorting_items.level5 = inLevelRemoveDuplication(sorting_items.level5);
+		sorting_items.level5 = removeDuplicationInTheLevel(sorting_items.level5);
 	}
 }
 
@@ -95,22 +95,22 @@ void sortingByName(struct all_levels& sorting_items) {
 	}
 }
 
-vecofitems inLevelRemoveDuplication(vecofitems level_x) {
+vecofitems removeDuplicationInTheLevel(vecofitems level_x) {
 	vecofitems buffer;
 
-	for (auto x = level_x.begin(); x != level_x.end(); x++) {
+	for (auto i_level_x = level_x.begin(); i_level_x != level_x.end(); i_level_x++) {
 		bool isNotDuplicate = false;
 
-		for (auto b = buffer.begin(); b != buffer.end(); b++) {
-			if (x->name == b->name) {
-				b->number += x->number;
+		for (auto i_buffer = buffer.begin(); i_buffer != buffer.end(); i_buffer++) {
+			if (i_level_x->name == i_buffer->name) {
+				i_buffer->number += i_level_x->number;
 				//level_x.erase(x);
 				isNotDuplicate = true;
 				break;
 			}
 		}
 		if (!isNotDuplicate) {
-			buffer.push_back(*x);
+			buffer.push_back(*i_level_x);
 		}
 	}
 	return buffer;
