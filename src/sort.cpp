@@ -2,18 +2,6 @@
 #include "custom-type.hpp"
 #include "sort.hpp"
 
-struct all_levels {
-	vecofitems level1;
-	vecofitems level2;
-	vecofitems level3;
-	vecofitems level4;
-	vecofitems level5;
-};
-
-void sortingByLevel(vecofitems& all_items, struct all_levels& sorting_items);
-void sortingByName(struct all_levels& sorting_items);
-void removeAllDuplication(struct all_levels& sorting_items);
-
 levels sorting(vecofitems all_items) {
 	struct all_levels sorting_items;
 
@@ -58,7 +46,6 @@ void sortingByLevel(vecofitems& all_items, struct all_levels& sorting_items) {
 	}
 }
 
-vecofitems removeDuplicationInTheLevel(vecofitems level_x);
 void removeAllDuplication(struct all_levels& sorting_items) {
 	if (!sorting_items.level1.empty()) {
 		sorting_items.level1 = removeDuplicationInTheLevel(sorting_items.level1);

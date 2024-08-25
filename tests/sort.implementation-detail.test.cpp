@@ -1,6 +1,69 @@
 #include "../src/sort.hpp"
 #include <gtest/gtest.h>
 
+TEST(Sort, Remove_All_Duplication) {
+
+	struct all_levels expected;
+	expected.level1 = {
+		{ '1', "A", 5 },
+		{ '1', "B", 4 }
+	};
+	expected.level2 = {
+		{'2', "C", 2}
+	};
+	expected.level3 = {
+		{'3', "D", 2}
+	};
+	expected.level4 = {};
+	expected.level5 = {};
+
+
+	struct all_levels result;
+	result.level1 = {
+		{ '1', "A", 3},
+		{ '1', "A", 2},
+		{ '1', "B", 1},
+		{ '1', "B", 1},
+		{ '1', "B", 1},
+		{ '1', "B", 1}
+	};
+	result.level2 = {
+		{ '2', "C", 2}
+	};
+	result.level3 = {
+		{ '3', "D", 1},
+		{ '3', "D", 1}
+	};
+	result.level4 = {};
+	result.level5 = {};
+	removeAllDuplication(result);
+
+
+	ASSERT_EQ(expected.level1.size(), result.level1.size());
+	ASSERT_EQ(expected.level2.size(), result.level2.size());
+	ASSERT_EQ(expected.level3.size(), result.level3.size());
+	ASSERT_TRUE(result.level4.empty());
+	ASSERT_TRUE(result.level5.empty());
+
+	// Level 1
+	for (long long unsigned int i = 0; i < expected.level1.size(); i++) {
+		EXPECT_EQ(expected.level1[i].level, result.level1[i].level);
+		EXPECT_EQ(expected.level1[i].name, result.level1[i].name);
+		EXPECT_EQ(expected.level1[i].number, result.level1[i].number);
+	}
+	// Level 2
+	for (long long unsigned int i = 0; i < expected.level2.size(); i++) {
+		EXPECT_EQ(expected.level2[i].level, result.level2[i].level);
+		EXPECT_EQ(expected.level2[i].name, result.level2[i].name);
+		EXPECT_EQ(expected.level2[i].number, result.level2[i].number);
+	}
+	// Level 3
+	for (long long unsigned int i = 0; i < expected.level3.size(); i++) {
+		EXPECT_EQ(expected.level3[i].level, result.level3[i].level);
+		EXPECT_EQ(expected.level3[i].name, result.level3[i].name);
+		EXPECT_EQ(expected.level3[i].number, result.level3[i].number);
+	}
+}
 
 TEST(Sort, Remove_Duplication_in_the_Level) {
 	vecofitems expected = {
