@@ -23,8 +23,10 @@ all_objects_for_test = obj/libs.o obj/show.o obj/sort.o
 all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation-detail.test.o obj/sort.test.o obj/sort.implementation-detail.test.o
 
 test: $(all_testing_objects) tests/*.test.cpp
-	g++ $(all_objects_for_test) $(all_testing_objects) $(gtest_flags) -o bin/$(unit_tests_name)
-	bin/$(unit_tests_name)
+	@echo Compiling tests...
+	@g++ $(all_objects_for_test) $(all_testing_objects) $(gtest_flags) -o bin/$(unit_tests_name)
+	@echo Running tests...
+	@bin/$(unit_tests_name)
 
 # Behavior tests.
 obj/libs.test.o: obj/libs.o
@@ -49,6 +51,9 @@ obj/sort.implementation-detail.test.o: tests/sort.implementation-detail.test.cpp
 clean:
 	rm -f obj/*.o
 	rm -f bin/*
+
+clean-obj:
+	rm -f obj/*.o
 
 
 # Create neccessary directory, Linux only.
