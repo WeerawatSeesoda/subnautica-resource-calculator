@@ -22,7 +22,7 @@ gtest_flags = -lgtest -lgtest_main -lpthread
 all_objects_for_test = obj/libs.o obj/show.o obj/sort.o
 all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation-detail.test.o obj/sort.test.o obj/sort.implementation-detail.test.o
 
-test: $(all_testing_objects) tests/*.test.cpp
+test: $(all_testing_objects)
 	@echo Compiling tests...
 	@g++ $(all_objects_for_test) $(all_testing_objects) $(gtest_flags) -o bin/$(unit_tests_name)
 	@echo Running tests...
@@ -36,6 +36,7 @@ obj/show.test.o: obj/show.o
 	g++ $(cpp_flags) -c tests/show.test.cpp -o obj/show.test.o
 	
 obj/sort.test.o: obj/sort.o
+obj/sort.test.o: tests/sort.test.cpp
 	g++ $(cpp_flags) -c tests/sort.test.cpp -o obj/sort.test.o
 
 # Implementation detail tests.
