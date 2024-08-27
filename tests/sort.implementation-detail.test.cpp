@@ -33,7 +33,6 @@ TEST(Sort, Sort_by_Level) {
 	ASSERT_EQ(expected.level3.size(), result.level3.size());
 	ASSERT_TRUE(result.level4.empty());
 	ASSERT_TRUE(result.level5.empty());
-
 	// Level 1
 	for (long long unsigned int i = 0; i < expected.level1.size(); i++) {
 		EXPECT_EQ(expected.level1[i].level, result.level1[i].level);
@@ -94,7 +93,6 @@ TEST(Sort, Sort_by_Name) {
 	ASSERT_EQ(expected.level3.size(), result.level3.size());
 	ASSERT_TRUE(result.level4.empty());
 	ASSERT_TRUE(result.level5.empty());
-
 	// Level 1
 	for (long long unsigned int i = 0; i < expected.level1.size(); i++) {
 		EXPECT_EQ(expected.level1[i].name, result.level1[i].name);
@@ -126,7 +124,6 @@ TEST(Sort, Remove_All_Duplication) {
 	expected.level4 = {};
 	expected.level5 = {};
 
-
 	struct all_levels result;
 	result.level1 = {
 		{ '1', "A", 3},
@@ -147,13 +144,11 @@ TEST(Sort, Remove_All_Duplication) {
 	result.level5 = {};
 	removeAllDuplication(result);
 
-
 	ASSERT_EQ(expected.level1.size(), result.level1.size());
 	ASSERT_EQ(expected.level2.size(), result.level2.size());
 	ASSERT_EQ(expected.level3.size(), result.level3.size());
 	ASSERT_TRUE(result.level4.empty());
 	ASSERT_TRUE(result.level5.empty());
-
 	// Level 1
 	for (long long unsigned int i = 0; i < expected.level1.size(); i++) {
 		EXPECT_EQ(expected.level1[i].level, result.level1[i].level);
@@ -174,6 +169,7 @@ TEST(Sort, Remove_All_Duplication) {
 	}
 }
 
+
 TEST(Sort, Remove_Duplication_in_the_Level) {
 	vecofitems expected = {
 		{'1', "Acid mushroom", 2},
@@ -185,7 +181,6 @@ TEST(Sort, Remove_Duplication_in_the_Level) {
 		{'1', "Copper ore", 1},
 		{'1', "Acid mushroom", 1}
 	};
-
 	vecofitems result = removeDuplicationInTheLevel(duplicated_items);
 
 	ASSERT_EQ(expected.size(), result.size());
