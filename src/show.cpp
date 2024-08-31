@@ -18,7 +18,7 @@ std::string formattingOutput(levels lvs) {
 		if (!lvs.at(4).empty()) { level5 = printItemsInTheLevel(5, lvs.at(4)); }
 	}
 
-	std::string formated = std::string("") +
+	std::string formatted = std::string("") +
 		"========================================\n" +
 		level1 +
 		level2 +
@@ -26,9 +26,10 @@ std::string formattingOutput(levels lvs) {
 		level4 +
 		level5 +
 		"========================================\n";
-	return formated;
+	return formatted;
 }
 
+// Implementation detail {
 std::string printItemsInTheLevel(int level_number, vecofitems items) {
 	std::string str = printLevelNumber(level_number);
 
@@ -42,3 +43,4 @@ std::string printItemsInTheLevel(int level_number, vecofitems items) {
 std::string printLevelNumber(int lvl_number) {
 	return std::format("Level {}:\n", std::to_string(lvl_number));
 }
+// }

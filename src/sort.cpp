@@ -19,7 +19,7 @@ levels sorting(vecofitems all_items) {
 	return sorted_items;
 }
 
-
+// Implementation detail {
 void sortingByLevel(vecofitems& all_items, struct all_levels& sorting_items) {
 	if (!all_items.empty()) {
 		for (auto i = all_items.begin(); i != all_items.end(); i++) {
@@ -91,7 +91,6 @@ vecofitems removeDuplicationInTheLevel(vecofitems level_x) {
 		for (auto i_buffer = buffer.begin(); i_buffer != buffer.end(); i_buffer++) {
 			if (i_level_x->name == i_buffer->name) {
 				i_buffer->number += i_level_x->number;
-				//level_x.erase(x);
 				isNotDuplicate = true;
 				break;
 			}
@@ -102,3 +101,4 @@ vecofitems removeDuplicationInTheLevel(vecofitems level_x) {
 	}
 	return buffer;
 }
+// }

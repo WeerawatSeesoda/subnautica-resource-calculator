@@ -49,6 +49,6 @@ int main() {
 
 /*
 *	HOW TO ADD NEW ITEMS
-*		1. ADD TO "recipe\leve-N-recipes.h".
-*		2. ADD TO "calculating()".
+*		1. ADD TO "recipe\leve-<N>-recipes.h".
+*		2. ADD TO "calculate<N>th()" inside the "calculation.cpp".
 */
