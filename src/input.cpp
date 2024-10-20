@@ -5,31 +5,19 @@
 #include "input.hpp"
 #include "paint-text.hpp"
 
-void showMenu();
 std::string getName();
 int getAmount();
 
 inputdata keyboardInput() {
 	inputdata input = { "", 0 };
 
-	showMenu();
 	input.name = getName();
-	if (input.name == "EXIT" || input.name == "DONE") {
+	if (input.name == "EXIT" || input.name == "DONE" || input.name == "HELP") {
 		return input;
 	}
 	input.number = getAmount();
 
 	return input;
-}
-
-
-void showMenu() {
-	const char* str = R"V0G0N(
-Please enter an item's name and its quantity, or type
-	"done" - to show all the materials you need, or
-	"exit" - to close the program.
-)V0G0N";
-	std::cout << str << std::endl;
 }
 
 std::string getName() {
@@ -49,6 +37,9 @@ std::string getName() {
 		}
 		else if (item_name == "done") {
 			return "DONE";
+		}
+		else if (item_name == "help") {
+			return "HELP";
 		}
 		else {
 			is_look_good = true;

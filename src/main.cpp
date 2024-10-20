@@ -7,21 +7,27 @@
 #include "libs.hpp"
 #include "paint-text.hpp"
 
+void showInstruction();
+
 int main() {
 	try {
 		vecofitems all_items;
 		inputdata input = { "", 0 };
 		levels lvs;
 
+		showInstruction();
 		while (input.name != "EXIT") {
 			input = keyboardInput();
 
 			if (input.name == "EXIT") {
 				std::cout << "\nThank you and goodbye.\n";
 			}
+			else if (input.name == "HELP") {
+				showInstruction();
+			}
 			else if (input.name == "DONE") {
 				if (all_items.empty()) {
-					std::cout << yellow("\tThere is nothing to calculate.\n");
+					std::cout << yellow("\tThere is nothing to calculate.\n\n");
 				}
 				else {
 					std::cout << "Calculating...\n";
@@ -52,6 +58,18 @@ int main() {
 		std::cerr << e << "\n";
 	}
 	return 0;
+}
+
+void showInstruction() {
+	const char* str = R"V0G0N(
+Instruction: Enter the item's name and its quantity.
+  or enter:
+    "help" - To show this instruction again.
+    "done" - To start the calculation and show the crafting steps you need to do.
+    "exit" - To close the program.
+
+)V0G0N";
+	std::cout << str;
 }
 
 /*
