@@ -16,7 +16,7 @@ int main() {
 			input = keyboardInput();
 
 			if (input.name == "EXIT") {
-				std::cout << "\nThank you and goodbye.\n" << std::endl;
+				std::cout << "\nThank you and goodbye.\n";
 			}
 			else if (input.name == "DONE") {
 				lvs = sorting(all_items);
@@ -29,20 +29,20 @@ int main() {
 				vecofitems caled = calculating(input);
 
 				if (caled[0].level == '0') {
-					std::cout << caled[0].name << std::endl;
+					std::cout << caled[0].name << "\n";
 				}
 				else {
 					insertvector(all_items, calculating(input));
-					std::cout << "Added \"" << caled[0].name << "\" to the list." << std::endl;
+					std::cout << "\tAdded \"" << caled[0].name << "\" to the list.\n";
 				}
 			}
 		};
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cerr << e.what() << "\n";
 	}
 	catch (const std::string e) {
-		std::cerr << e << std::endl;
+		std::cerr << e << "\n";
 	}
 	return 0;
 }

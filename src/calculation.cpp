@@ -30,7 +30,7 @@ vecofitems calculating(inputdata input) {
 
 
 vecofitems itemNotFound() {
-	item it = { '0', "Sorry, We don't khow your item. Please try again.", 0 };
+	item it = { '0', "\tSorry, We don't khow your item. Please try again.\n" , 0 };
 	vecofitems arr;
 	arr.push_back(it);
 

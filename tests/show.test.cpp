@@ -9,7 +9,8 @@ Level 1:\n\
 		- Copper ore : 1\n\
 Level 2:\n\
 		- Battery : 1\n\
-========================================\n";
+========================================\n\
+\n";
 
 	vecofitems level1 = {
 		{ '1', "Acid mushroom", 2 },
@@ -47,7 +48,8 @@ Level 3:\n\
 		- Power cell : 1\n\
 Level 4:\n\
 		- Seamoth : 1\n\
-========================================\n";
+========================================\n\
+\n";
 
 	vecofitems level1 = {
 		{ '1', "Acid mushroom", 4},

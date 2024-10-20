@@ -24,7 +24,7 @@ inputdata keyboardInput() {
 
 void showMenu() {
 	const char* str = R"V0G0N(
-Please enter an item's name and its quantity, or type 
+Please enter an item's name and its quantity, or type
 	"done" - to show all the materials you need, or
 	"exit" - to close the program.
 )V0G0N";
@@ -41,7 +41,7 @@ std::string getName() {
 		std::getline(std::cin, item_name);
 
 		if (item_name.empty()) {
-			std::cout << "ERROR : Item's name can't be empty. Please try again." << std::endl;
+			std::cout << "\tERROR : Item's name can't be empty. Please try again.\n\n";
 		}
 		else if (item_name == "exit") {
 			return "EXIT";
@@ -66,12 +66,12 @@ int getAmount() {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
 
 		if (std::cin.fail()) {
-			std::cout << "ERROR : Your input is not an integer." << std::endl;
+			std::cout << "\tERROR : Your input is not an integer.\n\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
 		}
 		else if (item_number < 1) {
-			std::cout << "ERROR : The number must larger than 0. Please Try again." << std::endl;
+			std::cout << "\tERROR : The number must larger than 0. Please Try again.\n\n";
 		}
 	};
 

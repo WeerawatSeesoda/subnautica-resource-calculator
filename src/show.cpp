@@ -25,7 +25,8 @@ std::string formattingOutput(levels lvs) {
 		level3 +
 		level4 +
 		level5 +
-		"========================================\n";
+		"========================================\n" +
+		"\n";
 	return formatted;
 }
 
