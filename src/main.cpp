@@ -20,11 +20,17 @@ int main() {
 				std::cout << "\nThank you and goodbye.\n";
 			}
 			else if (input.name == "DONE") {
-				lvs = sorting(all_items);
-				show(lvs);
+				if (all_items.empty()) {
+					std::cout << yellow("\tThere is nothing to calculate.\n");
+				}
+				else {
+					std::cout << "Calculating...\n";
+					lvs = sorting(all_items);
+					show(lvs);
 
-				all_items.clear();
-				lvs.clear();
+					all_items.clear();
+					lvs.clear();
+				}
 			}
 			else {
 				vecofitems caled = calculating(input);
