@@ -3,6 +3,7 @@
 #include <string>
 #include "custom-type.hpp"
 #include "input.hpp"
+#include "paint-text.hpp"
 
 void showMenu();
 std::string getName();
@@ -41,7 +42,7 @@ std::string getName() {
 		std::getline(std::cin, item_name);
 
 		if (item_name.empty()) {
-			std::cout << "\tERROR : Item's name can't be empty. Please try again.\n\n";
+			std::cout << red("\tERROR : Item's name can't be empty. Please try again.\n\n");
 		}
 		else if (item_name == "exit") {
 			return "EXIT";
@@ -66,12 +67,12 @@ int getAmount() {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
 
 		if (std::cin.fail()) {
-			std::cout << "\tERROR : Your input is not an integer.\n\n";
+			std::cout << red("\tERROR : Your input is not an integer.\n\n");
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
 		}
 		else if (item_number < 1) {
-			std::cout << "\tERROR : The number must larger than 0. Please Try again.\n\n";
+			std::cout << red("\tERROR : The number must larger than 0. Please Try again.\n\n");
 		}
 	};
 

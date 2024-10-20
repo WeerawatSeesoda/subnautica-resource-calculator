@@ -5,6 +5,7 @@
 #include "sort.hpp"
 #include "show.hpp"
 #include "libs.hpp"
+#include "paint-text.hpp"
 
 int main() {
 	try {
@@ -33,7 +34,7 @@ int main() {
 				}
 				else {
 					insertvector(all_items, calculating(input));
-					std::cout << "\tAdded \"" << caled[0].name << "\" to the list.\n";
+					std::cout << green("\tAdded \"") << cyan(caled[0].name) << green("\" to the list.\n");
 				}
 			}
 		};

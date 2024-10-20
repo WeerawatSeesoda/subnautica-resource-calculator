@@ -2,6 +2,7 @@
 #include "calculation.hpp"
 #include "custom-type.hpp"
 #include "recipes/level-last-recipes.hpp"
+#include "paint-text.hpp"
 
 std::optional<vecofitems> calculate5th(inputdata input);
 std::optional<vecofitems> calculate4th(inputdata input);
@@ -30,7 +31,7 @@ vecofitems calculating(inputdata input) {
 
 
 vecofitems itemNotFound() {
-	item it = { '0', "\tSorry, We don't khow your item. Please try again.\n" , 0 };
+	item it = { '0', yellow("\tSorry, We don't khow your item. Please try again.\n") , 0 };
 	vecofitems arr;
 	arr.push_back(it);
 

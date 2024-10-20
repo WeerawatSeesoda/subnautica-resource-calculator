@@ -1,7 +1,7 @@
 # Releasing build.
 program_name = src
 cpp_flags = -Wall -Wpedantic -std=c++20
-all_releasing_objects = obj/main.o obj/calculation.o obj/input.o obj/libs.o obj/show.o obj/sort.o
+all_releasing_objects = obj/main.o obj/calculation.o obj/input.o obj/libs.o obj/show.o obj/sort.o obj/paint-text.o
 linker_flags = -static-libgcc -static-libstdc++ -lpthread
 
 linux: release
@@ -80,3 +80,6 @@ obj/show.o: src/show.*
 
 obj/sort.o: src/sort.*
 	g++ $(cpp_flags) -c src/sort.cpp -o obj/sort.o
+
+obj/paint-text.o: src/paint-text.*
+	g++ $(cpp_flags) -c src/paint-text.cpp -o obj/paint-text.o
