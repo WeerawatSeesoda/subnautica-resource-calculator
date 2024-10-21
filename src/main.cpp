@@ -91,15 +91,15 @@ Instruction: Enter the item's name and its quantity.
 
 void showHelp() {
 	const char* str = R"V0G0N(
-Usage:  src [name] [amount]
-        src [option]
+Usage:  subrescal [name] [amount]
+        subrescal [option]
 Option:
     -h, --help, help        Print this help messages.
     -v, --version           Print version number.
 
 Examples:
-    src Battery 1
-    src "Power Cell" 69
+    subrescal Battery 1
+    subrescal "Power Cell" 69
 )V0G0N";
 	std::cout << str;
 }

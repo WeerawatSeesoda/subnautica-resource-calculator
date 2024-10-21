@@ -1,5 +1,5 @@
 # Releasing build.
-program_name = src
+program_name = subrescal
 cpp_flags = -Wall -Wpedantic -std=c++20
 all_releasing_objects = obj/main.o obj/calculation.o obj/input.o obj/libs.o obj/show.o obj/sort.o obj/paint-text.o
 linker_flags = -static-libgcc -static-libstdc++ -lpthread
@@ -8,7 +8,7 @@ linux: release
 	g++ $(linker_flags) $(all_releasing_objects) -o bin/$(program_name)
 
 windows: release
-	g++ $(linker_flags) $(all_releasing_objects) resources/src.res -o bin/$(program_name)
+	g++ $(linker_flags) $(all_releasing_objects) resources/subrescal.res -o bin/$(program_name)
 
 release: cpp_flags += -O2 -DNDEBUG -march=native
 release: compile
