@@ -96,6 +96,10 @@ Usage:  src [name] [amount]
 Option:
     -h, --help, help        Print this help messages.
     -v, --version           Print version number.
+
+Examples:
+    src Battery 1
+    src "Power Cell" 69
 )V0G0N";
 	std::cout << str;
 }
