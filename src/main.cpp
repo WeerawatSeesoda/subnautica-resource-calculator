@@ -6,10 +6,27 @@
 #include "show.hpp"
 #include "libs.hpp"
 #include "paint-text.hpp"
+#include <cstring>
 
 void showInstruction();
+void showHelp();
+void showVersion();
 
-int main() {
+int main(int argc, char* argv[]) {
+	if (argc == 2) {
+		if (0 == (strcmp(argv[1], "--version")) || 0 == (strcmp(argv[1], "-v"))){
+			showVersion();
+			return 0;
+		}
+
+		if ( 0 == (strcmp(argv[1], "help")) || 0 == (strcmp(argv[1], "--help")) || 0 == (strcmp(argv[1], "-h"))) {
+			showHelp();
+			return 0;
+		}
+
+		std::cout << red("Error: Invalid command\n");
+		return 1;
+	}
 	try {
 		vecofitems all_items;
 		inputdata input = { "", 0 };
@@ -70,6 +87,21 @@ Instruction: Enter the item's name and its quantity.
 
 )V0G0N";
 	std::cout << str;
+}
+
+void showHelp() {
+	const char* str = R"V0G0N(
+Usage:  src [name] [amount]
+        src [option]
+Option:
+    -h, --help, help        Print this help messages.
+    -v, --version           Print version number.
+)V0G0N";
+	std::cout << str;
+}
+
+void showVersion() {
+	std::cout << "Subnautica Resource Calculator version: 0.24.10.1\n";
 }
 
 /*
