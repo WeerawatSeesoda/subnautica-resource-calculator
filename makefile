@@ -30,9 +30,11 @@ test: $(all_testing_objects)
 
 # Behavior tests.
 obj/libs.test.o: obj/libs.o
+obj/libs.test.o: tests/libs.test.cpp
 	g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
 
 obj/show.test.o: obj/show.o
+obj/show.test.o: tests/show.test.cpp
 	g++ $(cpp_flags) -c tests/show.test.cpp -o obj/show.test.o
 
 obj/sort.test.o: obj/sort.o
@@ -45,6 +47,7 @@ obj/input.test.o: tests/input.test.cpp
 
 # Implementation detail tests.
 obj/show.implementation-detail.test.o: obj/show.o
+obj/show.implementation-detail.test.o: tests/show.implementation-detail.test.cpp
 	g++ $(cpp_flags) -c tests/show.implementation-detail.test.cpp -o obj/show.implementation-detail.test.o
 
 obj/sort.implementation-detail.test.o: obj/sort.o
