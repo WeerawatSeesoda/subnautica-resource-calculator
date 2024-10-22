@@ -7,10 +7,10 @@
 #include "libs.hpp"
 #include "paint-text.hpp"
 #include <cstring>
+#include "version.hpp"
 
 void showInstruction();
 void showHelp();
-void showVersion();
 void showInvalidCommand();
 
 int main(int argc, char* argv[]) {
@@ -139,10 +139,6 @@ Examples:
     subrescal "Power Cell" 69
 )V0G0N";
 	std::cout << str;
-}
-
-void showVersion() {
-	std::cout << "Subnautica Resource Calculator version: 0.24.10.2\n";
 }
 
 void showInvalidCommand() {

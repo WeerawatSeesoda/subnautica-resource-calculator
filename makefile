@@ -1,7 +1,7 @@
 # Releasing build.
 program_name = subrescal
 cpp_flags = -Wall -Wpedantic -std=c++20
-all_releasing_objects = obj/main.o obj/calculation.o obj/input.o obj/libs.o obj/show.o obj/sort.o obj/paint-text.o
+all_releasing_objects = obj/main.o obj/calculation.o obj/input.o obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/version.o
 linker_flags = -static-libgcc -static-libstdc++ -lpthread
 
 linux: release
@@ -87,3 +87,6 @@ obj/sort.o: src/sort.*
 
 obj/paint-text.o: src/paint-text.*
 	g++ $(cpp_flags) -c src/paint-text.cpp -o obj/paint-text.o
+
+obj/version.o: src/version.*
+	g++ $(cpp_flags) -c src/version.cpp -o obj/version.o
