@@ -1,6 +1,6 @@
-#include <algorithm> // std::sort
-#include "custom-type.hpp"
 #include "sort.hpp"
+#include "custom-type.hpp"
+#include <algorithm> // std::sort
 
 levels sorting(vecofitems all_items) {
 	struct all_levels sorting_items;
@@ -66,19 +66,19 @@ void removeAllDuplication(struct all_levels& sorting_items) {
 
 void sortingByName(struct all_levels& sorting_items) {
 	if (!sorting_items.level1.empty()) {
-		std::sort(sorting_items.level1.begin(), sorting_items.level1.end(), [](item a, item b) {return a.name < b.name; });
+		std::sort(sorting_items.level1.begin(), sorting_items.level1.end(), [](item a, item b) { return a.name < b.name; });
 	}
 	if (!sorting_items.level2.empty()) {
-		std::sort(sorting_items.level2.begin(), sorting_items.level2.end(), [](item a, item b) {return a.name < b.name; });
+		std::sort(sorting_items.level2.begin(), sorting_items.level2.end(), [](item a, item b) { return a.name < b.name; });
 	}
 	if (!sorting_items.level3.empty()) {
-		std::sort(sorting_items.level3.begin(), sorting_items.level3.end(), [](item a, item b) {return a.name < b.name; });
+		std::sort(sorting_items.level3.begin(), sorting_items.level3.end(), [](item a, item b) { return a.name < b.name; });
 	}
 	if (!sorting_items.level4.empty()) {
-		std::sort(sorting_items.level4.begin(), sorting_items.level4.end(), [](item a, item b) {return a.name < b.name; });
+		std::sort(sorting_items.level4.begin(), sorting_items.level4.end(), [](item a, item b) { return a.name < b.name; });
 	}
 	if (!sorting_items.level5.empty()) {
-		std::sort(sorting_items.level5.begin(), sorting_items.level5.end(), [](item a, item b) {return a.name < b.name; });
+		std::sort(sorting_items.level5.begin(), sorting_items.level5.end(), [](item a, item b) { return a.name < b.name; });
 	}
 }
 

@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
 #include "../src/sort.hpp"
+#include <gtest/gtest.h>
 
 TEST(Sort, Sorting) {
 	levels expected = {

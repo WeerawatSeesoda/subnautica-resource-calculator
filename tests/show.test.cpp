@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
 #include "../src/show.hpp"
+#include <gtest/gtest.h>
 
 TEST(Show, Formating_Ouput_2_Level) {
 	std::string expected = std::string("") +
@@ -52,25 +52,25 @@ Level 4:\n\
 \n";
 
 	vecofitems level1 = {
-		{ '1', "Acid mushroom", 4},
-		{ '1', "Copper ore", 2},
-		{ '1', "Creepvine seed cluster", 2},
-		{ '1', "Lead", 1},
-		{ '1', "Quartz", 4},
-		{ '1', "Titanium", 10}
+		{ '1', "Acid mushroom", 4 },
+		{ '1', "Copper ore", 2 },
+		{ '1', "Creepvine seed cluster", 2 },
+		{ '1', "Lead", 1 },
+		{ '1', "Quartz", 4 },
+		{ '1', "Titanium", 10 }
 	};
 	vecofitems level2 = {
-		{ '2', "Battery", 2},
-		{ '2', "Glass", 2},
-		{ '2', "Lubricant", 1},
-		{ '2', "Silicone rubber", 1},
-		{ '2', "Titanium ingot", 1}
+		{ '2', "Battery", 2 },
+		{ '2', "Glass", 2 },
+		{ '2', "Lubricant", 1 },
+		{ '2', "Silicone rubber", 1 },
+		{ '2', "Titanium ingot", 1 }
 	};
 	vecofitems level3 = {
-		{ '3', "Power cell", 1}
+		{ '3', "Power cell", 1 }
 	};
 	vecofitems level4 = {
-		{ '4', "Seamoth", 1}
+		{ '4', "Seamoth", 1 }
 	};
 	vecofitems level5;
 	levels lvs = { level1, level2, level3, level4, level5 };

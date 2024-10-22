@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
 #include "../src/show.hpp"
+#include <gtest/gtest.h>
 
 TEST(Show, Print_1_Item) {
 	std::string expected = std::string("") +
@@ -30,7 +30,6 @@ TEST(Show, Print_2_Item) {
 
 	EXPECT_EQ(expected, result);
 }
-
 
 TEST(Show, Print_Level_Number) {
 	EXPECT_EQ(printLevelNumber(1), "Level 1:\n");

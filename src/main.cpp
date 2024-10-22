@@ -1,13 +1,13 @@
-#include <iostream>
+#include "calculation.hpp"
 #include "custom-type.hpp"
 #include "input.hpp"
-#include "calculation.hpp"
-#include "sort.hpp"
-#include "show.hpp"
 #include "libs.hpp"
 #include "paint-text.hpp"
-#include <cstring>
+#include "show.hpp"
+#include "sort.hpp"
 #include "version.hpp"
+#include <cstring>
+#include <iostream>
 
 void showInstruction();
 void showHelp();
@@ -15,12 +15,15 @@ void showInvalidCommand();
 
 int main(int argc, char* argv[]) {
 	if (argc == 2) {
-		if (0 == (strcmp(argv[1], "--version")) || 0 == (strcmp(argv[1], "-v"))){
+		if (0 == (strcmp(argv[1], "--version")) ||
+			0 == (strcmp(argv[1], "-v"))) {
 			showVersion();
 			return 0;
 		}
 
-		if ( 0 == (strcmp(argv[1], "help")) || 0 == (strcmp(argv[1], "--help")) || 0 == (strcmp(argv[1], "-h"))) {
+		if (0 == (strcmp(argv[1], "--help")) ||
+			0 == (strcmp(argv[1], "-h")) ||
+			0 == (strcmp(argv[1], "help"))) {
 			showHelp();
 			return 0;
 		}
@@ -147,7 +150,7 @@ void showInvalidCommand() {
 }
 
 /*
-*	HOW TO ADD NEW ITEMS
-*		1. ADD TO "recipe\leve-<N>-recipes.h".
-*		2. ADD TO "calculate<N>th()" inside the "calculation.cpp".
-*/
+ *	HOW TO ADD NEW ITEMS
+ *		1. ADD TO "recipe\leve-<N>-recipes.h".
+ *		2. ADD TO "calculate<N>th()" inside the "calculation.cpp".
+ */

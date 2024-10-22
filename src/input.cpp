@@ -1,9 +1,9 @@
+#include "input.hpp"
+#include "custom-type.hpp"
+#include "paint-text.hpp"
 #include <iostream>
 #include <limits>
 #include <string>
-#include "custom-type.hpp"
-#include "input.hpp"
-#include "paint-text.hpp"
 
 std::string getName();
 int getAmount();
@@ -55,12 +55,12 @@ int getAmount() {
 	while (item_number < 1) {
 		std::cout << "How many item: ";
 		std::cin >> item_number;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard 'bad' character(s)
 
 		if (std::cin.fail()) {
 			std::cout << red("\tERROR : Your input is not an integer.\n\n");
 			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard 'bad' character(s)
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard 'bad' character(s)
 		}
 		else if (item_number < 1) {
 			std::cout << red("\tERROR : The number must larger than 0. Please Try again.\n\n");
@@ -70,9 +70,9 @@ int getAmount() {
 	return item_number;
 }
 
-int convertStringToNumber(const char *str) {
+int convertStringToNumber(const char* str) {
 	errno = 0;
-	char *endptr;
+	char* endptr;
 
 	long number = strtol(str, &endptr, 10);
 	if (errno == ERANGE) {

@@ -1,8 +1,8 @@
+#include "show.hpp"
+#include "custom-type.hpp"
 #include <format>
 #include <iostream>
 #include <string>
-#include "custom-type.hpp"
-#include "show.hpp"
 
 void show(levels lvs) {
 	std::cout << formattingOutput(lvs);

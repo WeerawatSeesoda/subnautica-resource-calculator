@@ -1,6 +1,6 @@
-#include <algorithm> // std::transform
-#include "custom-type.hpp"
 #include "libs.hpp"
+#include "custom-type.hpp"
+#include <algorithm> // std::transform
 
 void insertvector(vecofitems& a, vecofitems b) {
 	a.insert(a.end(), b.begin(), b.end());

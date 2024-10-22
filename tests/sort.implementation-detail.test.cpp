@@ -1,7 +1,6 @@
 #include "../src/sort.hpp"
 #include <gtest/gtest.h>
 
-
 TEST(Sort, Sort_by_Level) {
 	struct all_levels expected;
 	expected.level1 = {
@@ -52,7 +51,6 @@ TEST(Sort, Sort_by_Level) {
 		EXPECT_EQ(expected.level3[i].number, result.level3[i].number);
 	}
 }
-
 
 TEST(Sort, Sort_by_Name) {
 	struct all_levels expected;
@@ -107,7 +105,6 @@ TEST(Sort, Sort_by_Name) {
 	}
 }
 
-
 TEST(Sort, Remove_All_Duplication) {
 
 	struct all_levels expected;
@@ -116,29 +113,29 @@ TEST(Sort, Remove_All_Duplication) {
 		{ '1', "B", 4 }
 	};
 	expected.level2 = {
-		{'2', "C", 2}
+		{ '2', "C", 2 }
 	};
 	expected.level3 = {
-		{'3', "D", 2}
+		{ '3', "D", 2 }
 	};
 	expected.level4 = {};
 	expected.level5 = {};
 
 	struct all_levels result;
 	result.level1 = {
-		{ '1', "A", 3},
-		{ '1', "A", 2},
-		{ '1', "B", 1},
-		{ '1', "B", 1},
-		{ '1', "B", 1},
-		{ '1', "B", 1}
+		{ '1', "A", 3 },
+		{ '1', "A", 2 },
+		{ '1', "B", 1 },
+		{ '1', "B", 1 },
+		{ '1', "B", 1 },
+		{ '1', "B", 1 }
 	};
 	result.level2 = {
-		{ '2', "C", 2}
+		{ '2', "C", 2 }
 	};
 	result.level3 = {
-		{ '3', "D", 1},
-		{ '3', "D", 1}
+		{ '3', "D", 1 },
+		{ '3', "D", 1 }
 	};
 	result.level4 = {};
 	result.level5 = {};
@@ -169,17 +166,16 @@ TEST(Sort, Remove_All_Duplication) {
 	}
 }
 
-
 TEST(Sort, Remove_Duplication_in_the_Level) {
 	vecofitems expected = {
-		{'1', "Acid mushroom", 2},
-		{'1', "Copper ore", 1}
+		{ '1', "Acid mushroom", 2 },
+		{ '1', "Copper ore", 1 }
 	};
 
 	vecofitems duplicated_items = {
-		{'1', "Acid mushroom", 1},
-		{'1', "Copper ore", 1},
-		{'1', "Acid mushroom", 1}
+		{ '1', "Acid mushroom", 1 },
+		{ '1', "Copper ore", 1 },
+		{ '1', "Acid mushroom", 1 }
 	};
 	vecofitems result = removeDuplicationInTheLevel(duplicated_items);
 
