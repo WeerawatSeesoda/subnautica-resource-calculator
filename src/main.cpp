@@ -142,7 +142,7 @@ Examples:
 }
 
 void showVersion() {
-	std::cout << "Subnautica Resource Calculator version: 0.24.10.1\n";
+	std::cout << "Subnautica Resource Calculator version: 0.24.10.2\n";
 }
 
 void showInvalidCommand() {
