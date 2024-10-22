@@ -19,8 +19,8 @@ compile: $(all_releasing_objects)
 # Automated tests.
 unit_tests_name = unit-tests
 gtest_flags = -lgtest -lgtest_main -lpthread
-all_objects_for_test = obj/libs.o obj/show.o obj/sort.o
-all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation-detail.test.o obj/sort.test.o obj/sort.implementation-detail.test.o
+all_objects_for_test = obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/input.o
+all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation-detail.test.o obj/sort.test.o obj/sort.implementation-detail.test.o obj/input.test.o
 
 test: $(all_testing_objects)
 	@echo Compiling tests...
@@ -34,10 +34,14 @@ obj/libs.test.o: obj/libs.o
 
 obj/show.test.o: obj/show.o
 	g++ $(cpp_flags) -c tests/show.test.cpp -o obj/show.test.o
-	
+
 obj/sort.test.o: obj/sort.o
 obj/sort.test.o: tests/sort.test.cpp
 	g++ $(cpp_flags) -c tests/sort.test.cpp -o obj/sort.test.o
+
+obj/input.test.o: obj/paint-text.o obj/input.o
+obj/input.test.o: tests/input.test.cpp
+	g++ $(cpp_flags) -c tests/input.test.cpp -o obj/input.test.o
 
 # Implementation detail tests.
 obj/show.implementation-detail.test.o: obj/show.o

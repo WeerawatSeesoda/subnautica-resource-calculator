@@ -11,6 +11,7 @@
 void showInstruction();
 void showHelp();
 void showVersion();
+void showInvalidCommand();
 
 int main(int argc, char* argv[]) {
 	if (argc == 2) {
@@ -24,9 +25,45 @@ int main(int argc, char* argv[]) {
 			return 0;
 		}
 
-		std::cout << red("Error: Invalid command\n");
+		showInvalidCommand();
 		return 1;
 	}
+	if (argc == 3) {
+		int item_amount = convertStringToNumber(argv[2]);
+
+		if (item_amount == -1) {
+			showInvalidCommand();
+			return 1;
+		}
+
+		if (item_amount < 1) {
+			std::cout << red("Error: The amount number must larger than 0.\n");
+			return 1;
+		}
+
+		vecofitems all_items;
+		levels all_levels;
+		inputdata input = { argv[1], item_amount };
+
+		vecofitems calculated = calculating(input);
+
+		// Item not found.
+		if (calculated[0].level == '0') {
+			std::cout << calculated[0].name << "\n";
+			return 1;
+		}
+
+		insertvector(all_items, calculating(input));
+		std::cout << "Calculating...\n";
+		all_levels = sorting(all_items);
+		show(all_levels);
+		return 0;
+	}
+	if (argc > 3) {
+		showInvalidCommand();
+		return 1;
+	}
+
 	try {
 		vecofitems all_items;
 		inputdata input = { "", 0 };
@@ -106,6 +143,11 @@ Examples:
 
 void showVersion() {
 	std::cout << "Subnautica Resource Calculator version: 0.24.10.1\n";
+}
+
+void showInvalidCommand() {
+	std::cout << red("Error: Invalid command\n");
+	std::cout << "Type \"subrescal --help\" to see how to use the program.\n";
 }
 
 /*

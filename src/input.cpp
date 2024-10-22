@@ -69,3 +69,25 @@ int getAmount() {
 
 	return item_number;
 }
+
+int convertStringToNumber(const char *str) {
+	errno = 0;
+	char *endptr;
+
+	long number = strtol(str, &endptr, 10);
+	if (errno == ERANGE) {
+		return -1;
+	}
+
+	// The "strtol" will return 0 if both __found the "0"__ and __not found any legit number as the first character (after whitespaces, if exist)__.
+	// This will return -1 in later case but leave it alone in the former case.
+	if (*endptr != '\0') {
+		return -1;
+	}
+
+	if (number == -1) {
+		return 0;
+	}
+
+	return (int)number;
+}
