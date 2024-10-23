@@ -24,7 +24,7 @@ compile: $(all_releasing_objects)
 unit_tests_name = unit-tests
 gtest_flags = -lgtest -lgtest_main -lpthread
 all_objects_for_test = obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/input.o
-all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation-detail.test.o obj/sort.test.o obj/sort.implementation-detail.test.o obj/input.test.o
+all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation.test.o obj/sort.test.o obj/sort.implementation.test.o obj/input.test.o
 
 test: $(all_testing_objects)
 	@echo Building Tests...
@@ -57,17 +57,17 @@ obj/input.test.o: tests/input.test.cpp
 	@g++ $(cpp_flags) -c tests/input.test.cpp -o obj/input.test.o
 
 # Implementation detail tests.
-obj/show.implementation-detail.test.o: obj/show.o
-obj/show.implementation-detail.test.o: tests/show.implementation-detail.test.cpp
+obj/show.implementation.test.o: obj/show.o
+obj/show.implementation.test.o: tests/show.implementation.test.cpp
 	@echo Compiling show.implementation.test
 	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
-	@g++ $(cpp_flags) -c tests/show.implementation-detail.test.cpp -o obj/show.implementation-detail.test.o
+	@g++ $(cpp_flags) -c tests/show.implementation.test.cpp -o obj/show.implementation.test.o
 
-obj/sort.implementation-detail.test.o: obj/sort.o
-obj/sort.implementation-detail.test.o: tests/sort.implementation-detail.test.cpp
+obj/sort.implementation.test.o: obj/sort.o
+obj/sort.implementation.test.o: tests/sort.implementation.test.cpp
 	@echo Compiling sort.implementation.test
 	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
-	@g++ $(cpp_flags) -c tests/sort.implementation-detail.test.cpp -o obj/sort.implementation-detail.test.o
+	@g++ $(cpp_flags) -c tests/sort.implementation.test.cpp -o obj/sort.implementation.test.o
 
 
 # Cleaning up, Linux only.
