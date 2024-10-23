@@ -5,10 +5,14 @@ all_releasing_objects = obj/main.o obj/calculation.o obj/input.o obj/libs.o obj/
 linker_flags = -static-libgcc -static-libstdc++ -lpthread
 
 linux: release
-	g++ $(linker_flags) $(all_releasing_objects) -o bin/$(program_name)
+	@echo Building app without icon...
+	@g++ $(linker_flags) $(all_releasing_objects) -o bin/$(program_name)
+	@echo Build suceed.
 
 windows: release
-	g++ $(linker_flags) $(all_releasing_objects) resources/subrescal.res -o bin/$(program_name)
+	@echo Building app with icon...
+	@g++ $(linker_flags) $(all_releasing_objects) resources/subrescal.res -o bin/$(program_name)
+	@echo Build suceed.
 
 release: cpp_flags += -O2 -DNDEBUG -march=native
 release: compile
@@ -23,36 +27,47 @@ all_objects_for_test = obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/inp
 all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation-detail.test.o obj/sort.test.o obj/sort.implementation-detail.test.o obj/input.test.o
 
 test: $(all_testing_objects)
-	@echo Compiling tests...
+	@echo Building Tests...
 	@g++ $(all_objects_for_test) $(all_testing_objects) $(gtest_flags) -o bin/$(unit_tests_name)
-	@echo Running tests...
+	@echo Building Tests...
 	@bin/$(unit_tests_name)
 
 # Behavior tests.
 obj/libs.test.o: obj/libs.o
 obj/libs.test.o: tests/libs.test.cpp
-	g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
+	@echo Compiling libs.test
+	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
 
 obj/show.test.o: obj/show.o
 obj/show.test.o: tests/show.test.cpp
-	g++ $(cpp_flags) -c tests/show.test.cpp -o obj/show.test.o
+	@echo Compiling show.test
+	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
+	@g++ $(cpp_flags) -c tests/show.test.cpp -o obj/show.test.o
 
 obj/sort.test.o: obj/sort.o
 obj/sort.test.o: tests/sort.test.cpp
-	g++ $(cpp_flags) -c tests/sort.test.cpp -o obj/sort.test.o
+	@echo Compiling sort.test
+	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
+	@g++ $(cpp_flags) -c tests/sort.test.cpp -o obj/sort.test.o
 
 obj/input.test.o: obj/paint-text.o obj/input.o
 obj/input.test.o: tests/input.test.cpp
-	g++ $(cpp_flags) -c tests/input.test.cpp -o obj/input.test.o
+	@echo Compiling input.test
+	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
+	@g++ $(cpp_flags) -c tests/input.test.cpp -o obj/input.test.o
 
 # Implementation detail tests.
 obj/show.implementation-detail.test.o: obj/show.o
 obj/show.implementation-detail.test.o: tests/show.implementation-detail.test.cpp
-	g++ $(cpp_flags) -c tests/show.implementation-detail.test.cpp -o obj/show.implementation-detail.test.o
+	@echo Compiling show.implementation.test
+	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
+	@g++ $(cpp_flags) -c tests/show.implementation-detail.test.cpp -o obj/show.implementation-detail.test.o
 
 obj/sort.implementation-detail.test.o: obj/sort.o
 obj/sort.implementation-detail.test.o: tests/sort.implementation-detail.test.cpp
-	g++ $(cpp_flags) -c tests/sort.implementation-detail.test.cpp -o obj/sort.implementation-detail.test.o
+	@echo Compiling sort.implementation.test
+	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
+	@g++ $(cpp_flags) -c tests/sort.implementation-detail.test.cpp -o obj/sort.implementation-detail.test.o
 
 
 # Cleaning up, Linux only.
@@ -71,25 +86,33 @@ setup:
 
 # Compiling.
 obj/main.o: src/main.cpp
-	g++ $(cpp_flags) -c src/main.cpp -o obj/main.o
+	@echo Compiling main
+	@g++ $(cpp_flags) -c src/main.cpp -o obj/main.o
 
 obj/libs.o: src/libs.*
-	g++ $(cpp_flags) -c src/libs.cpp -o obj/libs.o
+	@echo Compiling libs
+	@g++ $(cpp_flags) -c src/libs.cpp -o obj/libs.o
 
 obj/calculation.o: src/calculation.*
-	g++ $(cpp_flags) -c src/calculation.cpp -o obj/calculation.o
+	@echo Compiling calculation
+	@g++ $(cpp_flags) -c src/calculation.cpp -o obj/calculation.o
 
 obj/input.o: src/input.*
-	g++ $(cpp_flags) -c src/input.cpp -o obj/input.o
+	@echo Compiling input
+	@g++ $(cpp_flags) -c src/input.cpp -o obj/input.o
 
 obj/show.o: src/show.*
-	g++ $(cpp_flags) -c src/show.cpp -o obj/show.o
+	@echo Compiling show
+	@g++ $(cpp_flags) -c src/show.cpp -o obj/show.o
 
 obj/sort.o: src/sort.*
-	g++ $(cpp_flags) -c src/sort.cpp -o obj/sort.o
+	@echo Compiling sort
+	@g++ $(cpp_flags) -c src/sort.cpp -o obj/sort.o
 
 obj/paint-text.o: src/paint-text.*
-	g++ $(cpp_flags) -c src/paint-text.cpp -o obj/paint-text.o
+	@echo Compiling paint-text
+	@g++ $(cpp_flags) -c src/paint-text.cpp -o obj/paint-text.o
 
 obj/version.o: src/version.*
-	g++ $(cpp_flags) -c src/version.cpp -o obj/version.o
+	@echo Compiling version
+	@g++ $(cpp_flags) -c src/version.cpp -o obj/version.o
