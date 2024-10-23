@@ -29,7 +29,7 @@ all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation.te
 test: $(all_testing_objects)
 	@echo Building Tests...
 	@g++ $(all_objects_for_test) $(all_testing_objects) $(gtest_flags) -o bin/$(unit_tests_name)
-	@echo Building Tests...
+	@echo Running Tests...
 	@bin/$(unit_tests_name)
 
 # Behavior tests.
@@ -38,35 +38,30 @@ obj/libs.test.o: tests/libs.test.cpp
 	@echo Compiling libs.test
 	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
 
-obj/show.test.o: obj/show.o
+obj/show.test.o: obj/libs.o obj/show.o
 obj/show.test.o: tests/show.test.cpp
 	@echo Compiling show.test
-	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
 	@g++ $(cpp_flags) -c tests/show.test.cpp -o obj/show.test.o
 
-obj/sort.test.o: obj/sort.o
+obj/sort.test.o: obj/libs.o obj/sort.o
 obj/sort.test.o: tests/sort.test.cpp
 	@echo Compiling sort.test
-	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
 	@g++ $(cpp_flags) -c tests/sort.test.cpp -o obj/sort.test.o
 
-obj/input.test.o: obj/paint-text.o obj/input.o
+obj/input.test.o: obj/libs.o obj/paint-text.o obj/input.o
 obj/input.test.o: tests/input.test.cpp
 	@echo Compiling input.test
-	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
 	@g++ $(cpp_flags) -c tests/input.test.cpp -o obj/input.test.o
 
 # Implementation detail tests.
-obj/show.implementation.test.o: obj/show.o
+obj/show.implementation.test.o: obj/libs.o obj/show.o
 obj/show.implementation.test.o: tests/show.implementation.test.cpp
 	@echo Compiling show.implementation.test
-	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
 	@g++ $(cpp_flags) -c tests/show.implementation.test.cpp -o obj/show.implementation.test.o
 
-obj/sort.implementation.test.o: obj/sort.o
+obj/sort.implementation.test.o: obj/libs.o obj/sort.o
 obj/sort.implementation.test.o: tests/sort.implementation.test.cpp
 	@echo Compiling sort.implementation.test
-	@g++ $(cpp_flags) -c tests/libs.test.cpp -o obj/libs.test.o
 	@g++ $(cpp_flags) -c tests/sort.implementation.test.cpp -o obj/sort.implementation.test.o
 
 
