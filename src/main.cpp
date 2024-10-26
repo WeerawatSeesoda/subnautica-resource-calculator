@@ -138,6 +138,8 @@ Instruction: Enter the item's name and its quantity.
     "help" - To show this instruction again.
     "done" - To start the calculation and show the crafting steps you need to do.
     "exit" - To close the program.
+    "list" - To show all the wait to calculate list.
+    "clear" - To delete all the wait to calculate list.
 
 )V0G0N";
 	std::cout << str;
