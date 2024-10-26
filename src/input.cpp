@@ -12,7 +12,7 @@ inputdata keyboardInput() {
 	inputdata input = { "", 0 };
 
 	input.name = getName();
-	if (input.name == "EXIT" || input.name == "DONE" || input.name == "HELP") {
+	if (input.name == "EXIT" || input.name == "DONE" || input.name == "HELP" || input.name == "SHOW LIST" || input.name == "CLEAR LIST") {
 		return input;
 	}
 	input.number = getAmount();
@@ -40,6 +40,12 @@ std::string getName() {
 		}
 		else if (item_name == "help") {
 			return "HELP";
+		}
+		else if (item_name == "list") {
+			return "SHOW LIST";
+		}
+		else if (item_name == "clear") {
+			return "CLEAR LIST";
 		}
 		else {
 			is_look_good = true;

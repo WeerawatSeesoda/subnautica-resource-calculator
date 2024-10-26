@@ -2,6 +2,7 @@
 #include "custom-type.hpp"
 #include "input.hpp"
 #include "libs.hpp"
+#include "list.hpp"
 #include "paint-text.hpp"
 #include "show.hpp"
 #include "sort.hpp"
@@ -14,6 +15,7 @@ void showHelp();
 void showInvalidCommand();
 
 int main(int argc, char* argv[]) {
+	// Arguments input.
 	if (argc == 2) {
 		if (0 == (strcmp(argv[1], "--version")) ||
 			0 == (strcmp(argv[1], "-v"))) {
@@ -67,10 +69,12 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 
+	// Manual input.
 	try {
 		vecofitems all_items;
 		inputdata input = { "", 0 };
 		levels lvs;
+		std::vector<struct inputdata> list;
 
 		showInstruction();
 		while (input.name != "EXIT") {
@@ -93,7 +97,16 @@ int main(int argc, char* argv[]) {
 
 					all_items.clear();
 					lvs.clear();
+					clearList(list);
 				}
+			}
+			else if (input.name == "CLEAR LIST") {
+				all_items.clear();
+				lvs.clear();
+				clearList(list, "echo");
+			}
+			else if (input.name == "SHOW LIST") {
+				std::cout << showList(list);
 			}
 			else {
 				vecofitems caled = calculating(input);
@@ -102,6 +115,7 @@ int main(int argc, char* argv[]) {
 					std::cout << caled[0].name << "\n";
 				}
 				else {
+					addToList(list, input.name, input.number);
 					insertvector(all_items, calculating(input));
 					std::cout << green("\tAdded \"") << cyan(caled[0].name) << green("\" to the list.\n");
 				}

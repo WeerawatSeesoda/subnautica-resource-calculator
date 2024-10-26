@@ -1,7 +1,7 @@
 # Releasing build.
 program_name = subrescal
 cpp_flags = -Wall -Wpedantic -std=c++20
-all_releasing_objects = obj/main.o obj/calculation.o obj/input.o obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/version.o
+all_releasing_objects = obj/main.o obj/calculation.o obj/input.o obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/version.o obj/list.o
 linker_flags = -static-libgcc -static-libstdc++ -lpthread
 
 linux: release
@@ -23,8 +23,8 @@ compile: $(all_releasing_objects)
 # Automated tests.
 unit_tests_name = unit-tests
 gtest_flags = -lgtest -lgtest_main -lpthread
-all_objects_for_test = obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/input.o
-all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation.test.o obj/sort.test.o obj/sort.implementation.test.o obj/input.test.o
+all_objects_for_test = obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/input.o obj/list.o
+all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation.test.o obj/sort.test.o obj/sort.implementation.test.o obj/input.test.o obj/list.test.o
 
 test: $(all_testing_objects)
 	@echo Building Tests...
@@ -52,6 +52,11 @@ obj/input.test.o: obj/libs.o obj/paint-text.o obj/input.o
 obj/input.test.o: tests/input.test.cpp
 	@echo Compiling input.test
 	@g++ $(cpp_flags) -c tests/input.test.cpp -o obj/input.test.o
+
+obj/list.test.o: obj/list.o obj/paint-text.o
+obj/list.test.o: tests/list.test.cpp
+	@echo compiling list.test
+	@g++ $(cpp_flags) -c tests/list.test.cpp -o obj/list.test.o
 
 # Implementation detail tests.
 obj/show.implementation.test.o: obj/libs.o obj/show.o
@@ -111,3 +116,8 @@ obj/paint-text.o: src/paint-text.*
 obj/version.o: src/version.*
 	@echo Compiling version
 	@g++ $(cpp_flags) -c src/version.cpp -o obj/version.o
+
+obj/list.o: src/list.*
+	@echo Compiling list
+	@g++ $(cpp_flags) -c src/list.cpp -o obj/list.o
+
