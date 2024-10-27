@@ -12,7 +12,11 @@ inputdata keyboardInput() {
 	inputdata input = { "", 0 };
 
 	input.name = getName();
-	if (input.name == "EXIT" || input.name == "DONE" || input.name == "HELP" || input.name == "SHOW LIST" || input.name == "CLEAR LIST") {
+	if (input.name == "EXIT" ||
+		input.name == "DONE" ||
+		input.name == "HELP" ||
+		input.name == "SHOW LIST" ||
+		input.name == "CLEAR LIST") {
 		return input;
 	}
 	input.number = getAmount();

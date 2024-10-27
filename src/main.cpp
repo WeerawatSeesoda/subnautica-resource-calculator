@@ -9,6 +9,7 @@
 #include "version.hpp"
 #include <cstring>
 #include <iostream>
+#include <string>
 
 void showInstruction();
 void showHelp();
@@ -16,57 +17,60 @@ void showInvalidCommand();
 
 int main(int argc, char* argv[]) {
 	// Arguments input.
-	if (argc == 2) {
-		if (0 == (strcmp(argv[1], "--version")) ||
-			0 == (strcmp(argv[1], "-v"))) {
-			showVersion();
-			return 0;
-		}
+	if (argc > 1) {
+		std::string name = argv[1];
+		if (argc == 2) {
+			if ((name == "--version") ||
+				(name == "-v")) {
+				showVersion();
+				return 0;
+			}
 
-		if (0 == (strcmp(argv[1], "--help")) ||
-			0 == (strcmp(argv[1], "-h")) ||
-			0 == (strcmp(argv[1], "help"))) {
-			showHelp();
-			return 0;
-		}
+			if ((name == "--help") ||
+				(name == "-h") ||
+				(name == "help")) {
+				showHelp();
+				return 0;
+			}
 
-		showInvalidCommand();
-		return 1;
-	}
-	if (argc == 3) {
-		int item_amount = convertStringToNumber(argv[2]);
-
-		if (item_amount == -1) {
 			showInvalidCommand();
 			return 1;
 		}
+		if (argc == 3) {
+			int amount = convertStringToNumber(argv[2]);
 
-		if (item_amount < 1) {
-			std::cout << red("Error: The amount number must larger than 0.\n");
+			if (amount == -1) {
+				showInvalidCommand();
+				return 1;
+			}
+
+			if (amount < 1) {
+				std::cout << red("Error: The amount number must larger than 0.\n");
+				return 1;
+			}
+
+			vecofitems all_items;
+			levels all_levels;
+			inputdata input = { name, amount };
+
+			vecofitems calculated = calculating(input);
+
+			// Item not found.
+			if (calculated[0].level == '0') {
+				std::cout << calculated[0].name << "\n";
+				return 1;
+			}
+
+			insertvector(all_items, calculating(input));
+			std::cout << "Calculating...\n";
+			all_levels = sorting(all_items);
+			show(all_levels);
+			return 0;
+		}
+		if (argc > 3) {
+			showInvalidCommand();
 			return 1;
 		}
-
-		vecofitems all_items;
-		levels all_levels;
-		inputdata input = { argv[1], item_amount };
-
-		vecofitems calculated = calculating(input);
-
-		// Item not found.
-		if (calculated[0].level == '0') {
-			std::cout << calculated[0].name << "\n";
-			return 1;
-		}
-
-		insertvector(all_items, calculating(input));
-		std::cout << "Calculating...\n";
-		all_levels = sorting(all_items);
-		show(all_levels);
-		return 0;
-	}
-	if (argc > 3) {
-		showInvalidCommand();
-		return 1;
 	}
 
 	// Manual input.
