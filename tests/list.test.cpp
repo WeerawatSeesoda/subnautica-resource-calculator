@@ -5,26 +5,36 @@
 #include <string>
 #include <vector>
 
-TEST(List, Clear_list) {
-	std::vector<struct inputdata> list = {
-		{ "Battery", 1 },
-		{ "Power cell", 3 },
-		{ "Seamoth", 1 }
-	};
-	clearList(list);
-	EXPECT_TRUE(list.empty());
+namespace {
+
+class List : public testing::Test {
+  protected:
+	List() {
+		items_list_f = {
+			{ "Battery", 1 },
+			{ "Power cell", 3 },
+			{ "Seamoth", 1 }
+		};
+	}
+	std::vector<struct inputdata> items_list_f;
+};
+
+TEST_F(List, Clear_list) {
+	clearList(items_list_f);
+
+	EXPECT_TRUE(items_list_f.empty());
 }
 
-TEST(List, Show_list_empty) {
+TEST_F(List, Show_list_empty) { // Don't use fixture. Just want the same test name.
 	std::string expect = yellow("\tNothing on the list.\n\n");
 
-	std::vector<struct inputdata> list;
-	std::string result = showList(list);
+	std::vector<struct inputdata> list_list;
+	std::string result = showList(list_list);
 
 	EXPECT_EQ(expect, result);
 }
 
-TEST(List, Show_list) {
+TEST_F(List, Show_list) {
 	std::string expected = std::string("") +
 						   "Items wait to calculate:\n" +
 						   "\t1. Battery: 1\n" +
@@ -32,17 +42,12 @@ TEST(List, Show_list) {
 						   "\t3. Seamoth: 1\n" +
 						   "\n";
 
-	std::vector<struct inputdata> itemsList = {
-		{ "Battery", 1 },
-		{ "Power cell", 3 },
-		{ "Seamoth", 1 }
-	};
+	std::string result = showList(items_list_f);
 
-	std::string result = showList(itemsList);
 	EXPECT_EQ(expected, result);
 }
 
-TEST(List, Add_to_list) {
+TEST_F(List, Add_to_list) { // Don't use fixture. Just want the same test name.
 	std::vector<struct inputdata> expect = {
 		{ "Battery", 1 },
 		{ "Power cell", 3 },
@@ -54,7 +59,7 @@ TEST(List, Add_to_list) {
 	addToList(result, "Power cell", 3);
 	addToList(result, "Seamoth", 1);
 
-	EXPECT_EQ(expect.size(), result.size());
+	ASSERT_EQ(expect.size(), result.size());
 
 	EXPECT_EQ(expect.at(0).name, result.at(0).name);
 	EXPECT_EQ(expect.at(0).number, result.at(0).number);
@@ -65,3 +70,5 @@ TEST(List, Add_to_list) {
 	EXPECT_EQ(expect.at(2).name, result.at(2).name);
 	EXPECT_EQ(expect.at(2).number, result.at(2).number);
 }
+
+} // namespace
