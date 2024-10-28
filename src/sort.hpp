@@ -12,8 +12,7 @@ struct all_levels {
 	vecofitems level5;
 };
 
-void sortingByLevel(vecofitems&, struct all_levels&);
-void sortingByName(struct all_levels&);
-void removeAllDuplication(struct all_levels&);
-vecofitems removeDuplicationInTheLevel(vecofitems);
+struct all_levels sortingByLevel(vecofitems&);
+void sortingByName(vecofitems&);
+void removeDuplicationInTheLevel(vecofitems&);
 // }

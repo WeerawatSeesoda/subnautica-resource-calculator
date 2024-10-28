@@ -3,11 +3,10 @@
 #include <algorithm> // std::sort
 
 levels sorting(vecofitems all_items) {
-	struct all_levels sorting_items;
 
-	sortingByLevel(all_items, sorting_items);
-	removeAllDuplication(sorting_items);
-	sortingByName(sorting_items);
+	removeDuplicationInTheLevel(all_items);
+	sortingByName(all_items);
+	struct all_levels sorting_items = sortingByLevel(all_items);
 
 	levels sorted_items;
 	sorted_items.push_back(sorting_items.level1);
@@ -20,7 +19,8 @@ levels sorting(vecofitems all_items) {
 }
 
 // Implementation detail {
-void sortingByLevel(vecofitems& all_items, struct all_levels& sorting_items) {
+struct all_levels sortingByLevel(vecofitems& all_items) {
+	struct all_levels sorting_items;
 	if (!all_items.empty()) {
 		for (auto i = all_items.begin(); i != all_items.end(); i++) {
 			switch (i->level) {
@@ -44,45 +44,16 @@ void sortingByLevel(vecofitems& all_items, struct all_levels& sorting_items) {
 			}
 		}
 	}
+	return sorting_items;
 }
 
-void removeAllDuplication(struct all_levels& sorting_items) {
-	if (!sorting_items.level1.empty()) {
-		sorting_items.level1 = removeDuplicationInTheLevel(sorting_items.level1);
-	}
-	if (!sorting_items.level2.empty()) {
-		sorting_items.level2 = removeDuplicationInTheLevel(sorting_items.level2);
-	}
-	if (!sorting_items.level3.empty()) {
-		sorting_items.level3 = removeDuplicationInTheLevel(sorting_items.level3);
-	}
-	if (!sorting_items.level4.empty()) {
-		sorting_items.level4 = removeDuplicationInTheLevel(sorting_items.level4);
-	}
-	if (!sorting_items.level5.empty()) {
-		sorting_items.level5 = removeDuplicationInTheLevel(sorting_items.level5);
+void sortingByName(vecofitems& items) {
+	if (!items.empty()) {
+		std::sort(items.begin(), items.end(), [](item a, item b) { return a.name < b.name; });
 	}
 }
 
-void sortingByName(struct all_levels& sorting_items) {
-	if (!sorting_items.level1.empty()) {
-		std::sort(sorting_items.level1.begin(), sorting_items.level1.end(), [](item a, item b) { return a.name < b.name; });
-	}
-	if (!sorting_items.level2.empty()) {
-		std::sort(sorting_items.level2.begin(), sorting_items.level2.end(), [](item a, item b) { return a.name < b.name; });
-	}
-	if (!sorting_items.level3.empty()) {
-		std::sort(sorting_items.level3.begin(), sorting_items.level3.end(), [](item a, item b) { return a.name < b.name; });
-	}
-	if (!sorting_items.level4.empty()) {
-		std::sort(sorting_items.level4.begin(), sorting_items.level4.end(), [](item a, item b) { return a.name < b.name; });
-	}
-	if (!sorting_items.level5.empty()) {
-		std::sort(sorting_items.level5.begin(), sorting_items.level5.end(), [](item a, item b) { return a.name < b.name; });
-	}
-}
-
-vecofitems removeDuplicationInTheLevel(vecofitems level_x) {
+void removeDuplicationInTheLevel(vecofitems& level_x) {
 	vecofitems buffer;
 
 	for (auto i_level_x = level_x.begin(); i_level_x != level_x.end(); i_level_x++) {
@@ -99,6 +70,6 @@ vecofitems removeDuplicationInTheLevel(vecofitems level_x) {
 			buffer.push_back(*i_level_x);
 		}
 	}
-	return buffer;
+	level_x = buffer;
 }
-// }
+// } Implementation detail
