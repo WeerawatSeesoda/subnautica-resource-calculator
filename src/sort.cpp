@@ -4,9 +4,9 @@
 
 levels sorting(vecofitems all_items) {
 
-	removeDuplicationInTheLevel(all_items);
-	sortingByName(all_items);
-	struct all_levels sorting_items = sortingByLevel(all_items);
+	removeDuplication(all_items);
+	sortByName(all_items);
+	all_levels sorting_items = sortByLevel(all_items);
 
 	levels sorted_items;
 	sorted_items.push_back(sorting_items.level1);
@@ -19,8 +19,8 @@ levels sorting(vecofitems all_items) {
 }
 
 // Implementation detail {
-struct all_levels sortingByLevel(vecofitems& all_items) {
-	struct all_levels sorting_items;
+all_levels sortByLevel(vecofitems& all_items) {
+	all_levels sorting_items;
 	if (!all_items.empty()) {
 		for (auto i = all_items.begin(); i != all_items.end(); i++) {
 			switch (i->level) {
@@ -47,29 +47,29 @@ struct all_levels sortingByLevel(vecofitems& all_items) {
 	return sorting_items;
 }
 
-void sortingByName(vecofitems& items) {
+void sortByName(vecofitems& items) {
 	if (!items.empty()) {
 		std::sort(items.begin(), items.end(), [](item a, item b) { return a.name < b.name; });
 	}
 }
 
-void removeDuplicationInTheLevel(vecofitems& level_x) {
-	vecofitems buffer;
+void removeDuplication(vecofitems& items) {
+	vecofitems unique_items;
 
-	for (auto i_level_x = level_x.begin(); i_level_x != level_x.end(); i_level_x++) {
+	for (auto the_messy_item = items.begin(); the_messy_item != items.end(); the_messy_item++) {
 		bool isNotDuplicate = false;
 
-		for (auto i_buffer = buffer.begin(); i_buffer != buffer.end(); i_buffer++) {
-			if (i_level_x->name == i_buffer->name) {
-				i_buffer->number += i_level_x->number;
+		for (auto the_unique_item = unique_items.begin(); the_unique_item != unique_items.end(); the_unique_item++) {
+			if (the_messy_item->name == the_unique_item->name) {
+				the_unique_item->number += the_messy_item->number;
 				isNotDuplicate = true;
 				break;
 			}
 		}
 		if (!isNotDuplicate) {
-			buffer.push_back(*i_level_x);
+			unique_items.push_back(*the_messy_item);
 		}
 	}
-	level_x = buffer;
+	items = unique_items;
 }
 // } Implementation detail

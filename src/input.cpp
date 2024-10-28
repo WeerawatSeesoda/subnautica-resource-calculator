@@ -8,8 +8,8 @@
 std::string getName();
 int getAmount();
 
-inputdata keyboardInput() {
-	inputdata input = { "", 0 };
+name_amount_pair keyboardInput() {
+	name_amount_pair input = { "", 0 };
 
 	input.name = getName();
 	if (input.name == "EXIT" ||
@@ -19,7 +19,7 @@ inputdata keyboardInput() {
 		input.name == "CLEAR LIST") {
 		return input;
 	}
-	input.number = getAmount();
+	input.amount = getAmount();
 
 	return input;
 }
@@ -60,11 +60,11 @@ std::string getName() {
 }
 
 int getAmount() {
-	int item_number = 0;
+	int amount = 0;
 
-	while (item_number < 1) {
+	while (amount < 1) {
 		std::cout << "How many item: ";
-		std::cin >> item_number;
+		std::cin >> amount;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard 'bad' character(s)
 
 		if (std::cin.fail()) {
@@ -72,12 +72,12 @@ int getAmount() {
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard 'bad' character(s)
 		}
-		else if (item_number < 1) {
+		else if (amount < 1) {
 			std::cout << red("\tERROR : The number must larger than 0. Please Try again.\n\n");
 		}
 	};
 
-	return item_number;
+	return amount;
 }
 
 int convertStringToNumber(const char* str) {

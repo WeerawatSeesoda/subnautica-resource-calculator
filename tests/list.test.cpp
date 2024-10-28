@@ -16,7 +16,7 @@ class List : public testing::Test {
 			{ "Seamoth", 1 }
 		};
 	}
-	std::vector<struct inputdata> items_list_f;
+	std::vector<name_amount_pair> items_list_f;
 };
 
 TEST_F(List, Clear_list) {
@@ -28,7 +28,7 @@ TEST_F(List, Clear_list) {
 TEST_F(List, Show_list_empty) { // Don't use fixture. Just want the same test name.
 	std::string expect = yellow("\tNothing on the list.\n\n");
 
-	std::vector<struct inputdata> list_list;
+	std::vector<name_amount_pair> list_list;
 	std::string result = showList(list_list);
 
 	EXPECT_EQ(expect, result);
@@ -48,13 +48,13 @@ TEST_F(List, Show_list) {
 }
 
 TEST_F(List, Add_to_list) { // Don't use fixture. Just want the same test name.
-	std::vector<struct inputdata> expect = {
+	std::vector<name_amount_pair> expect = {
 		{ "Battery", 1 },
 		{ "Power cell", 3 },
 		{ "Seamoth", 1 }
 	};
 
-	std::vector<struct inputdata> result;
+	std::vector<name_amount_pair> result;
 	addToList(result, "Battery", 1);
 	addToList(result, "Power cell", 3);
 	addToList(result, "Seamoth", 1);
@@ -62,13 +62,13 @@ TEST_F(List, Add_to_list) { // Don't use fixture. Just want the same test name.
 	ASSERT_EQ(expect.size(), result.size());
 
 	EXPECT_EQ(expect.at(0).name, result.at(0).name);
-	EXPECT_EQ(expect.at(0).number, result.at(0).number);
+	EXPECT_EQ(expect.at(0).amount, result.at(0).amount);
 
 	EXPECT_EQ(expect.at(1).name, result.at(1).name);
-	EXPECT_EQ(expect.at(1).number, result.at(1).number);
+	EXPECT_EQ(expect.at(1).amount, result.at(1).amount);
 
 	EXPECT_EQ(expect.at(2).name, result.at(2).name);
-	EXPECT_EQ(expect.at(2).number, result.at(2).number);
+	EXPECT_EQ(expect.at(2).amount, result.at(2).amount);
 }
 
 } // namespace

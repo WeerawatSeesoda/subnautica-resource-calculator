@@ -4,13 +4,13 @@
 #include "recipes/level-last-recipes.hpp"
 #include <optional>
 
-std::optional<vecofitems> calculate5th(inputdata input);
-std::optional<vecofitems> calculate4th(inputdata input);
-std::optional<vecofitems> calculate3th(inputdata input);
-std::optional<vecofitems> calculate2th(inputdata input);
+std::optional<vecofitems> calculate5th(name_amount_pair input);
+std::optional<vecofitems> calculate4th(name_amount_pair input);
+std::optional<vecofitems> calculate3th(name_amount_pair input);
+std::optional<vecofitems> calculate2th(name_amount_pair input);
 vecofitems itemNotFound();
 
-vecofitems calculating(inputdata input) {
+vecofitems calculating(name_amount_pair input) {
 	std::optional<vecofitems> search_result;
 
 	if ((search_result = calculate5th(input))) {
@@ -40,24 +40,24 @@ vecofitems itemNotFound() {
 /*
  *	5TH
  */
-std::optional<vecofitems> calculate5th(inputdata input) {
+std::optional<vecofitems> calculate5th(name_amount_pair input) {
 	if (compare_str(input.name, "Cyclops")) {
-		return cyclops(input.number);
+		return cyclops(input.amount);
 	}
 	if (compare_str(input.name, "Cyclops shield generator")) {
-		return cyclopsShieldGenerator(input.number);
+		return cyclopsShieldGenerator(input.amount);
 	}
 	if (compare_str(input.name, "Power cell charger")) {
-		return powerCellCharger(input.number);
+		return powerCellCharger(input.amount);
 	}
 	if (compare_str(input.name, "Prawn suit grappling arm")) {
-		return prawnSuitGrapplingArm(input.number);
+		return prawnSuitGrapplingArm(input.amount);
 	}
 	if (compare_str(input.name, "Seamoth depth module mk3")) {
-		return seamothDepthModuleMK3(input.number);
+		return seamothDepthModuleMK3(input.amount);
 	}
 	if (compare_str(input.name, "Seamoth solar charger")) {
-		return seamothSolarCharger(input.number);
+		return seamothSolarCharger(input.amount);
 	}
 
 	return std::nullopt;
@@ -66,87 +66,87 @@ std::optional<vecofitems> calculate5th(inputdata input) {
 /*
  *	4TH
  */
-std::optional<vecofitems> calculate4th(inputdata input) {
+std::optional<vecofitems> calculate4th(name_amount_pair input) {
 	if (compare_str(input.name, "Advanced wiring kit")) {
-		return advancedWiringKit(input.number);
+		return advancedWiringKit(input.amount);
 	}
 	if (compare_str(input.name, "Camera drone")) {
-		return cameraDrone(input.number);
+		return cameraDrone(input.amount);
 	}
 	if (compare_str(input.name, "Cyclops depth module mk1")) {
-		return cyclopsDepthModuleMK1(input.number);
+		return cyclopsDepthModuleMK1(input.amount);
 	}
 	if (compare_str(input.name, "Cyclops engine efficiency module")) {
-		return cyclopsEngineEfficiencyModule(input.number);
+		return cyclopsEngineEfficiencyModule(input.amount);
 	}
 	if (compare_str(input.name, "Cyclops sonar upgrade")) {
-		return cyclopsSonarUpgrade(input.number);
+		return cyclopsSonarUpgrade(input.amount);
 	}
 	if (compare_str(input.name, "Engine efficiency module")) {
-		return engineEfficiencyModule(input.number);
+		return engineEfficiencyModule(input.amount);
 	}
 	if (compare_str(input.name, "Habitat builder")) {
-		return habitatBuilder(input.number);
+		return habitatBuilder(input.amount);
 	}
 	if (compare_str(input.name, "Lightweight high capacity tank")) {
-		return lightweightHighCapacityTank(input.number);
+		return lightweightHighCapacityTank(input.amount);
 	}
 	if (compare_str(input.name, "Medical kit fabricator")) {
-		return medicalKitFabricator(input.number);
+		return medicalKitFabricator(input.amount);
 	}
 	if (compare_str(input.name, "Mobile vehicle bay")) {
-		return mobileVehicleBay(input.number);
+		return mobileVehicleBay(input.amount);
 	}
 	if (compare_str(input.name, "Modification station")) {
-		return modificationStation(input.number);
+		return modificationStation(input.amount);
 	}
 	if (compare_str(input.name, "Neptune launch platform")) {
-		return neptuneLaunchPlatform(input.number);
+		return neptuneLaunchPlatform(input.amount);
 	}
 	if (compare_str(input.name, "Observatory")) {
-		return observatory(input.number);
+		return observatory(input.amount);
 	}
 	if (compare_str(input.name, "Prawn suit")) {
-		return prawnSuit(input.number);
+		return prawnSuit(input.amount);
 	}
 	if (compare_str(input.name, "Prawn suit propulsion cannon")) {
-		return prawnSuitPropulsionCannon(input.number);
+		return prawnSuitPropulsionCannon(input.amount);
 	}
 	if (compare_str(input.name, "Reinforced dive suit")) {
-		return reinforcedDiveSuit(input.number);
+		return reinforcedDiveSuit(input.amount);
 	}
 	if (compare_str(input.name, "Repulsion cannon")) {
-		return repulsionCannon(input.number);
+		return repulsionCannon(input.amount);
 	}
 	if (compare_str(input.name, "Scanner room hud chip")) {
-		return scannerRoomHUDChip(input.number);
+		return scannerRoomHUDChip(input.amount);
 	}
 	if (compare_str(input.name, "Seamoth")) {
-		return seamoth(input.number);
+		return seamoth(input.amount);
 	}
 	if (compare_str(input.name, "Seamoth depth module mk2")) {
-		return seamothDepthModuleMK2(input.number);
+		return seamothDepthModuleMK2(input.amount);
 	}
 	if (compare_str(input.name, "Seamoth perimeter defense system")) {
-		return seamothPerimeterDefenseSystem(input.number);
+		return seamothPerimeterDefenseSystem(input.amount);
 	}
 	if (compare_str(input.name, "Stasis rifle")) {
-		return stasisRifle(input.number);
+		return stasisRifle(input.amount);
 	}
 	if (compare_str(input.name, "Swim charge fins")) {
-		return swimChargeFins(input.number);
+		return swimChargeFins(input.amount);
 	}
 	if (compare_str(input.name, "Thermoblade")) {
-		return thermoblade(input.number);
+		return thermoblade(input.amount);
 	}
 	if (compare_str(input.name, "Ultra glide fins")) {
-		return ultraGlideFins(input.number);
+		return ultraGlideFins(input.amount);
 	}
 	if (compare_str(input.name, "Ultra high capacity tank")) {
-		return ultraHighCapacityTank(input.number);
+		return ultraHighCapacityTank(input.amount);
 	}
 	if (compare_str(input.name, "Vehicle upgrade console")) {
-		return vehicleUpgradeConsole(input.number);
+		return vehicleUpgradeConsole(input.amount);
 	}
 
 	return std::nullopt;
@@ -155,123 +155,123 @@ std::optional<vecofitems> calculate4th(inputdata input) {
 /*
  *	3TH
  */
-std::optional<vecofitems> calculate3th(inputdata input) {
+std::optional<vecofitems> calculate3th(name_amount_pair input) {
 	if (compare_str(input.name, "Air bladder")) {
-		return airBladder(input.number);
+		return airBladder(input.amount);
 	}
 	if (compare_str(input.name, "Aquarium")) {
-		return aquarium(input.number);
+		return aquarium(input.amount);
 	}
 	if (compare_str(input.name, "Battery charger")) {
-		return batteryCharger(input.number);
+		return batteryCharger(input.amount);
 	}
 	if (compare_str(input.name, "Bioreactor")) {
-		return bioreactor(input.number);
+		return bioreactor(input.amount);
 	}
 	if (compare_str(input.name, "Bulkhead")) {
-		return bulkhead(input.number);
+		return bulkhead(input.amount);
 	}
 	if (compare_str(input.name, "Computer chip")) {
-		return computerChip(input.number);
+		return computerChip(input.amount);
 	}
 	if (compare_str(input.name, "Compass")) {
-		return compass(input.number);
+		return compass(input.amount);
 	}
 	if (compare_str(input.name, "Creature decoy")) {
-		return creatureDecoy(input.number);
+		return creatureDecoy(input.amount);
 	}
 	if (compare_str(input.name, "Cyclops decoy tube upgrade")) {
-		return cyclopsDecoyTubeUpgrade(input.number);
+		return cyclopsDecoyTubeUpgrade(input.amount);
 	}
 	if (compare_str(input.name, "Cyclops fire suppression system")) {
-		return cyclopsFireSuppressionSystem(input.number);
+		return cyclopsFireSuppressionSystem(input.amount);
 	}
 	if (compare_str(input.name, "Disinfected water")) {
-		return disinfectedWater(input.number);
+		return disinfectedWater(input.amount);
 	}
 	if (compare_str(input.name, "Enameled glass")) {
-		return enameledGlass(input.number);
+		return enameledGlass(input.amount);
 	}
 	if (compare_str(input.name, "Fins")) {
-		return fins(input.number);
+		return fins(input.amount);
 	}
 	if (compare_str(input.name, "First aid kit")) {
-		return firstAidKit(input.number);
+		return firstAidKit(input.amount);
 	}
 	if (compare_str(input.name, "Flashlight")) {
-		return flashlight(input.number);
+		return flashlight(input.amount);
 	}
 	if (compare_str(input.name, "Floodlight")) {
-		return floodlight(input.number);
+		return floodlight(input.amount);
 	}
 	if (compare_str(input.name, "Grav trap")) {
-		return gravTrap(input.number);
+		return gravTrap(input.amount);
 	}
 	if (compare_str(input.name, "High capacity o2 tank")) {
-		return highCapacityO2Tank(input.number);
+		return highCapacityO2Tank(input.amount);
 	}
 	if (compare_str(input.name, "Laser cutter")) {
-		return laserCutter(input.number);
+		return laserCutter(input.amount);
 	}
 	if (compare_str(input.name, "Light stack")) {
-		return lightStack(input.number);
+		return lightStack(input.amount);
 	}
 	if (compare_str(input.name, "Moonpool")) {
-		return moonpool(input.number);
+		return moonpool(input.amount);
 	}
 	if (compare_str(input.name, "Pathfinder tool")) {
-		return pathfinderTool(input.number);
+		return pathfinderTool(input.amount);
 	}
 	if (compare_str(input.name, "Plasteel ingot")) {
-		return plasteelIngot(input.number);
+		return plasteelIngot(input.amount);
 	}
 	if (compare_str(input.name, "Polyaniline")) {
-		return polyaniline(input.number);
+		return polyaniline(input.amount);
 	}
 	if (compare_str(input.name, "Power cell")) {
-		return powerCell(input.number);
+		return powerCell(input.amount);
 	}
 	if (compare_str(input.name, "Prawn suit torpedo arm")) {
-		return prawnSuitTorpedoArm(input.number);
+		return prawnSuitTorpedoArm(input.amount);
 	}
 	if (compare_str(input.name, "Propulsion cannon")) {
-		return propulsionCannon(input.number);
+		return propulsionCannon(input.amount);
 	}
 	if (compare_str(input.name, "Radiation suit")) {
-		return radiationSuit(input.number);
+		return radiationSuit(input.amount);
 	}
 	if (compare_str(input.name, "Rebreather")) {
-		return rebreather(input.number);
+		return rebreather(input.amount);
 	}
 	if (compare_str(input.name, "Repair tool")) {
-		return repairTool(input.number);
+		return repairTool(input.amount);
 	}
 	if (compare_str(input.name, "Scanner")) {
-		return scanner(input.number);
+		return scanner(input.amount);
 	}
 	if (compare_str(input.name, "Seaglide")) {
-		return seaglide(input.number);
+		return seaglide(input.amount);
 	}
 	if (compare_str(input.name, "Seamoth depth module mk1")) {
-		return seamothDepthModuleMK1(input.number);
+		return seamothDepthModuleMK1(input.amount);
 	}
 	if (compare_str(input.name, "Seamoth sonar")) {
-		return seamothSonar(input.number);
+		return seamothSonar(input.amount);
 	}
 	if (compare_str(input.name, "Seamoth torpedo system")) {
-		return seamothTorpedoSystem(input.number);
+		return seamothTorpedoSystem(input.amount);
 	}
 	if (compare_str(input.name, "Survival knife")) {
-		return survivalKnife(input.number);
+		return survivalKnife(input.amount);
 	}
 	if (compare_str(input.name, "Synthetic fibers")) {
-		return syntheticFibers(input.number);
+		return syntheticFibers(input.amount);
 	}
 	if (compare_str(input.name, "Thermal plant")) {
-		return thermalPlant(input.number);
+		return thermalPlant(input.amount);
 	}
 	if (compare_str(input.name, "Water filtration machine")) {
-		return waterFiltrationMachine(input.number);
+		return waterFiltrationMachine(input.amount);
 	}
 
 	return std::nullopt;
@@ -280,135 +280,135 @@ std::optional<vecofitems> calculate3th(inputdata input) {
 /*
  *	2TH
  */
-std::optional<vecofitems> calculate2th(inputdata input) {
+std::optional<vecofitems> calculate2th(name_amount_pair input) {
 	if (compare_str(input.name, "Aerogel")) {
-		return aerogel(input.number);
+		return aerogel(input.amount);
 	}
 	if (compare_str(input.name, "Basic plant pot")) {
-		return basicPlantPot(input.number);
+		return basicPlantPot(input.amount);
 	}
 	if (compare_str(input.name, "Battery")) {
-		return battery(input.number);
+		return battery(input.amount);
 	}
 	if (compare_str(input.name, "Beacon")) {
-		return beacon(input.number);
+		return beacon(input.amount);
 	}
 	if (compare_str(input.name, "Benzene")) {
-		return benzene(input.number);
+		return benzene(input.amount);
 	}
 	if (compare_str(input.name, "Bleach")) {
-		return bleach(input.number);
+		return bleach(input.amount);
 	}
 	if (compare_str(input.name, "Chic plant pot")) {
-		return chicPlantPot(input.number);
+		return chicPlantPot(input.amount);
 	}
 	if (compare_str(input.name, "Composite plant pot")) {
-		return compositePlantPot(input.number);
+		return compositePlantPot(input.amount);
 	}
 	if (compare_str(input.name, "Copper wire")) {
-		return copperWire(input.number);
+		return copperWire(input.amount);
 	}
 	if (compare_str(input.name, "Exterior growbed")) {
-		return exteriorGrowbed(input.number);
+		return exteriorGrowbed(input.amount);
 	}
 	if (compare_str(input.name, "Fabricator")) {
-		return fabricator(input.number);
+		return fabricator(input.amount);
 	}
 	if (compare_str(input.name, "Fiber mesh")) {
-		return fiberMesh(input.number);
+		return fiberMesh(input.amount);
 	}
 	if (compare_str(input.name, "Filtered water")) {
-		return filteredWater(input.number);
+		return filteredWater(input.amount);
 	}
 	if (compare_str(input.name, "Fire extinguisher")) {
-		return fireExtinguisher(input.number);
+		return fireExtinguisher(input.amount);
 	}
 	if (compare_str(input.name, "Flare")) {
-		return flare(input.number);
+		return flare(input.amount);
 	}
 	if (compare_str(input.name, "Floating air pump")) {
-		return floatingAirPump(input.number);
+		return floatingAirPump(input.amount);
 	}
 	if (compare_str(input.name, "Foundation")) {
-		return foundation(input.number);
+		return foundation(input.amount);
 	}
 	if (compare_str(input.name, "Gas torpedo")) {
-		return gasTorpedo(input.number);
+		return gasTorpedo(input.amount);
 	}
 	if (compare_str(input.name, "Glass")) {
-		return glass(input.number);
+		return glass(input.amount);
 	}
 	if (compare_str(input.name, "Hull reinforcement")) {
-		return hullReinforcement(input.number);
+		return hullReinforcement(input.amount);
 	}
 	if (compare_str(input.name, "Hydrochloric acid")) {
-		return hydrochloricAcid(input.number);
+		return hydrochloricAcid(input.amount);
 	}
 	if (compare_str(input.name, "Indoor growbed")) {
-		return indoorGrowbed(input.number);
+		return indoorGrowbed(input.amount);
 	}
 	if (compare_str(input.name, "Ladder")) {
-		return ladder(input.number);
+		return ladder(input.amount);
 	}
 	if (compare_str(input.name, "Locker")) {
-		return locker(input.number);
+		return locker(input.amount);
 	}
 	if (compare_str(input.name, "Lubricant")) {
-		return lubricant(input.number);
+		return lubricant(input.amount);
 	}
 	if (compare_str(input.name, "Multipurpose room")) {
-		return multipurposeRoom(input.number);
+		return multipurposeRoom(input.amount);
 	}
 	if (compare_str(input.name, "Pipe")) {
-		return pipe(input.number);
+		return pipe(input.amount);
 	}
 	if (compare_str(input.name, "Plant shelf")) {
-		return plantShelf(input.number);
+		return plantShelf(input.amount);
 	}
 	if (compare_str(input.name, "Power transmitter")) {
-		return powerTransmitter(input.number);
+		return powerTransmitter(input.amount);
 	}
 	if (compare_str(input.name, "Purple tablet")) {
-		return purpleTablet(input.number);
+		return purpleTablet(input.amount);
 	}
 	if (compare_str(input.name, "Radio")) {
-		return radio(input.number);
+		return radio(input.amount);
 	}
 	if (compare_str(input.name, "Scanner room")) {
-		return scannerRoom(input.number);
+		return scannerRoom(input.amount);
 	}
 	if (compare_str(input.name, "Scanner room range upgrade")) {
-		return scannerRoomRangeUpgrade(input.number);
+		return scannerRoomRangeUpgrade(input.amount);
 	}
 	if (compare_str(input.name, "Scanner room speed upgrade")) {
-		return scannerRoomSpeedUpgrade(input.number);
+		return scannerRoomSpeedUpgrade(input.amount);
 	}
 	if (compare_str(input.name, "Silicone rubber")) {
-		return siliconeRubber(input.number);
+		return siliconeRubber(input.amount);
 	}
 	if (compare_str(input.name, "Solar panel")) {
-		return solarPanel(input.number);
+		return solarPanel(input.amount);
 	}
 	if (compare_str(input.name, "Standard o2 tank")) {
-		return standardO2Tank(input.number);
+		return standardO2Tank(input.amount);
 	}
 	if (compare_str(input.name, "Storage module")) {
-		return storageModule(input.number);
+		return storageModule(input.amount);
 	}
 	if (compare_str(input.name, "Titanium ingot")) {
-		return titaniumIngot(input.number);
+		return titaniumIngot(input.amount);
 	}
 	if (compare_str(input.name, "Vortex torpedo")) {
-		return vortexTorpedo(input.number);
+		return vortexTorpedo(input.amount);
 	}
 	if (compare_str(input.name, "Wall locker")) {
-		return wallLocker(input.number);
+		return wallLocker(input.amount);
 	}
 	if (compare_str(input.name, "Waterproof locker")) {
-		return waterproofLocker(input.number);
+		return waterproofLocker(input.amount);
 	}
 	if (compare_str(input.name, "Wiring kit")) {
-		return wiringKit(input.number);
+		return wiringKit(input.amount);
 	}
 
 	return std::nullopt;

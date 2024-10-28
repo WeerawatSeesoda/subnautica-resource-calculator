@@ -1,4 +1,4 @@
 #pragma once
 #include "custom-type.hpp"
 
-vecofitems calculating(inputdata);
+vecofitems calculating(name_amount_pair);

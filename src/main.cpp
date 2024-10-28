@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
 
 			vecofitems all_items;
 			levels all_levels;
-			inputdata input = { name, amount };
+			name_amount_pair input = { name, amount };
 
 			vecofitems calculated = calculating(input);
 
@@ -76,9 +76,9 @@ int main(int argc, char* argv[]) {
 	// Manual input.
 	try {
 		vecofitems all_items;
-		inputdata input = { "", 0 };
+		name_amount_pair input = { "", 0 };
 		levels lvs;
-		std::vector<struct inputdata> list;
+		std::vector<name_amount_pair> list;
 
 		showInstruction();
 		while (input.name != "EXIT") {
@@ -119,7 +119,7 @@ int main(int argc, char* argv[]) {
 					std::cout << caled[0].name << "\n";
 				}
 				else {
-					addToList(list, input.name, input.number);
+					addToList(list, input.name, input.amount);
 					insertvector(all_items, calculating(input));
 					std::cout << green("\tAdded \"") << cyan(caled[0].name) << green("\" to the list.\n");
 				}

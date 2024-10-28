@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-void addToList(std::vector<struct inputdata>& list, std::string name, int amount);
-void clearList(std::vector<struct inputdata>& list);
-void clearList(std::vector<struct inputdata>& list, std::string mode);
-std::string showList(std::vector<struct inputdata>& list);
+void addToList(std::vector<name_amount_pair>& list, std::string name, int amount);
+void clearList(std::vector<name_amount_pair>& list);
+void clearList(std::vector<name_amount_pair>& list, std::string mode);
+std::string showList(std::vector<name_amount_pair>& list);

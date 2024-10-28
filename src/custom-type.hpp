@@ -2,9 +2,9 @@
 #include <string>
 #include <vector>
 
-struct inputdata {
+struct name_amount_pair {
 	std::string name;
-	int number;
+	int amount;
 };
 
 struct item {

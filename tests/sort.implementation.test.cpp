@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 
 TEST(Sort, Sort_by_Level) {
-	struct all_levels expected;
+	all_levels expected;
 	expected.level1 = {
 		{ '1', "A", 1 },
 		{ '1', "B", 1 }
@@ -24,7 +24,7 @@ TEST(Sort, Sort_by_Level) {
 		{ '3', "E", 1 },
 		{ '3', "F", 1 },
 	};
-	struct all_levels result = sortingByLevel(all_items);
+	all_levels result = sortByLevel(all_items);
 
 	ASSERT_EQ(expected.level1.size(), result.level1.size());
 	ASSERT_EQ(expected.level2.size(), result.level2.size());
@@ -63,7 +63,7 @@ TEST(Sort, Sort_by_Name) {
 		{ '3', "E", 1 },
 		{ '3', "D", 1 }
 	};
-	sortingByName(result);
+	sortByName(result);
 
 	for (int i = 0; i < (int)expected.size(); i++) {
 		EXPECT_EQ(expected[i].name, result[i].name);
@@ -81,7 +81,7 @@ TEST(Sort, Remove_Duplication) {
 		{ '1', "Copper ore", 1 },
 		{ '1', "Acid mushroom", 1 }
 	};
-	removeDuplicationInTheLevel(result);
+	removeDuplication(result);
 
 	ASSERT_EQ(expected.size(), result.size());
 	for (int i = 0; i < (int)expected.size(); i++) {
