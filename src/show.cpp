@@ -1,6 +1,5 @@
 #include "show.hpp"
 #include "custom-type.hpp"
-#include "paint-text.hpp"
 #include <format>
 #include <iostream>
 #include <string>
@@ -57,7 +56,7 @@ std::string printLevelNumber(int lvl_number) {
 }
 // }
 
-void showInstruction() {
+std::string showInstruction() {
 	const char* str = R"V0G0N(
 Instruction: Enter the item's name and its quantity.
   or enter:
@@ -68,10 +67,10 @@ Instruction: Enter the item's name and its quantity.
     "clear" - To delete all the wait to calculate list.
 
 )V0G0N";
-	std::cout << str;
+	return std::string(str);
 }
 
-void showHelp() {
+std::string showHelp() {
 	const char* str = R"V0G0N(
 Usage:  subrescal [name] [amount]
         subrescal [option]
@@ -83,6 +82,5 @@ Examples:
     subrescal Battery 1
     subrescal "Power Cell" 69
 )V0G0N";
-	std::cout << str;
+	return std::string(str);
 }
-

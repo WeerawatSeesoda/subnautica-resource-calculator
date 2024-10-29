@@ -1,6 +1,5 @@
 #include "version.hpp"
-#include <iostream>
 
-void showVersion() {
-	std::cout << "Subnautica Resource Calculator version: 0.24.10.3\n";
+std::string showVersion() {
+	return std::string("Subnautica Resource Calculator version: 0.24.10.3\n");
 }

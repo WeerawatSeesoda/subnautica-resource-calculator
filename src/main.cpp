@@ -1,3 +1,4 @@
+#include "arguments-input.hpp"
 #include "calculation.hpp"
 #include "custom-type.hpp"
 #include "input.hpp"
@@ -6,74 +7,16 @@
 #include "paint-text.hpp"
 #include "show.hpp"
 #include "sort.hpp"
-#include "version.hpp"
-#include <cstring>
 #include <iostream>
 #include <string>
 
-void showInstruction();
-void showHelp();
-void showInvalidCommand();
-
-int main(int argc, char* argv[]) {
-	// Arguments input.
+int main(const int argc, const char* argv[]) {
 	if (argc > 1) {
-		std::string name = argv[1];
-		if (argc == 2) {
-			if ((name == "--version") ||
-				(name == "-v")) {
-				showVersion();
-				return 0;
-			}
-
-			if ((name == "--help") ||
-				(name == "-h") ||
-				(name == "help")) {
-				showHelp();
-				return 0;
-			}
-
-			showInvalidCommand();
-			return 1;
-		}
-		if (argc == 3) {
-			int amount = convertStringToNumber(argv[2]);
-
-			if (amount == -1) {
-				showInvalidCommand();
-				return 1;
-			}
-
-			if (amount < 1) {
-				std::cout << red("Error: The amount number must larger than 0.\n");
-				return 1;
-			}
-
-			vecofitems all_items;
-			levels all_levels;
-			name_amount_pair input = { name, amount };
-
-			vecofitems calculated = calculating(input);
-
-			// Item not found.
-			if (calculated[0].level == '0') {
-				std::cout << calculated[0].name << "\n";
-				return 1;
-			}
-
-			insertvector(all_items, calculating(input));
-			std::cout << "Calculating...\n";
-			all_levels = sorting(all_items);
-			show(all_levels);
-			return 0;
-		}
-		if (argc > 3) {
-			showInvalidCommand();
-			return 1;
-		}
+		name_amount_pair result = argumentsInput(argc, argv);
+		std::cout << result.name;
+		return result.amount;
 	}
 
-	// Manual input.
 	try {
 		vecofitems all_items;
 		name_amount_pair input = { "", 0 };
@@ -133,11 +76,6 @@ int main(int argc, char* argv[]) {
 		std::cerr << e << "\n";
 	}
 	return 0;
-}
-
-void showInvalidCommand() {
-	std::cout << red("Error: Invalid command\n");
-	std::cout << "Type \"subrescal --help\" to see how to use the program.\n";
 }
 
 /*

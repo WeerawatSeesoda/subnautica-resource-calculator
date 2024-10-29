@@ -1,7 +1,7 @@
 # Releasing build.
 program_name = subrescal
 cpp_flags = -Wall -Wpedantic -std=c++20
-all_releasing_objects = obj/main.o obj/calculation.o obj/input.o obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/version.o obj/list.o
+all_releasing_objects = obj/main.o obj/calculation.o obj/input.o obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/version.o obj/list.o obj/arguments-input.o
 linker_flags = -static-libgcc -static-libstdc++ -lpthread
 
 linux: release
@@ -23,8 +23,8 @@ compile: $(all_releasing_objects)
 # Automated tests.
 unit_tests_name = unit-tests
 gtest_flags = -lgtest -lgtest_main -lpthread
-all_objects_for_test = obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/input.o obj/list.o
-all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation.test.o obj/sort.test.o obj/sort.implementation.test.o obj/input.test.o obj/list.test.o
+all_objects_for_test = obj/libs.o obj/show.o obj/sort.o obj/paint-text.o obj/input.o obj/list.o obj/version.o obj/calculation.o obj/arguments-input.o
+all_testing_objects = obj/libs.test.o obj/show.test.o obj/show.implementation.test.o obj/sort.test.o obj/sort.implementation.test.o obj/input.test.o obj/list.test.o obj/arguments-input.test.o
 
 test: $(all_testing_objects)
 	@echo Building Tests...
@@ -57,6 +57,11 @@ obj/list.test.o: obj/list.o obj/paint-text.o
 obj/list.test.o: tests/list.test.cpp
 	@echo compiling list.test
 	@g++ $(cpp_flags) -c tests/list.test.cpp -o obj/list.test.o
+
+obj/arguments-input.test.o: obj/arguments-input.o obj/calculation.o obj/input.o obj/libs.o obj/paint-text.o obj/show.o obj/sort.o obj/version.o
+obj/arguments-input.test.o: tests/arguments-input.test.cpp
+	@echo compiling arguments.test
+	@g++ $(cpp_flags) -c tests/arguments-input.test.cpp -o obj/arguments-input.test.o
 
 # Implementation detail tests.
 obj/show.implementation.test.o: obj/libs.o obj/show.o
@@ -121,3 +126,6 @@ obj/list.o: src/list.*
 	@echo Compiling list
 	@g++ $(cpp_flags) -c src/list.cpp -o obj/list.o
 
+obj/arguments-input.o: src/arguments-input.*
+	@echo Compiling arguments-input
+	@g++ $(cpp_flags) -c src/arguments-input.cpp -o obj/arguments-input.o
