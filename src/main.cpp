@@ -135,35 +135,6 @@ int main(int argc, char* argv[]) {
 	return 0;
 }
 
-void showInstruction() {
-	const char* str = R"V0G0N(
-Instruction: Enter the item's name and its quantity.
-  or enter:
-    "help" - To show this instruction again.
-    "done" - To start the calculation and show the crafting steps you need to do.
-    "exit" - To close the program.
-    "list" - To show all the wait to calculate list.
-    "clear" - To delete all the wait to calculate list.
-
-)V0G0N";
-	std::cout << str;
-}
-
-void showHelp() {
-	const char* str = R"V0G0N(
-Usage:  subrescal [name] [amount]
-        subrescal [option]
-Option:
-    -h, --help, help        Print this help messages.
-    -v, --version           Print version number.
-
-Examples:
-    subrescal Battery 1
-    subrescal "Power Cell" 69
-)V0G0N";
-	std::cout << str;
-}
-
 void showInvalidCommand() {
 	std::cout << red("Error: Invalid command\n");
 	std::cout << "Type \"subrescal --help\" to see how to use the program.\n";
