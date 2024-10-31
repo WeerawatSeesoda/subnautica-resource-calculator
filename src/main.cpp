@@ -23,7 +23,7 @@ int main(const int argc, const char* argv[]) {
 		levels lvs;
 		std::vector<name_amount_pair> list;
 
-		showInstruction();
+		std::cout << showInstruction();
 		while (input.name != "EXIT") {
 			input = keyboardInput();
 
@@ -31,7 +31,7 @@ int main(const int argc, const char* argv[]) {
 				std::cout << "\nThank you and goodbye.\n";
 			}
 			else if (input.name == "HELP") {
-				showInstruction();
+				std::cout << showInstruction();
 			}
 			else if (input.name == "DONE") {
 				if (all_items.empty()) {
